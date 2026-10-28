@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apesar de VOCÊ</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="icon" type="image/png" href="/imagens/logosite.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Faixa colorida superior -->
+    <div class="top-bar">
+        <div class="bar-carmin"></div>
+    </div>
+
+    <!-- NAVBAR NATIVA -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <img src="/imagens/logosite.png" alt="Logo Apesar de Você" class="brand-logo">
+            <div class="brand-text">
+                <h1>Apesar de VOCÊ</h1>
+                <span>Amanhã será um novo dia.</span>
+            </div>
+        </a>
+
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link active">INÍCIO</a></li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">SOBRE NÓS <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="apesardevoce.html">SOBRE O PROJETO</a></li>
+                    <li><a href="quem-somos.html">QUEM SOMOS</a></li>
+                    <li><a href="contato.html">CONTATO</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">SOBRE A VIOLÊNCIA <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="entenda-a-violencia.html">ENTENDA A VIOLÊNCIA</a></li>
+                    <li><a href="ciclo.html">CICLO DA VIOLÊNCIA</a></li>
+                    <li><a href="direitos.html">SEUS DIREITOS</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item"><a href="comunidade.html" class="nav-link">COMUNIDADE</a></li>
+            <li class="nav-item"><a href="noticias.html" class="nav-link">NOTÍCIAS</a></li>
+            <li class="nav-item"><a href="cadastro.html" class="nav-link">CADASTRE-SE</a></li>
+        </ul>
+
+        <div class="nav-actions-wrapper">
+            <a href="https://www.youtube.com" class="btn-inscricao">SAÍDA RAPIDA</a>
+
+                <div class="nav-actions-wrapper">
+            <a href="denuncie.html" class="btn-inscricao">DENUNCIE</a>
+            <button class="menu-toggle" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- CARROSSEL HERO DE DESTAQUES NATIVOS -->
+    <header class="hero-carousel-section">
+        <div class="carousel-container">
+            <div class="carousel-track" id="hero-carousel-track">
+                <!-- Slide 1 -->
+                <div class="hero-slide active">
+                    <img src="/imagens/1.png" alt="Apoio e Proteção" class="slide-bg">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="slide-badge">Conheça seus direitos</span>
+                        <h2>Entenda todos os tipos de violência e saiba quando buscar ajuda.</h2>
+                        <a href="projetos.html" class="slide-btn">Saiba Mais —</a>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="hero-slide">
+                    <img src="/imagens/2.png" alt="Rede de Apoio" class="slide-bg">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="slide-badge">Rede de Apoio</span>
+                        <h2>Encontre delegacias, psicologos, centros de referência e serviços próximos.</h2>
+                        <a href="comunidade.html" class="slide-btn">Acessar Fórum —</a>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="hero-slide">
+                    <img src="/imagens/3.png" alt="Rede de Apoio" class="slide-bg">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="slide-badge">Informação salva vidas</span>
+                        <h2>Aprenda a identificar sinais de violência antes que ela aumente.</h2>
+                        <a href="comunidade.html" class="slide-btn">Acessar Fórum —</a>
+                    </div>
+                </div>
+                <!-- Slide 4 -->
+                <div class="hero-slide">
+                    <img src="/imagens/4.png" alt="Rede de Apoio" class="slide-bg">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="slide-badge">A Violência vai além da Agressão Fisica e mental</span>
+                        <h2>Partilhe depoimentos de forma anônima e receba suporte em nosso fórum próprio.</h2>
+                        <a href="comunidade.html" class="slide-btn">Acessar Fórum —</a>
+                    </div>
+                </div>
+                <!-- Slide 5 -->
+                <div class="hero-slide">
+                    <img src="/imagens/5.png" alt="Rede de Apoio" class="slide-bg">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="slide-badge">Saiba como denunciar</span>
+                        <h2>Descubra quais são os canais oficiais e como funciona cada etapa da denúncia.</h2>
+                        <a href="comunidade.html" class="slide-btn">Acessar Fórum —</a>
+                    </div>
+                </div>
+
+                <button class="carousel-arrow prev" id="heroPrev" aria-label="Slide Anterior">&#10094;</button>
+                <button class="carousel-arrow next" id="heroNext" aria-label="Próximo Slide">&#10095;</button>
+                <div class="carousel-dots" id="heroDots"></div>
+            </div>
+    </header>
+
+    <!-- HUB CENTRAL: INFORMAÇÃO & COMUNIDADE -->
+    <section class="hub-sections">
+        <div class="hub-container">
+
+            <!-- CARD 1: TIPOS DE VIOLÊNCIA -->
+            <div class="hub-card">
+                <h3>Preciso de orientação</h3>
+                <p>A violência contra a mulher pode assumir diferentes formas e nem sempre é identificada imediatamente como violência.
+                     Agressões físicas, ameaças, humilhações, 
+                     perseguição, controle financeiro, violência sexual,
+                      destruição de bens e outras atitudes podem 
+                      comprometer a liberdade, a segurança e a autonomia
+                       da mulher</p>
+                <a href="entenda-a-violencia.html" class="hub-btn">Acessar Guia Completo —</a>
+            </div>
+
+            <!-- CARD 2: COMUNIDADE INTERNA -->
+            <div class="hub-card highlight-card" id="comunidade">
+                <h3>Comunidade & Espaço de Relatos</h3>
+                <p>A violência pode gerar isolamento e fazer com que muitas mulheres tenham dificuldade para falar sobre aquilo que estão vivendo. Um espaço de escuta responsável pode contribuir para reduzir esse sentimento de solidão e ampliar o acesso à informação.
+
+Na comunidade, relatos podem ser compartilhados de forma responsável, permitindo que experiências sejam utilizadas para promover conscientização, troca de informações e fortalecimento da rede de apoio.</p>
+                <div class="hub-action-group">
+                    <a href="comunidade.html" class="hub-btn btn-primary">Entrar no Fórum da Comunidade</a>
+                </div>
+            </div>
+
+            <!-- CARD 3: Orientação -->
+            <div class="hub-card" id="noticias">
+                <h3>Quer saber mais?</h3>
+                <p>Informação de qualidade é fundamental para compreender a violência contra a mulher e acompanhar as iniciativas relacionadas à sua prevenção e enfrentamento.
+
+Acompanhe conteúdos educativos, mudanças legislativas, campanhas de conscientização, informações sobre serviços públicos e notícias relacionadas à proteção e aos direitos das mulheres.</p>
+                <a href="noticias.html" class="hub-btn">Acessar Notícias —</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="banner-historias">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <span class="banner-subtitle">CADA OLHAR, UMA HISTÓRIA</span>
+
+            <h2 class="banner-title">
+                Por trás de cada estatística, <span class="highlight">existe uma mulher</span> com nome, história e
+                direito a uma vida <span class="highlight">sem medo</span>.
+            </h2>
+            <p class="banner-description">
+                A plataforma 'Apesar de VOCÊ' existe para que nenhuma mulher precise enfrentar a violência em silêncio.
+                Juntas, somos mais fortes.
+            </p>
+
+            <a href="#denuncie" class="btn-ajuda">PRECISO DE AJUDA</a>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE NOTÍCIAS NATIVAS (EXPANDÍVEIS E ILIMITADAS) -->
+    <section class="news-section" id="noticias">
+        <div class="section-header">
+            <h2>NOTÍCIAS E INFORMATIVOS</h2>
+            <p>Fique por dentro das atualizações legislativas, campanhas de conscientização e matérias educativas.</p>
+        </div>
+
+        <div class="news-grid" id="news-container">
+            <!-- Cards gerados via Javascript com leitor interno -->
+        </div>
+
+        <div class="news-pagination">
+            <button id="loadMoreNews" class="btn-secondary">Carregar Mais Notícias</button>
+        </div>
+    </section>
+
+    <!-- MODAL DE LEITURA COMPLETA DA NOTÍCIA -->
+    <div id="newsModal" class="news-modal" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <button class="close-modal" id="closeNewsModal">&times;</button>
+            <span class="slide-badge" id="modalCategory">Notícia</span>
+            <h2 id="modalTitle"></h2>
+            <span class="modal-date" id="modalDate"></span>
+            <hr>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <section class="interactive-timeline-section">
+  <div class="container-timeline">
+    
+    <!-- LADO ESQUERDO: IMAGEM DINÂMICA -->
+    <div class="timeline-media">
+      <img id="timelineMainImage" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800" alt="Imagem explicativa">
+    </div>
+
+    <!-- LADO DIREITO: ÍCONES + CONTEÚDO -->
+    <div class="timeline-steps">
+      <!-- Linha vertical conectando os ícones -->
+      <div class="timeline-line"></div>
+
+      <!-- Item 1 (Ativo por padrão) -->
+      <div class="timeline-item active" data-img="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800">
+        <div class="icon-wrapper">
+          <i class="fas fa-shield-alt"></i> <!-- Pode trocar pelo seu ícone ou <img src="..."> -->
+        </div>
+        <div class="item-content">
+          <h3>Acolhimento e Orientação</h3>
+          <p>Oferecemos suporte completo com informações claras e sigilosas para apoiar e direcionar cada caso.</p>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="timeline-item" data-img="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=800">
+        <div class="icon-wrapper">
+          <i class="fas fa-balance-scale"></i>
+        </div>
+        <div class="item-content">
+          <h3>Assistência Jurídica</h3>
+          <p>Entenda os seus direitos e as medidas protetivas previstas em lei de forma simples e acessível.</p>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="timeline-item" data-img="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=800">
+        <div class="icon-wrapper">
+          <i class="fas fa-user-friends"></i>
+        </div>
+        <div class="item-content">
+          <h3>Rede de Apoio Coletivo</h3>
+          <p>Conecte-se com comunidades, grupos de fortalecimento e profissionais qualificados.</p>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="timeline-item" data-img="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?q=80&w=800">
+        <div class="icon-wrapper">
+          <i class="fas fa-heart"></i>
+        </div>
+        <div class="item-content">
+          <h3>Acompanhamento Contínuo</h3>
+          <p>Espaço seguro para acolhimento psicológico e recuperação de autonomia e autoestima.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <!-- SEÇÃO CONECTE-SE / SAIBA MAIS (APESAR DE VOCÊ) -->
+    <section class="connect-section">
+        <div class="connect-container">
+
+            <div class="connect-content-grid">
+
+                <!-- Coluna de Links Rápidos -->
+                <div class="connect-column saiba-mais-col">
+                    <h2>SEUS DIREITOS</h2>
+                    <hr class="line-decor">
+
+                    <div class="link-item">
+                        <a href="sobrenos.html" class="outline-btn">SOBRE O PROJETO</a>
+                        <p>Tenha acesso a informações sobre direitos, medidas de proteção e mecanismos previstos para o enfrentamento da violência.</p>
+                    </div>
+
+                    <div class="link-item">
+                        <a href="equipe.html" class="outline-btn">NOSSA EQUIPE</a>
+                        <p>Conheça a proposta do Apesar de VOCÊ, seus objetivos e a importância de ampliar o acesso à informação sobre a violência contra a mulher.</p>
+                    </div>
+
+                    <div class="link-item">
+                        <a href="rededeapoio.html" class="outline-btn">REDE DE APOIO</a>
+                        <p>Conheça as diferentes formas de violência, compreenda como elas podem se manifestar e aprenda a reconhecer comportamentos que podem representar situações de abuso.</p>
+                    </div>
+                </div>
+
+                <!-- Divisor Vertical -->
+                <div class="vertical-divider"></div>
+
+                <!-- Coluna do Formulário de Newsletter -->
+                <div class="connect-column form-col">
+                    <h2>Apesar de tudo, existe um caminho.</h3>
+                    <hr class="line-decor">
+                    <p class="form-subtitle">Informação pode ajudar a reconhecer situações de violência, compreender direitos e conhecer os caminhos de atendimento disponíveis.</p>
+                    <p>Cadastre seu e-mail para receber conteúdos educativos, notícias, campanhas de conscientização e atualizações relacionadas à nossa rede de informação e apoio.</p>
+
+                    <form action="https://formspree.io/f/xoqgpedz" method="POST" class="connect-form">
+                        <div class="form-row">
+                            <input type="text" name="first_name" placeholder="Nome" required>
+                            <input type="text" name="last_name" placeholder="Sobrenome" required>
+                        </div>
+                        <input type="email" name="email" placeholder="Endereço de E-mail" required>
+                        <button type="submit" class="form-submit-btn">CADASTRAR</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER INSTITUCIONAL -->
+    <footer class="main-footer" id="contato">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="/imagens/logosite.png" alt="Apesar de VOCÊ" class="footer-logo">
+                <div class="footer-brand-text">
+                    <h2>Apesar de VOCÊ</h2>
+                    <span>Central de Apoio e Prevenção Contra a Violência à Mulher</span>
+                </div>
+            </div>
+
+            <div class="footer-info">
+                <p><strong>Aviso de Emergência:</strong> Este portal tem caráter informativo, de acolhimento e
+                    denunciação.
+                    Mas <strong>não substitui</strong> os órgãos oficiais de segurança, saúde e justiça.</p>
+            </div>
+
+            <div class="footer-contact">
+                <h4>CONTATO COM A EQUIPE</h4>
+                <a href="mailto:apesardevocecontato@gmail.com">apesardevocecontato@gmail.com</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 Apesar de VOCÊ. <br> Todos os direitos reservados.</p>
+            <p> Conteúdo baseado na Lei Maria da Penha e
+                em dados do Fórum Brasileiro de Segurança Pública.</p>
+        </div>
+    </footer>
+
+    <script>
+    // CONFIGURAÇÃO DO SUBSTACK
+const SUBSTACK_URL = 'https://apesardvoce.substack.com'; 
+const SUBSTACK_RSS_FEED = `${SUBSTACK_URL}/feed`;
+const RSS_API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(SUBSTACK_RSS_FEED)}`;
+const FALLBACK_PROXY_URL = `https://corsproxy.io/?${encodeURIComponent(SUBSTACK_RSS_FEED)}`;
+
+// BASE DE DADOS DINÂMICA
+let noticiasDB = [];
+let visibleNewsCount = 3;
+
+/* ==========================================================================
+   1. GERENCIAMENTO DE FAVORITOS & COMENTÁRIOS (localStorage)
+   ========================================================================== */
+function getFavoritos() {
+    return JSON.parse(localStorage.getItem('news_favoritos') || '[]');
+}
+
+function toggleFavorito(id, event) {
+    if (event) event.stopPropagation();
+    let favoritos = getFavoritos();
+    const index = favoritos.indexOf(id);
+    
+    if (index > -1) {
+        favoritos.splice(index, 1);
+    } else {
+        favoritos.push(id);
+    }
+    
+    localStorage.setItem('news_favoritos', JSON.stringify(favoritos));
+    renderNoticias();
+    
+    const modalBtnFav = document.getElementById('modalFavBtn');
+    if (modalBtnFav) {
+        const isFav = favoritos.includes(id);
+        modalBtnFav.innerHTML = isFav ? '❤️ Favoritado' : '🤍 Favoritar';
+        modalBtnFav.classList.toggle('active', isFav);
+    }
+}
+
+function getComentarios(id) {
+    const comments = JSON.parse(localStorage.getItem('news_comentarios') || '{}');
+    return comments[id] || [];
+}
+
+function adicionarComentario(id) {
+    const inputAutor = document.getElementById('commentAuthor');
+    const inputTexto = document.getElementById('commentText');
+    
+    const autor = inputAutor ? inputAutor.value.trim() : 'Anônimo';
+    const texto = inputTexto ? inputTexto.value.trim() : '';
+
+    if (!texto) return;
+
+    const comments = JSON.parse(localStorage.getItem('news_comentarios') || '{}');
+    if (!comments[id]) comments[id] = [];
+
+    const novoComentario = {
+        autor: autor || 'Anônimo',
+        texto,
+        data: new Date().toLocaleDateString('pt-PT', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })
+    };
+
+    comments[id].push(novoComentario);
+    localStorage.setItem('news_comentarios', JSON.stringify(comments));
+
+    if (inputTexto) inputTexto.value = '';
+    renderListaComentarios(id);
+}
+
+function renderListaComentarios(id) {
+    const lista = document.getElementById('commentsList');
+    if (!lista) return;
+
+    const comentarios = getComentarios(id);
+
+    if (comentarios.length === 0) {
+        lista.innerHTML = '<p class="no-comments">Seja a primeira pessoa a comentar!</p>';
+        return;
+    }
+
+    lista.innerHTML = comentarios.map(c => `
+        <div class="comment-item">
+            <div class="comment-header">
+                <strong>${c.autor}</strong>
+                <span>${c.data}</span>
+            </div>
+            <p>${c.texto}</p>
+        </div>
+    `).join('');
+}
+
+/* ==========================================================================
+   2. BUSCA E RENDERIZAÇÃO DO SUBSTACK (COM FALLBACK ANTI-FALHA)
+   ========================================================================== */
+async function carregarNoticiasSubstack() {
+    const container = document.getElementById('news-container');
+    if (!container) return;
+
+    container.innerHTML = '<p class="loading-text" style="grid-column: 1/-1; text-align: center; color: #666;">A carregar notícias do Substack...</p>';
+
+    try {
+        // Tentativa 1: Via API RSS2JSON
+        const response = await fetch(RSS_API_URL);
+        const data = await response.json();
+
+        if (data.status === 'ok' && data.items && data.items.length > 0) {
+            noticiasDB = data.items.map((item, index) => processarItemFeed(item, index));
+            renderNoticias();
+            return;
+        }
+        throw new Error('Retorno inválido do RSS2JSON');
+    } catch (err1) {
+        console.warn('Tentativa 1 falhou. Tentando busca direta via Proxy XML...', err1);
+        try {
+            // Tentativa 2 (Fallback): Leitura direta do XML do Substack via Proxy
+            const responseXml = await fetch(FALLBACK_PROXY_URL);
+            const xmlText = await responseXml.text();
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+            const items = xmlDoc.querySelectorAll("item");
+
+            if (items.length > 0) {
+                noticiasDB = Array.from(items).map((item, index) => {
+                    const title = item.querySelector("title")?.textContent || "Sem título";
+                    const link = item.querySelector("link")?.textContent || SUBSTACK_URL;
+                    const content = item.querySelector("content\\:encoded")?.textContent || item.querySelector("description")?.textContent || "";
+                    const pubDate = item.querySelector("pubDate")?.textContent || new Date().toISOString();
+                    const categoryNode = item.querySelector("category");
+                    const category = categoryNode ? categoryNode.textContent : "Notícia";
+
+                    let imagemCapa = '';
+                    const enclosure = item.querySelector("enclosure");
+                    if (enclosure) imagemCapa = enclosure.getAttribute("url");
+
+                    if (!imagemCapa) {
+                        const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
+                        imagemCapa = imgMatch ? imgMatch[1] : 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600';
+                    }
+
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = content;
+                    const textoPuro = tempDiv.textContent || tempDiv.innerText || '';
+                    const resumoLimpo = textoPuro.substring(0, 140).trim() + '...';
+
+                    return {
+                        id: index + 1,
+                        categoria: category,
+                        data: new Date(pubDate).toLocaleDateString('pt-PT', { day: '2-digit', month: 'short', year: 'numeric' }),
+                        titulo: title,
+                        resumo: resumoLimpo,
+                        conteudo: content,
+                        imagem: imagemCapa,
+                        linkOriginal: link
+                    };
+                });
+
+                renderNoticias();
+                return;
+            }
+            throw new Error('Nenhum artigo encontrado no XML');
+        } catch (err2) {
+            console.error('Erro em ambas as tentativas do Substack:', err2);
+            container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #c2003b;">Não foi possível carregar as notícias mais recentes no momento.</p>';
+        }
+    }
+}
+
+function processarItemFeed(item, index) {
+    let imagemCapa = item.thumbnail || item.enclosure?.link;
+    
+    if (!imagemCapa) {
+        const imgMatch = item.content ? item.content.match(/<img[^>]+src="([^">]+)"/) : null;
+        imagemCapa = imgMatch ? imgMatch[1] : 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600';
+    }
+
+    const dataPublicacao = new Date(item.pubDate).toLocaleDateString('pt-PT', {
+        day: '2-digit', month: 'short', year: 'numeric'
+    });
+
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = item.description || item.content || '';
+    const textoPuro = tempDiv.textContent || tempDiv.innerText || '';
+    const resumoLimpo = textoPuro.substring(0, 140).trim() + '...';
+
+    return {
+        id: index + 1,
+        categoria: item.categories && item.categories.length > 0 ? item.categories[0] : 'Notícia',
+        data: dataPublicacao,
+        titulo: item.title,
+        resumo: resumoLimpo,
+        conteudo: item.content || item.description,
+        imagem: imagemCapa,
+        linkOriginal: item.link
+    };
+}
+
+function renderNoticias() {
+    const container = document.getElementById('news-container');
+    if (!container) return;
+    
+    container.innerHTML = '';
+
+    if (noticiasDB.length === 0) {
+        container.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Nenhuma notícia encontrada.</p>';
+        return;
+    }
+
+    const favoritos = getFavoritos();
+    const noticiasParaExibir = noticiasDB.slice(0, visibleNewsCount);
+
+    noticiasParaExibir.forEach(noticia => {
+        const isFav = favoritos.includes(noticia.id);
+        const comentarios = getComentarios(noticia.id);
+
+        const card = document.createElement('article');
+        card.className = 'news-card';
+        card.innerHTML = `
+            <div class="news-img-wrapper">
+                <img src="${noticia.imagem}" alt="${noticia.titulo}" class="news-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600'">
+                <button class="btn-fav-card ${isFav ? 'active' : ''}" onclick="toggleFavorito(${noticia.id}, event)" title="Favoritar">
+                    ${isFav ? '❤️' : '🤍'}
+                </button>
+            </div>
+            <div class="news-card-body">
+                <span class="news-tag">${noticia.categoria}</span>
+                <h3>${noticia.titulo}</h3>
+                <p>${noticia.resumo}</p>
+                <div class="news-card-footer">
+                    <span class="news-date">${noticia.data} • 💬 ${comentarios.length}</span>
+                    <button onclick="abrirNoticia(${noticia.id})" class="btn-read-more">Ler notícia completa →</button>
+                </div>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+
+    const btnLoadMore = document.getElementById('loadMoreNews');
+    if (btnLoadMore) {
+        btnLoadMore.style.display = visibleNewsCount >= noticiasDB.length ? 'none' : 'inline-block';
+        btnLoadMore.onclick = () => {
+            visibleNewsCount += 3;
+            renderNoticias();
+        };
+    }
+}
+
+/* ==========================================================================
+   3. MODAL DE LEITURA
+   ========================================================================== */
+function abrirNoticia(id) {
+    const noticia = noticiasDB.find(n => n.id === id);
+    if (!noticia) return;
+
+    const favoritos = getFavoritos();
+    const isFav = favoritos.includes(noticia.id);
+
+    const modal = document.getElementById('newsModal');
+    if (!modal) return;
+    
+    modal.innerHTML = `
+        <div class="modal-content">
+            <button class="close-modal-fixed" id="closeNewsModal" onclick="fecharModal()">&times;</button>
+            
+            <div class="modal-header-actions">
+                <span class="modal-tag">${noticia.categoria}</span>
+                <button id="modalFavBtn" class="btn-fav-modal ${isFav ? 'active' : ''}" onclick="toggleFavorito(${noticia.id})">
+                    ${isFav ? '❤️ Favoritado' : '🤍 Favoritar'}
+                </button>
+            </div>
+
+            <h2>${noticia.titulo}</h2>
+            <span class="modal-date">${noticia.data}</span>
+            <hr>
+
+            <div class="modal-body">${noticia.conteudo}</div>
+
+            <p class="original-link">
+                <a href="${noticia.linkOriginal}" target="_blank" rel="noopener noreferrer">
+                    Ver publicação original diretamente no Substack ↗
+                </a>
+            </p>
+
+            <div class="comments-section">
+                <h3>Comentários</h3>
+                <div class="comment-form">
+                    <input type="text" id="commentAuthor" placeholder="Seu nome (opcional)">
+                    <textarea id="commentText" placeholder="Escreva o seu comentário..." rows="3"></textarea>
+                    <button onclick="adicionarComentario(${noticia.id})" class="btn-submit-comment">Publicar Comentário</button>
+                </div>
+                <div id="commentsList" class="comments-list"></div>
+            </div>
+        </div>
+    `;
+
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    
+    renderListaComentarios(noticia.id);
+}
+
+function fecharModal() {
+    const modal = document.getElementById('newsModal');
+    if (modal) {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+}
+
+window.addEventListener('click', (e) => {
+    const modal = document.getElementById('newsModal');
+    if (e.target === modal) fecharModal();
+});
+
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') fecharModal();
+});
+
+/* ==========================================================================
+   4. CARROSSEL HERO
+   ========================================================================== */
+let currentHeroSlide = 0;
+
+function initHeroCarousel() {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dotsContainer = document.getElementById('heroDots');
+
+    if (!dotsContainer || slides.length === 0) return;
+    
+    dotsContainer.innerHTML = '';
+    slides.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.className = `dot ${idx === 0 ? 'active' : ''}`;
+        dot.addEventListener('click', () => setHeroSlide(idx));
+        dotsContainer.appendChild(dot);
+    });
+
+    const btnHeroNext = document.getElementById('heroNext');
+    if (btnHeroNext) {
+        btnHeroNext.onclick = () => setHeroSlide((currentHeroSlide + 1) % slides.length);
+    }
+
+    const btnHeroPrev = document.getElementById('heroPrev');
+    if (btnHeroPrev) {
+        btnHeroPrev.onclick = () => setHeroSlide((currentHeroSlide - 1 + slides.length) % slides.length);
+    }
+}
+
+function setHeroSlide(index) {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dotsContainer = document.getElementById('heroDots');
+    if (slides.length === 0) return;
+
+    slides[currentHeroSlide].classList.remove('active');
+    if (dotsContainer && dotsContainer.children[currentHeroSlide]) {
+        dotsContainer.children[currentHeroSlide].classList.remove('active');
+    }
+    
+    currentHeroSlide = index;
+    slides[currentHeroSlide].classList.add('active');
+    if (dotsContainer && dotsContainer.children[currentHeroSlide]) {
+        dotsContainer.children[currentHeroSlide].classList.add('active');
+    }
+}
+
+/* ==========================================================================
+   5. MENU HAMBURGER & TIMELINE INTERATIVA
+   ========================================================================== */
+function initMobileMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    }
+}
+
+function initTimelineInteractive() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const mainImage = document.getElementById('timelineMainImage');
+
+    if (!timelineItems.length || !mainImage) return;
+
+    timelineItems.forEach((item) => {
+        item.addEventListener('click', () => {
+            timelineItems.forEach((i) => i.classList.remove('active'));
+            item.classList.add('active');
+
+            const newImgSrc = item.getAttribute('data-img');
+            if (newImgSrc && mainImage.src !== newImgSrc) {
+                mainImage.classList.add('fade-out');
+                setTimeout(() => {
+                    mainImage.src = newImgSrc;
+                    mainImage.classList.remove('fade-out');
+                }, 200);
+            }
+        });
+    });
+}
+
+/* ==========================================================================
+   6. INICIALIZAÇÃO ÚNICA DA PÁGINA
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    initHeroCarousel();
+    initMobileMenu();
+    initTimelineInteractive();
+    carregarNoticiasSubstack();
+});
+
+</script>
+</body>
+
+</html>

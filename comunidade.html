@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidade | Apesar de VOCÊ</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            purple: '#2b035c',
+                            purpleDark: '#1e0242',
+                            carmine: '#e6205d',
+                            carmineDark: '#c2003b',
+                            roseSoft: '#fdf6f7',
+                            roseHover: '#f9eaed',
+                            offWhite: '#f9f6f7',
+                            dark: '#1a1025',
+                            graySub: '#6f627d',
+                            border: '#ede0e5',
+                            borderHighlight: '#f4cdd7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 30px -5px rgba(43, 3, 92, 0.05)',
+                        'float': '0 15px 35px -5px rgba(230, 32, 93, 0.15)',
+                        'card': '0 4px 20px rgba(43, 3, 92, 0.03)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome 6 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+/* ==========================================================================
+   FAIXA SUPERIOR & NAVBAR NATIVA (COM DROPDOWNS)
+   ========================================================================== */
+.top-bar {
+  height: 5px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1002;
+  background-color: #e6205d;
+}
+
+.bar-carmin {
+  width: 100%;
+  height: 100%;
+  background-color: #2b035c;
+}
+
+.navbar {
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 8%;
+  border-bottom: 1px solid #eaeaea;
+  position: fixed;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+  box-shadow: 0 2px 10px rgba(43, 3, 92, 0.03);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+/* LOGO NAVBAR */
+.brand-logo {
+  width: 62px;
+  height: auto;
+}
+
+.brand-text h1 {
+  font-size: 20px;
+  color: #e6205d;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.brand-text span {
+  font-size: 11px;
+  color: #7c7b7b;
+  font-style: italic;
+}
+
+/* Menu Principal e Submenus (Dropdown) */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #4a4a4a;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+}
+
+.nav-link .arrow {
+  font-size: 9px;
+  transition: transform 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #e6205d;
+}
+
+/* Estilo do Dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  list-style: none;
+  min-width: 220px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 1010;
+}
+
+.nav-item:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-item:hover .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 20px;
+  color: #4a4a4a;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-menu li a:hover {
+  background: #fdf6f7;
+  color: #e4205c;
+}
+
+.nav-actions-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-inscricao,
+.btn-denuncia {
+  background-color: #2b035c;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease;
+}
+
+.btn-inscricao:hover,
+.btn-denuncia:hover {
+  background-color: #e6205d;
+}
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f6f7;
+            color: #1a1025;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Animações e Micro-interações */
+        .heart-icon {
+            transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.2s ease;
+        }
+        .heart-icon.liked {
+            color: #e6205d;
+            animation: heartPop 0.35s ease-out;
+        }
+
+        @keyframes heartPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.35); }
+            100% { transform: scale(1); }
+        }
+
+        .retweet-btn.retweeted {
+            color: #10b981;
+        }
+
+        .bookmark-btn.saved {
+            color: #2b035c;
+        }
+
+        .nav-item-active {
+            font-weight: 800;
+            color: #e6205d;
+            background-color: #fdf6f7;
+        }
+
+        /* Glassmorphism e linhas da timeline */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Scrollbar Personalizada */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f9f6f7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e6205d33;
+            border-radius: 99px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e6205d;
+        }
+
+        .tab-indicator {
+            height: 3.5px;
+            border-radius: 99px;
+            background: linear-gradient(90deg, #e6205d, #2b035c);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Animação suave para novos posts */
+        .post-appear {
+            animation: slideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-brand-offWhite selection:bg-brand-carmine selection:text-white">
+
+    <!-- FAIXA TOP: BARRA DE SEGURANÇA E SAÍDA RÁPIDA -->
+    <div class="fixed top-0 left-0 w-full z-50 bg-brand-purple text-white px-4 py-2 flex justify-between items-center text-xs shadow-md border-b border-brand-carmine/20">
+        <div class="flex items-center gap-2 max-w-7xl mx-auto w-full justify-between">
+            <div class="flex items-center gap-2">
+                <span class="relative flex h-2.5 w-2.5">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                </span>
+                <span class="font-medium hidden sm:inline text-white/90">Espaço Protegido e 100% Anônimo — Navegue livremente sem precisar de cadastro</span>
+                <span class="font-medium sm:hidden text-white/90">Modo Anônimo Ativo</span>
+            </div>
+            
+            <a href="https://www.google.com" rel="noopener noreferrer" class="bg-brand-carmine hover:bg-brand-carmineDark text-white font-bold px-3.5 py-1 rounded-full text-[11px] transition-all flex items-center gap-1.5 shadow-sm transform active:scale-95">
+                <i class="fa-solid fa-person-running text-xs"></i> <span>SAÍDA RÁPIDA</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- WRAPPER CENTRAL DO CONTAINER -->
+    <div class="max-w-7xl mx-auto w-full pt-10 flex flex-1">
+
+        <!-- ================================================================= -->
+        <!-- COLUNA 1: SIDEBAR ESQUERDA (NAVEGAÇÃO)                             -->
+        <!-- ================================================================= -->
+        <aside class="w-20 xl:w-64 p-3 sm:p-4 flex flex-col justify-between h-[calc(100vh-2.5rem)] sticky top-10 border-r border-brand-border hidden md:flex">
+            <div class="space-y-6">
+                <!-- Brand Logo Header -->
+                <a href="index.html" class="flex items-center gap-3.5 p-2 hover:bg-brand-roseSoft rounded-2xl transition-colors group">
+                    <img src="/imagens/logosite.png" alt="Logo Apesar de Você" class="footer-logo" width="48" height="48">
+                    <div class="hidden xl:flex flex-col">
+                        <span class="font-serif font-bold text-xl text-brand-purple leading-tight group-hover:text-brand-carmine transition-colors">Apesar de VOCÊ</span>
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-brand-carmine">Rede & Comunidade</span>
+                    </div>
+                </a>
+
+                <!-- Links Principais de Navegação -->
+                <nav class="space-y-1.5">
+                    <button onclick="switchView('forYou')" id="nav-forYou" class="w-full flex items-center gap-4 p-3.5 hover:bg-brand-roseSoft rounded-2xl text-sm font-semibold text-brand-dark transition-all nav-item-active group">
+                        <i class="fa-solid fa-house text-lg w-6 text-center group-hover:scale-110 transition-transform"></i>
+                        <span class="hidden xl:inline">Página Inicial</span>
+                    </button>
+
+                    <button onclick="switchView('explore')" id="nav-explore" class="w-full flex items-center gap-4 p-3.5 hover:bg-brand-roseSoft rounded-2xl text-sm font-semibold text-brand-dark transition-all text-brand-graySub hover:text-brand-purple group">
+                        <i class="fa-solid fa-compass text-lg w-6 text-center group-hover:scale-110 transition-transform"></i>
+                        <span class="hidden xl:inline">Explorar & Temas</span>
+                    </button>
+
+                    <button onclick="switchView('notifications')" id="nav-notifications" class="w-full flex items-center gap-4 p-3.5 hover:bg-brand-roseSoft rounded-2xl text-sm font-semibold text-brand-dark transition-all text-brand-graySub hover:text-brand-purple group relative">
+                        <i class="fa-solid fa-bell text-lg w-6 text-center group-hover:scale-110 transition-transform"></i>
+                        <span class="hidden xl:inline">Notificações</span>
+                        <span id="notifBadge" class="absolute top-3 left-7 bg-brand-carmine text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">2</span>
+                    </button>
+
+                    <button onclick="switchView('saved')" id="nav-saved" class="w-full flex items-center gap-4 p-3.5 hover:bg-brand-roseSoft rounded-2xl text-sm font-semibold text-brand-dark transition-all text-brand-graySub hover:text-brand-purple group">
+                        <i class="fa-solid fa-bookmark text-lg w-6 text-center group-hover:scale-110 transition-transform"></i>
+                        <span class="hidden xl:inline">Relatos Salvos</span>
+                    </button>
+
+                    <button onclick="switchView('profile')" id="nav-profile" class="w-full flex items-center gap-4 p-3.5 hover:bg-brand-roseSoft rounded-2xl text-sm font-semibold text-brand-dark transition-all text-brand-graySub hover:text-brand-purple group">
+                        <i class="fa-solid fa-user-shield text-lg w-6 text-center group-hover:scale-110 transition-transform"></i>
+                        <span class="hidden xl:inline">Meu Perfil Anônimo</span>
+                    </button>
+
+                    <a href="index.html" class="w-full flex items-center gap-4 p-3.5 hover:bg-brand-roseSoft rounded-2xl text-sm font-semibold text-brand-graySub hover:text-brand-carmine transition-all group mt-4 border-t border-brand-border/60">
+                        <i class="fa-solid fa-arrow-left text-lg w-6 text-center group-hover:-translate-x-1 transition-transform"></i>
+                        <span class="hidden xl:inline">Voltar ao Portal</span>
+                    </a>
+                </nav>
+
+                <!-- Botão de Ação Rápida "Publicar" -->
+                <button onclick="openComposeModal()" class="w-full bg-gradient-to-r from-brand-carmine to-brand-carmineDark hover:opacity-95 text-white font-bold py-3.5 px-4 rounded-2xl shadow-float transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5">
+                    <i class="fa-solid fa-feather-pointed text-lg"></i>
+                    <span class="hidden xl:inline font-sans text-sm tracking-wide">Publicar Relato</span>
+                </button>
+            </div>
+
+            <!-- Mini Card do Usuário (Rodapé da Sidebar) -->
+            <div onclick="openProfileEditModal()" class="p-3 rounded-2xl hover:bg-brand-roseSoft cursor-pointer flex items-center justify-between transition-colors border border-brand-border bg-white shadow-card">
+                <div class="flex items-center gap-3 min-w-0">
+                    <img id="sidebarUserAvatar" src="" alt="Avatar" class="w-10 h-10 rounded-xl border border-brand-carmine/30 bg-brand-roseSoft flex-shrink-0">
+                    <div class="hidden xl:flex flex-col text-left truncate">
+                        <div class="flex items-center gap-1">
+                            <span id="sidebarUserName" class="font-bold text-xs text-brand-dark truncate">Carregando...</span>
+                            <i class="fa-solid fa-user-ninja text-brand-carmine text-[10px]" title="Modo Anônimo Ativo"></i>
+                        </div>
+                        <span id="sidebarUserHandle" class="text-[11px] text-brand-graySub truncate">@anonimo</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-gear text-brand-graySub text-xs hidden xl:inline hover:text-brand-carmine transition-colors"></i>
+            </div>
+        </aside>
+
+        <!-- ================================================================= -->
+        <!-- COLUNA 2: FEED CENTRAL                                            -->
+        <!-- ================================================================= -->
+        <main class="flex-1 max-w-2xl w-full border-r border-brand-border min-h-screen pb-24 md:pb-12 bg-white">
+            
+            <!-- HEADER GLASSMORPHISM FIXO -->
+            <header class="sticky top-10 glass-header z-30 border-b border-brand-border">
+                <div class="flex justify-between items-center px-4 py-3 md:hidden border-b border-brand-border/60">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-xl bg-brand-purple text-white font-serif font-bold flex items-center justify-center text-lg">A</div>
+                        <span class="font-serif font-bold text-brand-purple">Apesar de VOCÊ</span>
+                    </div>
+                    <button onclick="openProfileEditModal()" class="text-xs bg-brand-roseSoft text-brand-carmine font-bold px-3 py-1.5 rounded-full border border-brand-carmine/20">
+                        <i class="fa-solid fa-user-pen mr-1"></i> Perfil
+                    </button>
+                </div>
+
+                <!-- Abas "Para Você", "Seguindo", "Favoritos" -->
+                <div class="flex text-center font-bold text-sm cursor-pointer" id="feedTabsHeader">
+                    <div onclick="switchView('forYou')" class="flex-1 py-4 hover:bg-brand-roseSoft/60 transition-colors relative" id="tab-btn-forYou">
+                        <span class="text-brand-purple" id="tab-text-forYou">Para Você</span>
+                        <div class="tab-indicator absolute bottom-0 left-1/2 -translate-x-1/2 w-16" id="indicator-forYou"></div>
+                    </div>
+                    <div onclick="switchView('following')" class="flex-1 py-4 hover:bg-brand-roseSoft/60 transition-colors relative text-brand-graySub" id="tab-btn-following">
+                        <span id="tab-text-following">Rede de Apoio</span>
+                        <div class="tab-indicator absolute bottom-0 left-1/2 -translate-x-1/2 w-16 opacity-0" id="indicator-following"></div>
+                    </div>
+                    <div onclick="switchView('saved')" class="flex-1 py-4 hover:bg-brand-roseSoft/60 transition-colors relative text-brand-graySub" id="tab-text-saved-container">
+                        <span id="tab-text-saved">Guardados</span>
+                        <div class="tab-indicator absolute bottom-0 left-1/2 -translate-x-1/2 w-16 opacity-0" id="indicator-saved"></div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- COMPOSITOR DE RELATOS (TWEET BOX COMPLETO) -->
+            <div id="inlineComposer" class="p-4 sm:p-5 border-b border-brand-border bg-white space-y-4">
+                <div class="flex gap-3.5">
+                    <img id="composerUserAvatar" src="" alt="Avatar" class="w-10 h-10 rounded-xl border border-brand-carmine/30 bg-brand-roseSoft flex-shrink-0">
+                    <div class="flex-1 space-y-3">
+                        
+                        <!-- Seletor Rápido de Identidade (Anônima vs Pseudônimo) -->
+                        <div class="flex items-center gap-2">
+                            <select id="postIdentitySelect" onchange="toggleIdentityMode()" class="text-xs font-bold bg-brand-roseSoft text-brand-purple border border-brand-border rounded-full px-3 py-1 focus:outline-none focus:border-brand-carmine cursor-pointer">
+                                <option value="pseudonym">🎭 Publicar como Pseudônimo</option>
+                                <option value="anonymous">🔒 Publicar 100% Anônima (Ocultar Nome)</option>
+                            </select>
+                        </div>
+
+                        <!-- Área de Texto com Expansão Automática -->
+                        <textarea id="tweetInput" rows="3" placeholder="Compartilhe o seu relato, desabafo ou dúvida em um ambiente seguro..." class="w-full text-sm sm:text-base border-none focus:ring-0 focus:outline-none resize-none placeholder-brand-graySub/70 text-brand-dark font-normal leading-relaxed" maxlength="280"></textarea>
+
+                        <!-- Pré-visualização de imagem anexa -->
+                        <div id="imagePreviewContainer" class="hidden relative rounded-2xl overflow-hidden border border-brand-border shadow-sm">
+                            <img id="imagePreview" src="" alt="Anexo" class="max-h-72 w-full object-cover">
+                            <button onclick="removeAttachedImage()" class="absolute top-2 right-2 bg-brand-dark/80 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-brand-carmine transition-colors">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+
+                        <!-- Criador de Enquetes Interativas -->
+                        <div id="pollCreator" class="hidden bg-brand-roseSoft p-3.5 rounded-2xl border border-brand-borderHighlight space-y-2.5 text-xs">
+                            <div class="flex justify-between items-center font-bold text-brand-purple">
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-square-poll-vertical text-brand-carmine"></i> Criar Enquete na Comunidade</span>
+                                <button onclick="togglePollCreator()" class="text-brand-graySub hover:text-brand-carmine"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                            <input type="text" id="pollOpt1" placeholder="Opção 1 (ex: Sim, já vivenciei algo assim)" class="w-full p-2.5 rounded-xl border border-brand-border text-xs focus:outline-none focus:border-brand-carmine">
+                            <input type="text" id="pollOpt2" placeholder="Opção 2 (ex: Não, preciso de esclarecimento)" class="w-full p-2.5 rounded-xl border border-brand-border text-xs focus:outline-none focus:border-brand-carmine">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Barra de Ferramentas e Botão de Envio -->
+                <div class="flex items-center justify-between pt-3 border-t border-brand-border/60">
+                    <div class="flex items-center gap-1 sm:gap-2 text-brand-carmine">
+                        <button onclick="triggerImageUpload()" class="p-2.5 rounded-xl hover:bg-brand-roseSoft transition-colors text-brand-carmine" title="Anexar Imagem">
+                            <i class="fa-regular fa-image text-lg"></i>
+                        </button>
+                        <button onclick="togglePollCreator()" class="p-2.5 rounded-xl hover:bg-brand-roseSoft transition-colors text-brand-carmine" title="Criar Enquete">
+                            <i class="fa-solid fa-square-poll-vertical text-lg"></i>
+                        </button>
+                        <button onclick="insertHashtag('#ApoioFeminino')" class="px-2.5 py-1 rounded-lg hover:bg-brand-roseSoft transition-colors text-xs font-bold text-brand-purple hidden sm:inline">
+                            #Hashtags
+                        </button>
+                        <input type="file" id="imageFileInput" accept="image/*" class="hidden" onchange="handleImageFileSelect(event)">
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <span id="charCounter" class="text-xs text-brand-graySub font-medium">0/280</span>
+                        <button onclick="publishPost()" class="bg-gradient-to-r from-brand-carmine to-brand-carmineDark hover:opacity-95 text-white font-bold px-5 py-2.5 rounded-full text-xs sm:text-sm shadow-md transition-all transform active:scale-95">
+                            Publicar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TÍTULO DINÂMICO DA VIEW (EXPLORAR, NOTIFICAÇÕES, PERFIL) -->
+            <div id="viewSectionHeader" class="hidden px-5 py-3.5 bg-brand-roseSoft/60 border-b border-brand-border flex items-center justify-between">
+                <h2 id="viewSectionTitle" class="font-serif font-bold text-base text-brand-purple">Explorar Tópicos</h2>
+                <span id="viewSectionSubtitle" class="text-xs text-brand-graySub">Apoio em tempo real</span>
+            </div>
+
+            <!-- FEED DINÂMICO DE POSTS -->
+            <div id="postsFeed" class="divide-y divide-brand-border">
+                <!-- Posts injetados via JavaScript -->
+            </div>
+
+            <!-- MENSAGEM DE VACUIDADE (SEM POSTS) -->
+            <div id="emptyFeedMessage" class="hidden p-12 text-center text-brand-graySub space-y-3">
+                <div class="w-16 h-16 rounded-full bg-brand-roseSoft text-brand-carmine flex items-center justify-center mx-auto text-2xl">
+                    <i class="fa-regular fa-comments"></i>
+                </div>
+                <h3 class="font-serif font-bold text-brand-purple text-lg">Nenhum relato encontrado nesta seção</h3>
+                <p class="text-xs max-w-sm mx-auto leading-relaxed">Você pode ser a primeira pessoa a compartilhar um depoimento, dúvida ou palavra de acolhimento.</p>
+            </div>
+        </main>
+
+        <!-- ================================================================= -->
+        <!-- COLUNA 3: SIDEBAR DIREITA (TRENDS, PESQUISA, CANAIS)             -->
+        <!-- ================================================================= -->
+        <aside class="w-80 p-4 space-y-4 hidden lg:block sticky top-10 h-[calc(100vh-2.5rem)] overflow-y-auto">
+            
+            <!-- BARRA DE PESQUISA COM FOCO RESSALTADO -->
+            <div class="relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-brand-graySub text-xs"></i>
+                <input type="text" id="searchInput" onkeyup="handleSearch()" placeholder="Pesquisar relatos, leis e temas..." class="w-full bg-white border border-brand-border pl-10 pr-4 py-2.5 rounded-2xl text-xs focus:outline-none focus:border-brand-carmine focus:ring-2 focus:ring-brand-carmine/20 shadow-sm transition-all">
+            </div>
+
+            <!-- CARD DE EMERGÊNCIA RÁPIDA -->
+            <div class="bg-gradient-to-br from-brand-purple to-brand-purpleDark text-white rounded-2xl p-4.5 shadow-premium space-y-3 relative overflow-hidden border border-brand-purple">
+                <div class="flex items-center justify-between">
+                    <span class="text-[10px] uppercase font-extrabold tracking-widest text-brand-carmine bg-white/10 px-2.5 py-1 rounded-full">Apoio Vital</span>
+                    <i class="fa-solid fa-shield-heart text-brand-carmine text-lg"></i>
+                </div>
+                <h3 class="font-serif font-bold text-sm leading-tight">Canais de Atendimento Imediato</h3>
+                <p class="text-[11px] text-white/80 leading-relaxed">
+                    Se você está em situação de perigo ou precisa de orientação legal emergencial:
+                </p>
+                <div class="space-y-2 pt-1">
+                    <a href="tel:180" class="flex items-center justify-between p-2.5 rounded-xl bg-white/10 hover:bg-white/20 transition-colors text-xs font-bold">
+                        <span>Central da Mulher</span>
+                        <span class="bg-brand-carmine px-2.5 py-1 rounded-full text-[10px]">Ligue 180</span>
+                    </a>
+                    <a href="tel:190" class="flex items-center justify-between p-2.5 rounded-xl bg-white/10 hover:bg-white/20 transition-colors text-xs font-bold">
+                        <span>Polícia Militar</span>
+                        <span class="bg-brand-carmine px-2.5 py-1 rounded-full text-[10px]">Ligue 190</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- TRENDS DO MOMENTO (TEMAS EM ALTA) -->
+            <div class="bg-white border border-brand-border rounded-2xl p-4 shadow-card space-y-3">
+                <div class="flex justify-between items-center border-b border-brand-border/60 pb-2.5">
+                    <h3 class="font-serif font-bold text-sm text-brand-purple">Assuntos da Comunidade</h3>
+                    <i class="fa-solid fa-fire text-brand-carmine text-xs"></i>
+                </div>
+                
+                <div class="space-y-3" id="trendsList">
+                    <!-- Gerado dinamicamente -->
+                </div>
+            </div>
+
+            <!-- RECOMENDAÇÕES DE LEITURA (SUBSTACK) -->
+            <div class="bg-brand-roseSoft/80 border border-brand-borderHighlight rounded-2xl p-4 shadow-card space-y-3">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-newspaper text-brand-carmine text-xs"></i>
+                    <h3 class="font-serif font-bold text-xs text-brand-purple">Informativo Substack</h3>
+                </div>
+                <p class="text-[11px] text-brand-dark/80 leading-relaxed">
+                    Acompanhe artigos jornalísticos e análises sobre a Lei Maria da Penha no nosso canal oficial.
+                </p>
+                <a href="https://apesardvoce.substack.com" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-carmine hover:underline">
+                    <span>Acessar Substack</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+            </div>
+
+            <footer class="text-[10px] text-brand-graySub px-2 space-y-1">
+                <p>© 2026 Apesar de VOCÊ. Todos os direitos resguardados.</p>
+                <p>Nenhuma publicação vincula seu endereço IP pessoal.</p>
+            </footer>
+        </aside>
+
+    </div>
+
+    <!-- NAVBAR BOTTOM MOBILE (APP STYLE) -->
+    <nav class="fixed bottom-0 left-0 w-full bg-white/95 backdrop-blur-md border-t border-brand-border flex justify-around py-3 md:hidden z-40 text-brand-graySub shadow-lg">
+        <button onclick="switchView('forYou')" class="flex flex-col items-center gap-1 text-brand-carmine">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span class="text-[9px] font-bold">Início</span>
+        </button>
+        <button onclick="switchView('explore')" class="flex flex-col items-center gap-1">
+            <i class="fa-solid fa-compass text-lg"></i>
+            <span class="text-[9px] font-bold">Explorar</span>
+        </button>
+        <button onclick="openComposeModal()" class="flex flex-col items-center gap-1 text-brand-carmine">
+            <div class="w-8 h-8 rounded-full bg-brand-carmine text-white flex items-center justify-center shadow-md -mt-4 border-2 border-white">
+                <i class="fa-solid fa-plus text-xs"></i>
+            </div>
+            <span class="text-[9px] font-bold">Postar</span>
+        </button>
+        <button onclick="switchView('notifications')" class="flex flex-col items-center gap-1">
+            <i class="fa-solid fa-bell text-lg"></i>
+            <span class="text-[9px] font-bold">Avisos</span>
+        </button>
+        <button onclick="openProfileEditModal()" class="flex flex-col items-center gap-1">
+            <i class="fa-solid fa-user-shield text-lg"></i>
+            <span class="text-[9px] font-bold">Perfil</span>
+        </button>
+    </nav>
+
+    <!-- ================================================================= -->
+    <!-- MODAIS DO SISTEMA                                                 -->
+    <!-- ================================================================= -->
+
+    <!-- MODAL 1: RESPOSTAS / COMENTÁRIOS (THREAD) -->
+    <div id="commentsModal" class="fixed inset-0 bg-brand-dark/60 z-50 hidden flex items-center justify-center p-3 backdrop-blur-sm">
+        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col border border-brand-border">
+            <div class="p-4 border-b border-brand-border flex justify-between items-center bg-brand-roseSoft/50">
+                <h3 class="font-serif font-bold text-brand-purple text-sm">Respostas do Relato</h3>
+                <button onclick="closeCommentsModal()" class="text-brand-graySub hover:text-brand-carmine w-8 h-8 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="p-4 overflow-y-auto flex-1 space-y-4">
+                <!-- Post Alvo -->
+                <div id="modalTargetPost" class="bg-brand-roseSoft/60 p-4 rounded-2xl border border-brand-borderHighlight text-xs sm:text-sm"></div>
+
+                <!-- Respostas Encadeadas -->
+                <div id="modalRepliesList" class="space-y-3 divide-y divide-brand-border/60">
+                    <!-- Injetado dinamicamente -->
+                </div>
+            </div>
+
+            <!-- Campo de Resposta -->
+            <div class="p-3.5 border-t border-brand-border bg-white flex gap-2 items-center">
+                <input type="text" id="modalReplyInput" placeholder="Escreva uma mensagem de apoio ou orientação..." class="flex-1 border border-brand-border rounded-full px-4 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-brand-carmine">
+                <button onclick="submitReply()" class="bg-brand-carmine text-white px-5 py-2.5 rounded-full text-xs font-bold hover:bg-brand-carmineDark shadow-sm">
+                    Responder
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: CRIAR RELATO (PUBLICAÇÃO RÁPIDA) -->
+    <div id="composeModal" class="fixed inset-0 bg-brand-dark/60 z-50 hidden flex items-center justify-center p-3 backdrop-blur-sm">
+        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden border border-brand-border p-5 space-y-4">
+            <div class="flex justify-between items-center border-b border-brand-border pb-3">
+                <h3 class="font-serif font-bold text-brand-purple text-base">Novo Relato / Depoimento</h3>
+                <button onclick="closeComposeModal()" class="text-brand-graySub hover:text-brand-carmine">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <textarea id="modalTweetInput" rows="4" placeholder="Escreva o seu depoimento com total garantia de segurança e acolhimento..." class="w-full text-sm border-none focus:ring-0 focus:outline-none resize-none placeholder-brand-graySub/70 text-brand-dark" maxlength="280"></textarea>
+
+            <div class="flex items-center justify-between pt-3 border-t border-brand-border">
+                <span class="text-xs text-brand-graySub font-medium">Modo Seguro Ativo</span>
+                <button onclick="publishModalPost()" class="bg-brand-carmine hover:bg-brand-carmineDark text-white font-bold px-5 py-2 rounded-full text-xs shadow-md">
+                    Publicar Agora
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: PERSONALIZAR PERFIL ANÔNIMO -->
+    <div id="profileEditModal" class="fixed inset-0 bg-brand-dark/60 z-50 hidden flex items-center justify-center p-3 backdrop-blur-sm">
+        <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl p-6 space-y-5 border border-brand-border">
+            <div class="flex justify-between items-center border-b border-brand-border pb-3">
+                <h3 class="font-serif font-bold text-brand-purple text-lg">Perfil e Pseudônimo</h3>
+                <button onclick="closeProfileEditModal()" class="text-brand-graySub hover:text-brand-carmine">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <p class="text-xs text-brand-graySub leading-relaxed">
+                Altere seu nome fictício e identificador a qualquer momento. Suas alterações são salvas apenas localmente em seu navegador.
+            </p>
+
+            <div class="space-y-3.5 text-xs">
+                <div>
+                    <label class="font-bold text-brand-purple block mb-1">Pseudônimo ou Nome</label>
+                    <input type="text" id="editNameInput" placeholder="Ex: VozDaResiliencia" class="w-full p-3 border border-brand-border rounded-xl focus:outline-none focus:border-brand-carmine">
+                </div>
+                <div>
+                    <label class="font-bold text-brand-purple block mb-1">Identificador (@handle)</label>
+                    <input type="text" id="editHandleInput" placeholder="Ex: @resiliencia_2026" class="w-full p-3 border border-brand-border rounded-xl focus:outline-none focus:border-brand-carmine">
+                </div>
+                <div>
+                    <label class="font-bold text-brand-purple block mb-1">Avatar Aleatório</label>
+                    <button type="button" onclick="generateRandomAvatar()" class="w-full bg-brand-roseSoft text-brand-carmine font-bold p-3 rounded-xl border border-brand-borderHighlight hover:bg-brand-roseHover transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-dice text-sm"></i> Gerar Novo Ícone
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex justify-end gap-2 pt-3 border-t border-brand-border">
+                <button onclick="closeProfileEditModal()" class="px-4 py-2 rounded-full text-xs font-bold text-brand-graySub hover:bg-gray-100">Cancelar</button>
+                <button onclick="saveProfileChanges()" class="px-5 py-2.5 rounded-full text-xs font-bold bg-brand-carmine text-white hover:bg-brand-carmineDark shadow-sm">Guardar Alterações</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- LÓGICA JAVASCRIPT                                                 -->
+    <!-- ================================================================= -->
+    <script>
+        // PERFIL DO USUÁRIO NO LOCALSTORAGE
+        let currentUser = JSON.parse(localStorage.getItem('app_user_profile')) || {
+            name: "Apoiadora Anônima",
+            handle: "@acolhida_" + Math.floor(Math.random() * 8999 + 1000),
+            avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=" + Math.random(),
+            useAnonymous: false
+        };
+
+        let currentView = 'forYou'; // 'forYou', 'following', 'saved', 'explore', 'notifications', 'profile'
+        let attachedImageBase64 = null;
+        let selectedPostForComments = null;
+
+        // BASE DE DADOS INICIAL
+        const INITIAL_POSTS = [
+            {
+                id: 101,
+                authorName: "Rede Apesar de VOCÊ",
+                authorHandle: "@apesardvoce_oficial",
+                authorAvatar: "https://api.dicebear.com/7.x/initials/svg?seed=AV",
+                verified: true,
+                time: "Há 12 min",
+                content: "Seja muito bem-vinda ao espaço oficial da comunidade Apesar de VOCÊ. Este fórum foi desenvolvido para garantir acolhimento, anonimato e informação precisa sobre direitos das mulheres e combate à violência. #ApoioFeminino #ApesardeVOCE",
+                likes: 48,
+                retweets: 16,
+                comments: [
+                    { author: "Carla_M", text: "Muito grata por essa iniciativa segura e anônima." },
+                    { author: "Fernanda_R", text: "Informação é a nossa maior proteção!" }
+                ],
+                poll: null,
+                image: null,
+                isFollowing: true,
+                isLiked: false,
+                isRetweeted: false,
+                isSaved: true
+            },
+            {
+                id: 102,
+                authorName: "Voz_Da_Coragem",
+                authorHandle: "@coragem_feminina",
+                authorAvatar: "https://api.dicebear.com/7.x/bottts/svg?seed=Coragem",
+                verified: false,
+                time: "Há 35 min",
+                content: "Identificar o ciclo da violência doméstica é o primeiro passo para rompê-lo: tensão, explosão e 'lua de mel'. Se você sente que vive nessa montanha-russa emocional, saiba que há apoio psicológico gratuito disponível no CRAM da sua região. #DireitosDaMulher",
+                likes: 112,
+                retweets: 39,
+                comments: [],
+                poll: {
+                    options: [
+                        { text: "Já conhecia o ciclo", votes: 78 },
+                        { text: "Aprendi recentemente", votes: 94 }
+                    ],
+                    userVotedIndex: null
+                },
+                image: null,
+                isFollowing: false,
+                isLiked: false,
+                isRetweeted: false,
+                isSaved: false
+            },
+            {
+                id: 103,
+                authorName: "Advocacia de Apoio e Direitos",
+                authorHandle: "@direitossociais_br",
+                authorAvatar: "https://api.dicebear.com/7.x/bottts/svg?seed=Direito",
+                verified: true,
+                time: "Há 1 hora",
+                content: "Atenção: A Medida Protetiva de Urgência independe da existência de processo criminal prévio e pode ser requerida diretamente na Delegacia ou Defensoria Pública. Conheça e compartilhe esse direito com quem precisa. #LeiMariadaPenha",
+                likes: 210,
+                retweets: 85,
+                comments: [],
+                poll: null,
+                image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800",
+                isFollowing: true,
+                isLiked: false,
+                isRetweeted: false,
+                isSaved: false
+            }
+        ];
+
+        let postsDB = JSON.parse(localStorage.getItem('app_community_posts')) || INITIAL_POSTS;
+
+        const TRENDS = [
+            { category: "Direitos & Legislação", tag: "#ApesardeVOCE", postsCount: "1.4k relatos" },
+            { category: "Proteção Urgente", tag: "#LeiMariadaPenha", postsCount: "920 publicações" },
+            { category: "Rede Acolhedora", tag: "#ApoioFeminino", postsCount: "3.1k conversas" },
+            { category: "Acolhimento", tag: "#CRAMInforma", postsCount: "740 orientações" }
+        ];
+
+        const NOTIFICATIONS = [
+            { type: "like", user: "Mariana_S", text: "curtiu seu relato sobre medidas protetivas.", time: "Há 15 min" },
+            { type: "reply", user: "Rede Apesar de VOCÊ", text: "respondeu ao seu comentário com orientações de apoio.", time: "Há 40 min" }
+        ];
+
+        // INICIALIZAÇÃO
+        document.addEventListener('DOMContentLoaded', () => {
+            updateUserProfileUI();
+            renderPosts();
+            renderTrends();
+            setupCharCounter();
+        });
+
+        // ATUALIZA UI DO PERFIL
+        function updateUserProfileUI() {
+            document.getElementById('sidebarUserAvatar').src = currentUser.avatar;
+            document.getElementById('composerUserAvatar').src = currentUser.useAnonymous ? "https://api.dicebear.com/7.x/bottts/svg?seed=Anonimo" : currentUser.avatar;
+            document.getElementById('sidebarUserName').textContent = currentUser.name;
+            document.getElementById('sidebarUserHandle').textContent = currentUser.handle;
+
+            localStorage.setItem('app_user_profile', JSON.stringify(currentUser));
+        }
+
+        // ALTERNANCIA DE VIEWS (FORYOU, FOLLOWING, SAVED, EXPLORE, NOTIFICATIONS, PROFILE)
+        function switchView(view) {
+            currentView = view;
+
+            const inlineComposer = document.getElementById('inlineComposer');
+            const viewHeader = document.getElementById('viewSectionHeader');
+            const viewTitle = document.getElementById('viewSectionTitle');
+            const viewSubtitle = document.getElementById('viewSectionSubtitle');
+            const feedTabsHeader = document.getElementById('feedTabsHeader');
+
+            // Resetar destaques da Sidebar
+            ['forYou', 'explore', 'notifications', 'saved', 'profile'].forEach(v => {
+                const navBtn = document.getElementById(`nav-${v}`);
+                if (navBtn) {
+                    if (v === view) {
+                        navBtn.classList.add('nav-item-active');
+                        navBtn.classList.remove('text-brand-graySub');
+                    } else {
+                        navBtn.classList.remove('nav-item-active');
+                        navBtn.classList.add('text-brand-graySub');
+                    }
+                }
+            });
+
+            // Oculta/Exibe elementos dependendo da view
+            if (view === 'forYou' || view === 'following' || view === 'saved') {
+                inlineComposer.classList.remove('hidden');
+                feedTabsHeader.classList.remove('hidden');
+                viewHeader.classList.add('hidden');
+
+                // Atualizar barra indicadora da aba
+                ['forYou', 'following', 'saved'].forEach(t => {
+                    const btn = document.getElementById(`tab-btn-${t}`);
+                    const ind = document.getElementById(`indicator-${t}`);
+                    if (t === view) {
+                        btn?.classList.add('text-brand-purple');
+                        btn?.classList.remove('text-brand-graySub');
+                        ind?.classList.remove('opacity-0');
+                    } else {
+                        btn?.classList.remove('text-brand-purple');
+                        btn?.classList.add('text-brand-graySub');
+                        ind?.classList.add('opacity-0');
+                    }
+                });
+
+            } else {
+                inlineComposer.classList.add('hidden');
+                feedTabsHeader.classList.add('hidden');
+                viewHeader.classList.remove('hidden');
+
+                if (view === 'explore') {
+                    viewTitle.textContent = "Explorar Tópicos & Relatos";
+                    viewSubtitle.textContent = "Temas em alta na comunidade";
+                } else if (view === 'notifications') {
+                    viewTitle.textContent = "Suas Notificações";
+                    viewSubtitle.textContent = "Interações e mensagens de apoio";
+                } else if (view === 'profile') {
+                    viewTitle.textContent = `Perfil de ${currentUser.name}`;
+                    viewSubtitle.textContent = currentUser.handle;
+                }
+            }
+
+            renderPosts();
+        }
+
+        // RENDERIZAR POSTS OU MENSAGENS ESPECÍFICAS DA VIEW
+        function renderPosts(filterQuery = '') {
+            const container = document.getElementById('postsFeed');
+            const emptyMsg = document.getElementById('emptyFeedMessage');
+            container.innerHTML = '';
+
+            if (currentView === 'notifications') {
+                emptyMsg.classList.add('hidden');
+                NOTIFICATIONS.forEach(n => {
+                    const card = document.createElement('div');
+                    card.className = 'p-4 border-b border-brand-border flex items-center gap-3 bg-brand-roseSoft/20';
+                    card.innerHTML = `
+                        <div class="w-9 h-9 rounded-full bg-brand-roseSoft text-brand-carmine flex items-center justify-center">
+                            <i class="fa-solid ${n.type === 'like' ? 'fa-heart text-brand-carmine' : 'fa-reply text-brand-purple'}"></i>
+                        </div>
+                        <div class="flex-1 text-xs sm:text-sm">
+                            <strong class="text-brand-purple">${n.user}</strong> ${n.text}
+                            <span class="block text-[10px] text-brand-graySub mt-0.5">${n.time}</span>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+                return;
+            }
+
+            let filtered = postsDB;
+
+            if (currentView === 'following') {
+                filtered = filtered.filter(p => p.isFollowing || p.authorHandle === currentUser.handle);
+            } else if (currentView === 'saved') {
+                filtered = filtered.filter(p => p.isSaved);
+            } else if (currentView === 'profile') {
+                filtered = filtered.filter(p => p.authorHandle === currentUser.handle);
+            }
+
+            if (filterQuery.trim() !== '') {
+                const q = filterQuery.toLowerCase();
+                filtered = filtered.filter(p => 
+                    p.content.toLowerCase().includes(q) || 
+                    p.authorName.toLowerCase().includes(q) ||
+                    p.authorHandle.toLowerCase().includes(q)
+                );
+            }
+
+            if (filtered.length === 0) {
+                emptyMsg.classList.remove('hidden');
+                return;
+            } else {
+                emptyMsg.classList.add('hidden');
+            }
+
+            filtered.forEach(post => {
+                const article = document.createElement('article');
+                article.className = 'p-4 sm:p-5 hover:bg-brand-roseSoft/30 transition-colors flex gap-3.5 cursor-pointer relative post-appear border-b border-brand-border';
+                
+                const formattedContent = post.content.replace(/#(\w+)/g, '<span class="text-brand-carmine font-semibold hover:underline" onclick="event.stopPropagation(); searchHashtag(\'#$1\')">#$1</span>');
+
+                article.innerHTML = `
+                    <img src="${post.authorAvatar}" alt="${post.authorName}" class="w-10 h-10 rounded-xl border border-brand-carmine/20 bg-brand-roseSoft flex-shrink-0">
+                    <div class="flex-1 min-w-0 space-y-2">
+                        
+                        <!-- Header do Post -->
+                        <div class="flex items-center justify-between text-xs sm:text-sm">
+                            <div class="flex items-center gap-1.5 truncate">
+                                <span class="font-bold text-brand-purple truncate">${post.authorName}</span>
+                                ${post.verified ? '<i class="fa-solid fa-circle-check text-brand-carmine text-xs" title="Perfil Autenticado / Suporte"></i>' : ''}
+                                <span class="text-brand-graySub text-xs truncate">${post.authorHandle}</span>
+                                <span class="text-brand-graySub text-xs">•</span>
+                                <span class="text-brand-graySub text-xs whitespace-nowrap">${post.time}</span>
+                            </div>
+
+                            <button onclick="toggleFollow(${post.id}, event)" class="text-[11px] font-bold px-3 py-1 rounded-full border border-brand-border transition-colors ${post.isFollowing ? 'bg-brand-purple text-white' : 'text-brand-carmine hover:bg-brand-roseSoft'}">
+                                ${post.isFollowing ? 'Seguindo' : '+ Seguir'}
+                            </button>
+                        </div>
+
+                        <!-- Conteúdo -->
+                        <p class="text-xs sm:text-sm text-brand-dark leading-relaxed whitespace-pre-line font-normal">${formattedContent}</p>
+
+                        <!-- Imagem Anexa -->
+                        ${post.image ? `
+                            <div class="rounded-2xl overflow-hidden border border-brand-border max-h-80 my-2.5">
+                                <img src="${post.image}" alt="Mídia" class="w-full h-full object-cover" loading="lazy">
+                            </div>
+                        ` : ''}
+
+                        <!-- Enquete -->
+                        ${post.poll ? renderPollHTML(post) : ''}
+
+                        <!-- Barra de Ações Rápidas estilo X/Twitter -->
+                        <div class="flex items-center justify-between pt-2.5 text-brand-graySub text-xs max-w-md">
+                            
+                            <!-- Comentários -->
+                            <button onclick="openCommentsModal(${post.id}, event)" class="flex items-center gap-1.5 hover:text-brand-carmine transition-colors">
+                                <i class="fa-regular fa-comment text-sm"></i>
+                                <span>${post.comments.length}</span>
+                            </button>
+
+                            <!-- Retweet -->
+                            <button onclick="toggleRetweet(${post.id}, event)" class="retweet-btn ${post.isRetweeted ? 'retweeted font-bold' : ''} flex items-center gap-1.5 hover:text-emerald-600 transition-colors">
+                                <i class="fa-solid fa-retweet text-sm"></i>
+                                <span>${post.retweets}</span>
+                            </button>
+
+                            <!-- Curtir -->
+                            <button onclick="toggleLike(${post.id}, event)" class="like-btn flex items-center gap-1.5 hover:text-brand-carmine transition-colors">
+                                <i class="fa-solid fa-heart heart-icon ${post.isLiked ? 'liked' : 'fa-regular'} text-sm"></i>
+                                <span class="${post.isLiked ? 'text-brand-carmine font-bold' : ''}">${post.likes}</span>
+                            </button>
+
+                            <!-- Favoritar -->
+                            <button onclick="toggleSave(${post.id}, event)" class="bookmark-btn ${post.isSaved ? 'saved font-bold' : ''} flex items-center gap-1.5 hover:text-brand-purple transition-colors">
+                                <i class="fa-${post.isSaved ? 'solid' : 'regular'} fa-bookmark text-sm"></i>
+                            </button>
+
+                            <!-- Compartilhar -->
+                            <button onclick="sharePost(${post.id}, event)" class="flex items-center gap-1.5 hover:text-brand-purple transition-colors">
+                                <i class="fa-solid fa-share-nodes text-sm"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                `;
+
+                article.onclick = (e) => {
+                    if (!e.target.closest('button') && !e.target.closest('input')) {
+                        openCommentsModal(post.id, e);
+                    }
+                };
+
+                container.appendChild(article);
+            });
+        }
+
+        function renderPollHTML(post) {
+            const totalVotes = post.poll.options.reduce((acc, curr) => acc + curr.votes, 0);
+            
+            return `
+                <div class="bg-brand-roseSoft/70 p-3.5 rounded-2xl border border-brand-borderHighlight space-y-2 my-2.5 text-xs">
+                    ${post.poll.options.map((opt, idx) => {
+                        const pct = totalVotes > 0 ? Math.round((opt.votes / totalVotes) * 100) : 0;
+                        const hasVoted = post.poll.userVotedIndex !== null;
+
+                        return `
+                            <button onclick="votePoll(${post.id}, ${idx}, event)" ${hasVoted ? 'disabled' : ''} class="w-full text-left p-2.5 rounded-xl border border-brand-border bg-white relative overflow-hidden flex justify-between items-center ${hasVoted ? 'cursor-default' : 'hover:border-brand-carmine transition-colors'}">
+                                ${hasVoted ? `<div class="absolute top-0 left-0 bottom-0 bg-brand-carmine/15 transition-all duration-500" style="width: ${pct}%"></div>` : ''}
+                                <span class="relative z-10 font-medium text-brand-dark">${opt.text} ${post.poll.userVotedIndex === idx ? '✓' : ''}</span>
+                                ${hasVoted ? `<span class="relative z-10 font-bold text-brand-carmine">${pct}%</span>` : ''}
+                            </button>
+                        `;
+                    }).join('')}
+                    <p class="text-[10px] text-brand-graySub text-right font-medium">${totalVotes} votos gravados na rede</p>
+                </div>
+            `;
+        }
+
+        // ALTERNAR SELEÇÃO DE IDENTIDADE (ANÔNIMA VS PSEUDÔNIMO)
+        function toggleIdentityMode() {
+            const val = document.getElementById('postIdentitySelect').value;
+            currentUser.useAnonymous = (val === 'anonymous');
+            updateUserProfileUI();
+        }
+
+        // PUBLICAR POST
+        function publishPost() {
+            const input = document.getElementById('tweetInput');
+            const content = input.value.trim();
+
+            const pollOpt1 = document.getElementById('pollOpt1').value.trim();
+            const pollOpt2 = document.getElementById('pollOpt2').value.trim();
+
+            if (!content && !attachedImageBase64) return;
+
+            let pollObj = null;
+            if (pollOpt1 && pollOpt2) {
+                pollObj = {
+                    options: [
+                        { text: pollOpt1, votes: 1 },
+                        { text: pollOpt2, votes: 0 }
+                    ],
+                    userVotedIndex: 0
+                };
+            }
+
+            const isAnon = currentUser.useAnonymous;
+
+            const newPost = {
+                id: Date.now(),
+                authorName: isAnon ? "Apoiadora Anônima" : currentUser.name,
+                authorHandle: isAnon ? "@anonimo" : currentUser.handle,
+                authorAvatar: isAnon ? "https://api.dicebear.com/7.x/bottts/svg?seed=Anonimo" : currentUser.avatar,
+                verified: false,
+                time: "Agora",
+                content: content,
+                likes: 0,
+                retweets: 0,
+                comments: [],
+                poll: pollObj,
+                image: attachedImageBase64,
+                isFollowing: true,
+                isLiked: false,
+                isRetweeted: false,
+                isSaved: false
+            };
+
+            postsDB.unshift(newPost);
+            savePostsToStorage();
+
+            input.value = '';
+            removeAttachedImage();
+            if (!document.getElementById('pollCreator').classList.contains('hidden')) {
+                togglePollCreator();
+            }
+
+            renderPosts();
+            updateCharCounter();
+        }
+
+        // MANIPULAÇÃO DE MÍDIA
+        function triggerImageUpload() {
+            document.getElementById('imageFileInput').click();
+        }
+
+        function handleImageFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    attachedImageBase64 = e.target.result;
+                    document.getElementById('imagePreview').src = attachedImageBase64;
+                    document.getElementById('imagePreviewContainer').classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function removeAttachedImage() {
+            attachedImageBase64 = null;
+            document.getElementById('imagePreviewContainer').classList.add('hidden');
+            document.getElementById('imageFileInput').value = '';
+        }
+
+        function togglePollCreator() {
+            document.getElementById('pollCreator').classList.toggle('hidden');
+        }
+
+        function votePoll(postId, optIdx, event) {
+            event.stopPropagation();
+            const post = postsDB.find(p => p.id === postId);
+            if (post && post.poll && post.poll.userVotedIndex === null) {
+                post.poll.options[optIdx].votes += 1;
+                post.poll.userVotedIndex = optIdx;
+                savePostsToStorage();
+                renderPosts();
+            }
+        }
+
+        // INTERAÇÕES FÍSICAS
+        function toggleLike(postId, event) {
+            event.stopPropagation();
+            const post = postsDB.find(p => p.id === postId);
+            if (post) {
+                post.isLiked = !post.isLiked;
+                post.likes += post.isLiked ? 1 : -1;
+                savePostsToStorage();
+                renderPosts();
+            }
+        }
+
+        function toggleRetweet(postId, event) {
+            event.stopPropagation();
+            const post = postsDB.find(p => p.id === postId);
+            if (post) {
+                post.isRetweeted = !post.isRetweeted;
+                post.retweets += post.isRetweeted ? 1 : -1;
+                savePostsToStorage();
+                renderPosts();
+            }
+        }
+
+        function toggleSave(postId, event) {
+            event.stopPropagation();
+            const post = postsDB.find(p => p.id === postId);
+            if (post) {
+                post.isSaved = !post.isSaved;
+                savePostsToStorage();
+                renderPosts();
+            }
+        }
+
+        function toggleFollow(postId, event) {
+            event.stopPropagation();
+            const post = postsDB.find(p => p.id === postId);
+            if (post) {
+                post.isFollowing = !post.isFollowing;
+                savePostsToStorage();
+                renderPosts();
+            }
+        }
+
+        // MODAL DE RESPOSTAS
+        function openCommentsModal(postId, event) {
+            if (event) event.stopPropagation();
+            selectedPostForComments = postsDB.find(p => p.id === postId);
+            if (!selectedPostForComments) return;
+
+            const modal = document.getElementById('commentsModal');
+            const targetDiv = document.getElementById('modalTargetPost');
+
+            targetDiv.innerHTML = `
+                <div class="font-bold text-brand-purple mb-1">${selectedPostForComments.authorName} (${selectedPostForComments.authorHandle})</div>
+                <p class="text-brand-dark">${selectedPostForComments.content}</p>
+            `;
+
+            renderRepliesList();
+            modal.classList.remove('hidden');
+        }
+
+        function renderRepliesList() {
+            const repliesDiv = document.getElementById('modalRepliesList');
+            repliesDiv.innerHTML = '';
+
+            if (selectedPostForComments.comments.length === 0) {
+                repliesDiv.innerHTML = '<p class="text-xs text-brand-graySub text-center py-4 font-medium">Seja a primeira pessoa a enviar uma palavra de apoio.</p>';
+                return;
+            }
+
+            selectedPostForComments.comments.forEach(c => {
+                const item = document.createElement('div');
+                item.className = 'pt-2.5 text-xs space-y-1';
+                item.innerHTML = `
+                    <span class="font-bold text-brand-carmine">${c.author}</span>
+                    <p class="text-brand-dark leading-relaxed">${c.text}</p>
+                `;
+                repliesDiv.appendChild(item);
+            });
+        }
+
+        function submitReply() {
+            const input = document.getElementById('modalReplyInput');
+            const text = input.value.trim();
+            if (!text || !selectedPostForComments) return;
+
+            selectedPostForComments.comments.push({
+                author: currentUser.useAnonymous ? "Apoiadora Anônima" : currentUser.name,
+                text: text
+            });
+
+            savePostsToStorage();
+            renderRepliesList();
+            renderPosts();
+            input.value = '';
+        }
+
+        function closeCommentsModal() {
+            document.getElementById('commentsModal').classList.add('hidden');
+            selectedPostForComments = null;
+        }
+
+        // MODAL DE COMPOSE RÁPIDO
+        function openComposeModal() {
+            document.getElementById('composeModal').classList.remove('hidden');
+        }
+
+        function closeComposeModal() {
+            document.getElementById('composeModal').classList.add('hidden');
+        }
+
+        function publishModalPost() {
+            const text = document.getElementById('modalTweetInput').value.trim();
+            if (!text) return;
+
+            document.getElementById('tweetInput').value = text;
+            publishPost();
+            document.getElementById('modalTweetInput').value = '';
+            closeComposeModal();
+        }
+
+        // MODAL DE PERFIL
+        function openProfileEditModal() {
+            document.getElementById('editNameInput').value = currentUser.name;
+            document.getElementById('editHandleInput').value = currentUser.handle;
+            document.getElementById('profileEditModal').classList.remove('hidden');
+        }
+
+        function closeProfileEditModal() {
+            document.getElementById('profileEditModal').classList.add('hidden');
+        }
+
+        function generateRandomAvatar() {
+            currentUser.avatar = "https://api.dicebear.com/7.x/bottts/svg?seed=" + Math.random();
+            updateUserProfileUI();
+        }
+
+        function saveProfileChanges() {
+            const name = document.getElementById('editNameInput').value.trim();
+            let handle = document.getElementById('editHandleInput').value.trim();
+
+            if (name) currentUser.name = name;
+            if (handle) {
+                if (!handle.startsWith('@')) handle = '@' + handle;
+                currentUser.handle = handle;
+            }
+
+            updateUserProfileUI();
+            closeProfileEditModal();
+            renderPosts();
+        }
+
+        function sharePost(postId, event) {
+            event.stopPropagation();
+            navigator.clipboard.writeText(window.location.href);
+            alert('Link do relato copiado para a sua área de transferência com proteção de privacidade.');
+        }
+
+        function handleSearch() {
+            const q = document.getElementById('searchInput').value;
+            renderPosts(q);
+        }
+
+        function searchHashtag(tag) {
+            document.getElementById('searchInput').value = tag;
+            renderPosts(tag);
+        }
+
+        function insertHashtag(tag) {
+            const input = document.getElementById('tweetInput');
+            input.value += ' ' + tag + ' ';
+            input.focus();
+            updateCharCounter();
+        }
+
+        function renderTrends() {
+            const container = document.getElementById('trendsList');
+            container.innerHTML = '';
+
+            TRENDS.forEach(t => {
+                const item = document.createElement('div');
+                item.className = 'cursor-pointer hover:bg-brand-roseSoft p-2.5 rounded-xl transition-colors';
+                item.onclick = () => searchHashtag(t.tag);
+
+                item.innerHTML = `
+                    <span class="text-[10px] text-brand-graySub block">${t.category}</span>
+                    <strong class="text-brand-purple hover:text-brand-carmine text-xs block">${t.tag}</strong>
+                    <span class="text-[10px] text-brand-graySub block">${t.postsCount}</span>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function setupCharCounter() {
+            const input = document.getElementById('tweetInput');
+            input.addEventListener('input', updateCharCounter);
+        }
+
+        function updateCharCounter() {
+            const input = document.getElementById('tweetInput');
+            const counter = document.getElementById('charCounter');
+            const len = input.value.length;
+            counter.textContent = `${len}/280`;
+
+            if (len > 260) {
+                counter.classList.add('text-brand-carmine', 'font-bold');
+            } else {
+                counter.classList.remove('text-brand-carmine', 'font-bold');
+            }
+        }
+
+        function savePostsToStorage() {
+            localStorage.setItem('app_community_posts', JSON.stringify(postsDB));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seus Direitos | Apesar de Você</title>
+  <meta name="description" content="Plataforma de informação, conscientização e orientação sobre os direitos das mulheres e mecanismos de proteção e enfrentamento da violência.">
+  
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* ==========================================================================
+   FAIXA SUPERIOR & NAVBAR NATIVA (COM DROPDOWNS)
+   ========================================================================== */
+.top-bar {
+  height: 5px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1002;
+  background-color: #e6205d;
+}
+
+.bar-carmin {
+  width: 100%;
+  height: 100%;
+  background-color: #2b035c;
+}
+
+.navbar {
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 8%;
+  border-bottom: 1px solid #eaeaea;
+  position: fixed;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+  box-shadow: 0 2px 10px rgba(43, 3, 92, 0.03);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+/* LOGO NAVBAR */
+.brand-logo {
+  width: 62px;
+  height: auto;
+}
+
+.brand-text h1 {
+  font-size: 20px;
+  color: #e6205d;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.brand-text span {
+  font-size: 11px;
+  color: #7c7b7b;
+  font-style: italic;
+}
+
+/* Menu Principal e Submenus (Dropdown) */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #4a4a4a;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+}
+
+.nav-link .arrow {
+  font-size: 9px;
+  transition: transform 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #e6205d;
+}
+
+/* Estilo do Dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  list-style: none;
+  min-width: 220px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 1010;
+}
+
+.nav-item:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-item:hover .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 20px;
+  color: #4a4a4a;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-menu li a:hover {
+  background: #fdf6f7;
+  color: #e4205c;
+}
+
+.nav-actions-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-inscricao,
+.btn-denuncia {
+  background-color: #2b035c;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease;
+}
+
+.btn-inscricao:hover,
+.btn-denuncia:hover {
+  background-color: #e6205d;
+}
+
+    /* ==========================================================================
+       1. VARIÁVEIS DE DESIGN E RESET
+       ========================================================================== */
+    :root {
+      --color-purple-dark: #341133;
+      --color-pink-intense: #E6005C;
+      --color-pink-light: #FAF7F9;
+      --color-white: #FFFFFF;
+      --color-gray-dark: #33303A;
+      --color-gray-medium: #666070;
+      --color-gray-light: #EBE6EA;
+      --color-focus-ring: #2563EB;
+
+      --font-family-base: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      
+      --transition-speed: 0.25s;
+      --border-radius-sm: 8px;
+      --border-radius-md: 16px;
+      --border-radius-lg: 24px;
+      --box-shadow-subtle: 0 4px 20px rgba(52, 17, 51, 0.05);
+      --box-shadow-hover: 0 10px 30px rgba(52, 17, 51, 0.12);
+    }
+
+    /* Reset semântico e caixa */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 100%;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    body {
+      font-family: var(--font-family-base);
+      background-color: var(--color-pink-light);
+      color: var(--color-gray-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Acessibilidade - Links de Atalho e Foco */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 10px;
+      background: var(--color-purple-dark);
+      color: var(--color-white);
+      padding: 12px 20px;
+      z-index: 1000;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid var(--color-pink-intense);
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--color-focus-ring);
+      outline-offset: 3px;
+    }
+
+    /* Tipografia Genérica */
+    h1, h2, h3, h4 {
+      color: var(--color-purple-dark);
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: var(--color-pink-intense);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color var(--transition-speed) ease;
+    }
+    a:hover {
+      color: var(--color-purple-dark);
+    }
+
+    /* Layout Containers */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-padding {
+      padding: 5rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .section-padding {
+        padding: 3rem 0;
+      }
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3.5rem auto;
+    }
+
+    .section-header h2 {
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-header p {
+      font-size: 1.125rem;
+      color: var(--color-gray-medium);
+    }
+
+    /* Botões */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      font-family: var(--font-family-base);
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: var(--border-radius-sm);
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all var(--transition-speed) ease;
+      min-height: 48px; /* Touch target */
+    }
+
+    .btn-primary {
+      background-color: var(--color-pink-intense);
+      color: var(--color-white);
+    }
+    .btn-primary:hover {
+      background-color: #c4004e;
+      color: var(--color-white);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--color-purple-dark);
+      border-color: var(--color-purple-dark);
+    }
+    .btn-secondary:hover {
+      background-color: var(--color-purple-dark);
+      color: var(--color-white);
+    }
+
+    /* ==========================================================================
+       2. CABEÇALHO E NAVEGAÇÃO
+       ========================================================================== */
+    .site-header {
+      background-color: var(--color-white);
+      border-bottom: 1px solid var(--color-gray-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--color-purple-dark);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--color-purple-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-pink-intense);
+    }
+
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      color: var(--color-gray-dark);
+      font-weight: 500;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .main-nav a:hover,
+    .main-nav a[aria-current="page"] {
+      color: var(--color-pink-intense);
+    }
+
+    .main-nav a[aria-current="page"]::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--color-pink-intense);
+      border-radius: 2px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--color-purple-dark);
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .main-nav {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-white);
+        border-bottom: 1px solid var(--color-gray-light);
+        padding: 1.5rem;
+        display: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      }
+
+      .main-nav.is-open {
+        display: block;
+      }
+
+      .main-nav ul {
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+    }
+
+    /* ==========================================================================
+       3. HERO — APRESENTAÇÃO
+       ========================================================================== */
+    .hero-section {
+      background-color: var(--color-purple-dark);
+      color: var(--color-white);
+      padding: 5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-pink-intense);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .hero-section h1 {
+      color: var(--color-white);
+      font-size: 2.75rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .hero-lead {
+      font-size: 1.125rem;
+      color: var(--color-pink-light);
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-buttons .btn-secondary {
+      color: var(--color-white);
+      border-color: var(--color-white);
+    }
+    .hero-buttons .btn-secondary:hover {
+      background-color: var(--color-white);
+      color: var(--color-purple-dark);
+    }
+
+    .hero-quote {
+      border-left: 4px solid var(--color-pink-intense);
+      padding-left: 1.25rem;
+      font-style: italic;
+      color: var(--color-pink-light);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem 1.25rem;
+      border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-card-illustration {
+      width: 100%;
+      max-width: 440px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--border-radius-lg);
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    .illustration-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--color-pink-intense);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-section h1 {
+        font-size: 2.25rem;
+      }
+    }
+
+    /* ==========================================================================
+       4. DIREITOS QUE PRECISAM SER CONHECIDOS
+       ========================================================================== */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background-color: var(--color-white);
+      border-radius: var(--border-radius-md);
+      padding: 2rem;
+      border: 1px solid var(--color-gray-light);
+      box-shadow: var(--box-shadow-subtle);
+      transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--box-shadow-hover);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background-color: var(--color-pink-light);
+      color: var(--color-pink-intense);
+      border-radius: var(--border-radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card p {
+      color: var(--color-gray-medium);
+      font-size: 0.975rem;
+      flex-grow: 1;
+    }
+
+    .card-link {
+      margin-top: 1.5rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ==========================================================================
+       5. LEI MARIA DA PENHA
+       ========================================================================== */
+    .maria-da-penha-section {
+      background-color: var(--color-white);
+    }
+
+    .legal-tabs-nav {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--color-gray-light);
+      margin-bottom: 2rem;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      padding: 1rem 1.5rem;
+      background: none;
+      border: none;
+      font-family: var(--font-family-base);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-gray-medium);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      white-space: nowrap;
+    }
+
+    .tab-btn[aria-selected="true"] {
+      color: var(--color-pink-intense);
+      border-bottom-color: var(--color-pink-intense);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+    .tab-panel.is-active {
+      display: block;
+    }
+
+    .protetivas-box {
+      background-color: var(--color-pink-light);
+      border-left: 4px solid var(--color-pink-intense);
+      padding: 2rem;
+      border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+      margin-top: 2rem;
+    }
+
+    .protetivas-list {
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .protetivas-list li {
+      position: relative;
+      padding-left: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .protetivas-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--color-pink-intense);
+      font-weight: bold;
+    }
+
+    /* ==========================================================================
+       6 E 7. DIREITOS NA BUSCA POR AJUDA & SAÚDE
+       ========================================================================== */
+    .two-col-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .two-col-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .info-list {
+      list-style: none;
+    }
+
+    .info-list-item {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--color-gray-light);
+    }
+
+    .info-list-item h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .health-highlight {
+      background: #FFF0F5;
+      border: 1px solid #FFD1E1;
+      border-radius: var(--border-radius-md);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    /* ==========================================================================
+       8. VIDA COTIDIANA
+       ========================================================================== */
+    .cotidiano-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* ==========================================================================
+       9. COMO BUSCAR DIREITOS NA PRÁTICA
+       ========================================================================== */
+    .steps-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .step-card {
+      display: flex;
+      gap: 1.5rem;
+      background: var(--color-white);
+      padding: 1.5rem;
+      border-radius: var(--border-radius-md);
+      border: 1px solid var(--color-gray-light);
+    }
+
+    .step-number {
+      width: 44px;
+      height: 44px;
+      background: var(--color-purple-dark);
+      color: var(--color-white);
+      font-weight: 700;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       10. ONDE ENCONTRAR AJUDA
+       ========================================================================== */
+    .help-section {
+      background-color: var(--color-purple-dark);
+      color: var(--color-white);
+    }
+
+    .help-section .section-header h2,
+    .help-section .section-header p {
+      color: var(--color-white);
+    }
+
+    .help-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .help-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--border-radius-md);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .help-card h3 {
+      color: var(--color-white);
+      font-size: 1.35rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .help-card p {
+      color: var(--color-pink-light);
+      font-size: 0.95rem;
+      flex-grow: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .help-card .contact-btn {
+      background-color: var(--color-pink-intense);
+      color: var(--color-white);
+      text-align: center;
+      padding: 0.75rem 1rem;
+      border-radius: var(--border-radius-sm);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       11 & 12. MITOS / VERDADES E ACCORDION FAQ
+       ========================================================================== */
+    .accordion-container {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .accordion-item {
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-light);
+      border-radius: var(--border-radius-sm);
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      text-align: left;
+      padding: 1.25rem 1.5rem;
+      background: none;
+      border: none;
+      font-family: var(--font-family-base);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--color-purple-dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .accordion-icon {
+      transition: transform var(--transition-speed) ease;
+    }
+
+    .accordion-trigger[aria-expanded="true"] .accordion-icon {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      padding: 0 1.5rem 1.5rem 1.5rem;
+      display: none;
+      color: var(--color-gray-medium);
+    }
+
+    .accordion-content.is-open {
+      display: block;
+    }
+
+    .tag-mito-verdade {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .tag-mito { background-color: #FEE2E2; color: #991B1B; }
+    .tag-verdade { background-color: #D1FAE5; color: #065F46; }
+
+    /* ==========================================================================
+       13. FONTES E REFERÊNCIAS
+       ========================================================================== */
+    .references-section {
+      background-color: var(--color-white);
+      border-top: 1px solid var(--color-gray-light);
+    }
+
+    .ref-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .ref-item {
+      background: var(--color-pink-light);
+      padding: 1.25rem;
+      border-radius: var(--border-radius-sm);
+      font-size: 0.9rem;
+    }
+
+    .ref-item strong {
+      color: var(--color-purple-dark);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .editorial-note {
+      margin-top: 3rem;
+      padding: 1.25rem;
+      background: #FFFBEB;
+      border: 1px solid #FCD34D;
+      border-radius: var(--border-radius-sm);
+      font-size: 0.875rem;
+      color: #78350F;
+    }
+
+    /* ==========================================================================
+       14. ENCERRAMENTO & RODAPÉ
+       ========================================================================== */
+    .cta-final {
+      text-align: center;
+      background: linear-gradient(180deg, var(--color-pink-light) 0%, var(--color-white) 100%);
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .site-footer {
+      background-color: var(--color-purple-dark);
+      color: var(--color-pink-light);
+      padding: 3rem 0 2rem 0;
+      border-top: 3px solid var(--color-pink-intense);
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-col h4 {
+      color: var(--color-white);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-col a {
+      color: var(--color-pink-light);
+      text-decoration: none;
+    }
+
+    .footer-col a:hover {
+      color: var(--color-white);
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.7);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Link Acessível de Salto -->
+  <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+      <!-- Faixa colorida superior -->
+    <div class="top-bar">
+        <div class="bar-carmin"></div>
+    </div>
+
+    <!-- NAVBAR NATIVA -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <img src="/imagens/logosite.png" alt="Logo Apesar de Você" class="brand-logo">
+            <div class="brand-text">
+                <h1>Apesar de VOCÊ</h1>
+                <span>Amanhã será um novo dia.</span>
+            </div>
+        </a>
+
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link active">INÍCIO</a></li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">SOBRE NÓS <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="apesardevoce.html">SOBRE O PROJETO</a></li>
+                    <li><a href="quem-somos.html">QUEM SOMOS</a></li>
+                    <li><a href="contato.html">CONTATO</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">SOBRE A VIOLÊNCIA <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="entenda-a-violencia.html">ENTENDA A VIOLÊNCIA</a></li>
+                    <li><a href="ciclo.html">CICLO DA VIOLÊNCIA</a></li>
+                    <li><a href="direitos.html">SEUS DIREITOS</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item"><a href="comunidade.html" class="nav-link">COMUNIDADE</a></li>
+            <li class="nav-item"><a href="noticias.html" class="nav-link">NOTÍCIAS</a></li>
+            <li class="nav-item"><a href="cadastro.html" class="nav-link">CADASTRE-SE</a></li>
+        </ul>
+
+        <div class="nav-actions-wrapper">
+            <a href="https://www.youtube.com" class="btn-inscricao">SAÍDA RAPIDA</a>
+
+                <div class="nav-actions-wrapper">
+            <a href="denuncie.html" class="btn-inscricao">DENUNCIE</a>
+            <button class="menu-toggle" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+  <!-- ==========================================================================
+       CONTEÚDO PRINCIPAL
+       ========================================================================== -->
+  <main id="main-content">
+
+    <!-- ==========================================================================
+         3. HERO — APRESENTAÇÃO DA PÁGINA
+         ========================================================================== -->
+    <section class="hero-section" aria-labelledby="hero-heading">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="hero-kicker">INFORMAÇÃO • DIREITOS • AUTONOMIA</span>
+          <h1 id="hero-heading">Conhecer seus direitos é também conhecer seus caminhos.</h1>
+          <p class="hero-lead">
+            Respeito, dignidade, liberdade e segurança não são privilégios. São direitos. Nesta página, você encontra informações sobre as garantias previstas em lei, as formas de proteção contra a violência e os caminhos disponíveis para buscar orientação, acolhimento e justiça.
+          </p>
+          <div class="hero-buttons">
+            <a href="#direitos-fundamentais" class="btn btn-primary">Explore seus direitos</a>
+            <a href="#onde-encontrar-ajuda" class="btn btn-secondary">Preciso de orientação</a>
+          </div>
+          <blockquote class="hero-quote">
+            <p>“Você tem direitos independentemente da sua história, das suas escolhas ou da situação que está vivendo.”</p>
+          </blockquote>
+        </div>
+        
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-card-illustration">
+            <div class="illustration-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3 style="color: #FFF; margin-bottom: 0.5rem;">Cidadania &amp; Proteção</h3>
+            <p style="color: #FAF7F9; font-size: 0.9rem;">
+              A informação jurídica clara é o primeiro passo para o fortalecimento da autonomia e para o acesso efetivo à rede de proteção social e de justiça.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. SEÇÃO — DIREITOS QUE PRECISAM SER CONHECIDOS
+         ========================================================================== -->
+    <section id="direitos-fundamentais" class="section-padding" aria-labelledby="sec-direitos-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="sec-direitos-title">Seus direitos vão além da proteção contra a violência</h2>
+          <p>
+            Os direitos das mulheres abrangem diversas dimensões da vida: integridade física e psicológica, igualdade, liberdade, autonomia, privacidade, saúde, educação, trabalho e participação social.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <!-- Card 1 -->
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <h3>Dignidade e Respeito</h3>
+            <p>Toda mulher deve ser tratada com dignidade, sem humilhação, discriminação, intimidação ou violência em qualquer espaço público ou privado.</p>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="17" y1="11" x2="23" y2="11"/></svg>
+            </div>
+            <h3>Igualdade de Direitos</h3>
+            <p>O princípio constitucional assegura a igualdade e a proteção contra discriminações, reconhecendo que a igualdade real requer atenção às vulnerabilidades específicas.</p>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+            </div>
+            <h3>Liberdade e Autonomia</h3>
+            <p>Direito de tomar decisões sobre a própria vida, relacionamentos, rotina, circulação, corpo e projetos pessoais, respeitados os limites legais.</p>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h3>Integridade Plena</h3>
+            <p>A proteção jurídica abrange a dimensão física, psicológica, sexual e moral, reconhecendo que agressões não físicas também ferem a dignidade.</p>
+            <a href="/tipos-de-violencia" class="card-link">Conheça os tipos de violência →</a>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Privacidade e Intimidade</h3>
+            <p>Proteção contra exposição indevida, invasão de contas, vigilância não autorizada e ameaças de divulgação de arquivos ou imagens íntimas.</p>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <h3>Acesso à Justiça</h3>
+            <p>Garantia de recorrer aos órgãos competentes (Defensoria Pública, Justiça, Delegacias) para orientação, proteção urgente e defesa de seus direitos.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. SEÇÃO PRINCIPAL — LEI MARIA DA PENHA
+         ========================================================================== -->
+    <section class="section-padding maria-da-penha-section" aria-labelledby="sec-maria-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="sec-maria-title">Lei Maria da Penha: proteção, prevenção e enfrentamento</h2>
+          <p>
+            A Lei nº 11.340/2006 estabelece mecanismos para prevenir e conter a violência doméstica e familiar contra a mulher, reconhecendo diferentes tipos de abusos e estabelecendo medidas protetivas e responsabilização legal.
+          </p>
+        </div>
+
+        <!-- Abas de Conteúdo -->
+        <div class="legal-tabs-nav" role="tablist" aria-label="Navegação da Lei Maria da Penha">
+          <button class="tab-btn" role="tab" aria-selected="true" aria-controls="panel-protecao" id="tab-protecao">O que a lei protege?</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-formas" id="tab-formas">Formas de Violência Reconhecidas</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-medidas" id="tab-medidas">Medidas Protetivas de Urgência</button>
+        </div>
+
+        <!-- Painel 1: O que a lei protege -->
+        <div id="panel-protecao" class="tab-panel is-active" role="tabpanel" aria-labelledby="tab-protecao">
+          <h3>Alcance e Aplicação Legal</h3>
+          <p>A Lei Maria da Penha protege a mulher contra ações ou omissões baseadas no gênero que lhe causem morte, lesão, sofrimento físico, sexual ou psicológico e dano moral ou patrimonial.</p>
+          <ul style="margin: 1rem 0 1rem 1.5rem;">
+            <li><strong>Unidade Doméstica:</strong> Espaço de convívio permanente de pessoas, com ou sem vínculo familiar.</li>
+            <li><strong>Âmbito da Família:</strong> Comunidade formada por indivíduos que são ou se consideram aparentados.</li>
+            <li><strong>Relação Íntima de Afeto:</strong> Em qualquer relação na qual o agressor conviva ou tenha convivido com a amada/afetada, independentemente de coabitação.</li>
+          </ul>
+          <p><small>* A aplicação específica dos dispositivos legais depende da análise das circunstâncias concretas de cada caso pelas autoridades competentes.</small></p>
+        </div>
+
+        <!-- Painel 2: Formas de Violência -->
+        <div id="panel-formas" class="tab-panel" role="tabpanel" aria-labelledby="tab-formas">
+          <div class="cards-grid">
+            <div class="card">
+              <h4>Violência Física</h4>
+              <p>Qualquer conduta que ofenda a integridade ou a saúde corporal da mulher.</p>
+            </div>
+            <div class="card">
+              <h4>Violência Psicológica</h4>
+              <p>Condutas que causem dano emocional, diminuição da autoestima, prejuízo ao desenvolvimento ou visem controlar ações, crenças ou decisões (conforme Art. 147-B do Código Penal).</p>
+            </div>
+            <div class="card">
+              <h4>Violência Sexual</h4>
+              <p>Condutas que constrangem a presenciar, a manter ou a participar de relação sexual não desejada, mediante intimidação, ameaça, coação ou uso da força.</p>
+            </div>
+            <div class="card">
+              <h4>Violência Patrimonial</h4>
+              <p>Retenção, subtração, destruição parcial ou total de objetos, instrumentos de trabalho, documentos pessoais, bens, valores ou recursos econômicos.</p>
+            </div>
+            <div class="card">
+              <h4>Violência Moral</h4>
+              <p>Condutas que configurem calúnia (imputar falso crime), difamação (atribuir fato ofensivo à reputação) ou injúria (ofender a dignidade).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Painel 3: Medidas Protetivas -->
+        <div id="panel-medidas" class="tab-panel" role="tabpanel" aria-labelledby="tab-medidas">
+          <div class="protetivas-box">
+            <h3>O que são Medidas Protetivas de Urgência?</h3>
+            <p>São ordens judiciais concedidas pelo juiz para proteger a mulher em situação de risco. Com as atualizações legislativas (como a Lei nº 14.550/2023 e Leis de 2024/2025), a concessão é pautada na declaração da vítima perante a autoridade policial ou judicial e independe da tipificação penal prévia.</p>
+            
+            <ul class="protetivas-list">
+              <li>Afastamento imediato do agressor do lar ou local de convivência;</li>
+              <li>Proibição de aproximação da vítima, familiares e testemunhas (fixando distância mínima);</li>
+              <li>Proibição de contato por qualquer meio de comunicação (mensagens, ligações, redes sociais);</li>
+              <li>Restrição ou suspensão de visitas a dependentes menores, quando cabível;</li>
+              <li>Monitoramento eletrônico do agressor, nos termos da legislação vigente.</li>
+            </ul>
+
+            <p style="margin-bottom: 1.5rem;"><strong>Importante:</strong> Não é necessário esperar uma agressão física para requerer medida protetiva. A solicitação pode ser realizada em delegacias ou via Defensoria Pública/Advogada.</p>
+
+            <a href="#onde-encontrar-ajuda" class="btn btn-primary">Entenda como buscar proteção</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         6 & 7. DIREITOS NA BUSCA POR AJUDA E NA SAÚDE
+         ========================================================================== -->
+    <section class="section-padding" aria-labelledby="sec-atendimento-title">
+      <div class="container">
+        <div class="two-col-layout">
+          
+          <!-- Bloco Atendimento -->
+          <div>
+            <h2 id="sec-atendimento-title">Você tem direito a ser atendida com respeito</h2>
+            <p>A legislação garante princípios fundamentais que devem ser observados por todos os órgãos da rede de atendimento público e policial:</p>
+            
+            <ul class="info-list">
+              <li class="info-list-item">
+                <h4>Atendimento Humanizado</h4>
+                <p>Recepção sem julgamentos morais, discriminação de raça, orientação sexual, classe ou origem.</p>
+              </li>
+              <li class="info-list-item">
+                <h4>Privacidade e Intimidade</h4>
+                <p>Direito a ter sua história preservada, com oitiva em espaço reservado sempre que disponível.</p>
+              </li>
+              <li class="info-list-item">
+                <h4>Assistência Jurídica Gratuita</h4>
+                <p>Acesso garantido à Defensoria Pública para quem não possui recursos financeiros para contratar advogados.</p>
+              </li>
+              <li class="info-list-item">
+                <h4>Clareza nos Procedimentos</h4>
+                <p>Direito de ser informada sobre a diferença entre Registro de Ocorrência, Pedido de Medida Protetiva e Atendimento de Saúde.</p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Bloco Saúde & Violência Sexual -->
+          <div>
+            <h2>Cuidado, saúde e acolhimento em violência sexual</h2>
+            <p>Conforme a Lei nº 12.845/2013, o atendimento em hospitais do SUS para pessoas que sofreram violência sexual é obrigatório, gratuito e de emergência.</p>
+            
+            <div class="health-highlight">
+              <h4 style="color: var(--color-purple-dark); margin-bottom: 0.5rem;">Atenção aos Cuidados Médicos Imediatos</h4>
+              <p style="font-size: 0.95rem;">
+                <strong>Não é obrigatório apresentar Boletim de Ocorrência (BO)</strong> para receber atendimento médico hospitalar de emergência.
+              </p>
+              <ul style="margin: 0.75rem 0 0.75rem 1.25rem; font-size: 0.9rem;">
+                <li>Profilaxia contra Infecções Sexualmente Transmissíveis (IST/HIV);</li>
+                <li>Contracepção de emergência (quando indicada e no menor tempo possível);</li>
+                <li>Apoio e acolhimento psicológico imediato.</li>
+              </ul>
+              <p style="font-size: 0.85rem; color: var(--color-gray-medium);">
+                * A busca célere pelo serviço de saúde (idealmente nas primeiras 72h) é crucial para a eficácia das medidas preventivas de saúde.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         8. DIREITOS NO TRABALHO, EDUCAÇÃO E VIDA COTIDIANA
+         ========================================================================== -->
+    <section class="section-padding" style="background-color: var(--color-white);" aria-labelledby="sec-cotidiano-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="sec-cotidiano-title">Seus direitos também fazem parte da sua vida cotidiana</h2>
+          <p>A proteção jurídica e a busca por dignidade refletem em diversas áreas do dia a dia.</p>
+        </div>
+
+        <div class="cotidiano-grid">
+          <article class="card">
+            <h3>No Trabalho</h3>
+            <p>Direito à igualdade de oportunidades, proteção contra o assédio moral e sexual no ambiente profissional, e manutenção do vínculo empregatício quando afastada por medida protetiva (conforme a Consolidação das Leis do Trabalho e Lei Maria da Penha).</p>
+          </article>
+
+          <article class="card">
+            <h3>Na Educação</h3>
+            <p>Garantia de permanência em instituições de ensino, ambiente acadêmico/escolar seguro e livre de importunações ou discriminações por razões de gênero.</p>
+          </article>
+
+          <article class="card">
+            <h3>Na Autonomia Financeira</h3>
+            <p>Direito ao gerenciamento da própria renda, contas bancárias e documentos, com acesso a programas sociais e linhas de orientação econômica em caso de dependência financeira.</p>
+          </article>
+
+          <article class="card">
+            <h3>Na Maternidade e Família</h3>
+            <p>Regras claras sobre guarda de filhos, pensão alimentícia e regime de convivência que devem sempre priorizar a segurança da mulher e o melhor interesse da criança/adolescente.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         9. SEÇÃO — COMO BUSCAR SEUS DIREITOS NA PRÁTICA
+         ========================================================================== -->
+    <section class="section-padding" aria-labelledby="sec-pratica-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="sec-pratica-title">Por onde começar?</h2>
+          <p>Caminhos práticos para buscar orientação e proteção, sem imposição de ordem obrigatória.</p>
+        </div>
+
+        <div class="steps-container">
+          <div class="step-card">
+            <div class="step-number" aria-hidden="true">1</div>
+            <div>
+              <h3>Reconheça que você pode buscar ajuda</h3>
+              <p>Você não precisa saber de memória artigos de lei ou termos jurídicos para pedir informação ou proteção.</p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number" aria-hidden="true">2</div>
+            <div>
+              <h3>Avalie a situação e sua segurança</h3>
+              <p>Se houver perigo imediato, busque um local seguro e acione os serviços de emergência (190). Sua integridade é prioridade.</p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number" aria-hidden="true">3</div>
+            <div>
+              <h3>Procure orientação de canais especializados</h3>
+              <p>Ligue para o 180 (Central de Atendimento à Mulher) para obter direcionamentos sobre os serviços disponíveis na sua região.</p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number" aria-hidden="true">4</div>
+            <div>
+              <h3>Escolha o serviço adequado à necessidade</h3>
+              <p>Entenda que você pode procurar assistência médica no SUS, suporte jurídico na Defensoria ou registrar ocorrência em uma Delegacia da Mulher (DEAM).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         10. SEÇÃO — ONDE ENCONTRAR AJUDA
+         ========================================================================== -->
+    <section id="onde-encontrar-ajuda" class="section-padding help-section" aria-labelledby="sec-ajuda-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="sec-ajuda-title">Informação é importante. Apoio também.</h2>
+          <p>Canais oficiais, gratuitos e institucionais para orientação e atendimento.</p>
+        </div>
+
+        <div class="help-grid">
+          <!-- Ligue 180 -->
+          <article class="help-card">
+            <h3>Ligue 180 — Central à Mulher</h3>
+            <p>Serviço público e gratuito que oferece orientação sobre direitos, serviços da rede de atendimento e recebe denúncias de violência.</p>
+            <a href="https://www.gov.br/mulheres/pt-br/ligue180" target="_blank" rel="noopener noreferrer" class="contact-btn">Acessar Ligue 180 (Gov.br)</a>
+          </article>
+
+          <!-- 190 Polícia -->
+          <article class="help-card">
+            <h3>Polícia Militar — 190</h3>
+            <p>Canal de emergência indicado para situações de risco imediato ou agressão em andamento. Ligue 190.</p>
+            <a href="tel:190" class="contact-btn" style="background-color: var(--color-white); color: var(--color-purple-dark);">Ligar 190 (Emergência)</a>
+          </article>
+
+          <!-- Defensoria -->
+          <article class="help-card">
+            <h3>Defensoria Pública</h3>
+            <p>Instituição que presta assistência jurídica gratuita para mulheres que não têm condições financeiras de arcar com advogados.</p>
+            <a href="https://www.anadep.org.br/conteudo/defensorias/" target="_blank" rel="noopener noreferrer" class="contact-btn">Encontrar Defensoria do seu Estado</a>
+          </article>
+
+          <!-- DEAM -->
+          <article class="help-card">
+            <h3>Delegacias Especializadas (DEAM)</h3>
+            <p>Unidades da Polícia Civil especializadas na prevenção, apuração e investigação dos crimes de violência contra a mulher.</p>
+            <a href="/rede-de-apoio" class="contact-btn">Consultar Rede de Apoio</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         11. MITOS E VERDADES SOBRE SEUS DIREITOS
+         ========================================================================== -->
+    <section class="section-padding" aria-labelledby="sec-mitos-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="sec-mitos-title">Mitos e Verdades sobre seus Direitos</h2>
+          <p>Desmistificando conceitos jurídicos comuns para garantir informação correta.</p>
+        </div>
+
+        <div class="accordion-container">
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="mito-1">
+              <span>"Preciso ter provas físicas reunidas para procurar orientação?"</span>
+              <span class="accordion-icon" aria-hidden="true">▼</span>
+            </button>
+            <div id="mito-1" class="accordion-content">
+              <span class="tag-mito-verdade tag-mito">Mito</span>
+              <p>Você pode e deve buscar informação e orientação mesmo que não possua documentos, fotos ou provas guardadas. A orientação serve exatamente para esclarecer os passos e como a rede de proteção atua.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="mito-2">
+              <span>"Só posso pedir proteção se a violência for física?"</span>
+              <span class="accordion-icon" aria-hidden="true">▼</span>
+            </button>
+            <div id="mito-2" class="accordion-content">
+              <span class="tag-mito-verdade tag-mito">Mito</span>
+              <p>A Lei Maria da Penha protege expressamente contra violências psicológica, sexual, patrimonial e moral. Ameaçadas, perseguidas ou controladas financeiramente também têm direito a amparo legal.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="mito-3">
+              <span>"Medida protetiva é concedida automaticamente?"</span>
+              <span class="accordion-icon" aria-hidden="true">▼</span>
+            </button>
+            <div id="mito-3" class="accordion-content">
+              <span class="tag-mito-verdade tag-verdade">Esclarecimento</span>
+              <p>A concessão da medida protetiva é avaliada pelo juiz com base nas declarações da vítima e nos elementos apresentados. A legislação recente facilita a concessão urgente, mas ela passa por análise do Judiciário.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="mito-4">
+              <span>"Se eu não quiser sair de casa imediatamente, não posso buscar ajuda?"</span>
+              <span class="accordion-icon" aria-hidden="true">▼</span>
+            </button>
+            <div id="mito-4" class="accordion-content">
+              <span class="tag-mito-verdade tag-mito">Mito</span>
+              <p>A busca por informação e orientação não obriga a mulher a tomar uma decisão imediata de separação ou saída do lar. Os serviços servem para apoiar e orientar no tempo e nas condições da mulher.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         12. PERGUNTAS FREQUENTES (FAQ)
+         ========================================================================== -->
+    <section class="section-padding" style="background-color: var(--color-white);" aria-labelledby="sec-faq-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="sec-faq-title">Perguntas Frequentes</h2>
+          <p>Respostas diretas às dúvidas mais comuns sobre direitos e acesso à justiça.</p>
+        </div>
+
+        <div class="accordion-container">
+          
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-1">
+              <span>O que é a Lei Maria da Penha?</span>
+              <span class="accordion-icon" aria-hidden="true">▼</span>
+            </button>
+            <div id="faq-1" class="accordion-content">
+              <p>É a Lei Federal nº 11.340/2006, que prevê mecanismos para coibir e prevenir a violência doméstica e familiar contra a mulher, criando juizados especializados e estabelecendo medidas protetivas de urgência.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-2">
+              <span>O que fazer quando a violência acontece pela internet?</span>
+              <span class="accordion-icon" aria-hidden="true">▼</span>
+            </button>
+            <div id="faq-2" class="accordion-content">
+              <p>Preserve as evidências (faça capturas de tela com data, horário e links visíveis), não apague as mensagens de ameaça ou extorsão e procure uma delegacia (comum ou especializada em crimes cibernéticos) ou a Defensoria Pública.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-3">
+              <span>Onde encontro assistência jurídica gratuita?</span>
+              <span class="accordion-icon" aria-hidden="true">▼</span>
+            </button>
+            <div id="faq-3" class="accordion-content">
+              <p>Na Defensoria Pública do seu Estado ou nos Núcleos de Prática Jurídica de faculdades de Direito conveniadas.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-4">
+              <span>Qual a diferença entre Boletim de Ocorrência e Medida Protetiva?</span>
+              <span class="accordion-icon" aria-hidden="true">▼</span>
+            </button>
+            <div id="faq-4" class="accordion-content">
+              <p>O Boletim de Ocorrência (BO) é o registro do fato perante a polícia para início da apuração. A Medida Protetiva é uma ordem judicial que impõe proibições ao agressor (como não se aproximar da vítima) para garantir a segurança dela.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         13. SEÇÃO — FONTES E REFERÊNCIAS LEGAIS
+         ========================================================================== -->
+    <section class="section-padding references-section" aria-labelledby="sec-ref-title">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="sec-ref-title">Legislação e Referências Oficiais</h2>
+          <p>Base normativa que fundamenta os direitos apresentados nesta plataforma.</p>
+        </div>
+
+        <ul class="ref-list">
+          <li class="ref-item">
+            <strong>Constituição Federal de 1988</strong>
+            Garantias fundamentais, dignidade da pessoa humana e igualdade (Art. 5º e Art. 226, § 8º).
+            <br><a href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm" target="_blank" rel="noopener noreferrer">Acessar texto constitucional</a>
+          </li>
+          <li class="ref-item">
+            <strong>Lei nº 11.340/2006</strong>
+            Lei Maria da Penha — Cria mecanismos para coibir a violência doméstica e familiar contra a mulher.
+            <br><a href="https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11340.htm" target="_blank" rel="noopener noreferrer">Acessar Lei nº 11.340/2006</a>
+          </li>
+          <li class="ref-item">
+            <strong>Lei nº 12.845/2013</strong>
+            Dispõe sobre o atendimento obrigatório e integral de pessoas em situação de violência sexual no SUS.
+            <br><a href="https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/lei/l12845.htm" target="_blank" rel="noopener noreferrer">Acessar Lei nº 12.845/2013</a>
+          </li>
+          <li class="ref-item">
+            <strong>Lei nº 14.188/2021 &amp; Lei nº 14.550/2023</strong>
+            Define o tipo penal de violência psicológica e aprimora a concessão das medidas protetivas de urgência.
+            <br><a href="https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14550.htm" target="_blank" rel="noopener noreferrer">Acessar Lei nº 14.550/2023</a>
+          </li>
+        </ul>
+
+        <div class="editorial-note">
+          <strong>Nota Editorial:</strong> Este conteúdo possui finalidade estritamente informativa e educativa. Não substitui a consulta jurídica individualizada com advogada(o) ou defensora(or) pública(o). A legislação e os procedimentos operacionais podem sofrer atualizações.
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         14. ENCERRAMENTO
+         ========================================================================== -->
+    <section class="section-padding cta-final" aria-labelledby="sec-cta-title">
+      <div class="container">
+        <h2 id="sec-cta-title" style="font-size: 2.25rem; margin-bottom: 1rem;">Seus direitos existem. Você merece conhecê-los.</h2>
+        <p style="max-width: 700px; margin: 0 auto; color: var(--color-gray-medium);">
+          Conhecer seus direitos pode ajudar você a compreender possibilidades, reconhecer situações de violência e encontrar caminhos de proteção. Você merece respeito, dignidade, autonomia e acesso à informação. O seu tempo, a sua história e as suas necessidades importam.
+        </p>
+
+        <div class="cta-buttons">
+          <a href="/tipos-de-violencia" class="btn btn-primary">Conheça os tipos de violência</a>
+          <a href="/rede-de-apoio" class="btn btn-secondary">Encontre apoio</a>
+          <a href="#main-content" class="btn btn-secondary">Voltar ao topo ↑</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       RODAPÉ INSTITUCIONAL
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Apesar de Você</h4>
+          <p style="font-size: 0.85rem; color: var(--color-pink-light);">
+            Plataforma de informação, orientação e fortalecimento de direitos para o enfrentamento de todas as formas de violência contra a mulher.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="/">Início</a></li>
+            <li><a href="/seus-direitos">Seus Direitos</a></li>
+            <li><a href="/tipos-de-violencia">Tipos de Violência</a></li>
+            <li><a href="/rede-de-apoio">Rede de Apoio</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Canais Úteis</h4>
+          <ul>
+            <li><a href="https://www.gov.br/mulheres/pt-br/ligue180" target="_blank" rel="noopener">Ligue 180 (Gov.br)</a></li>
+            <li><a href="tel:190">Polícia Militar - 190</a></li>
+            <li><a href="https://www.anadep.org.br" target="_blank" rel="noopener">ANADEP (Defensoria)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Apesar de Você. Conteúdo informativo sem fins lucrativos.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       15 & 16. SCRIPTS DE INTERATIVIDADE E ACESSIBILIDADE
+       ========================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // 1. Menu Responsivo Mobile
+      const menuToggle = document.getElementById('menuToggle');
+      const primaryNav = document.getElementById('primaryNav');
+
+      if (menuToggle && primaryNav) {
+        menuToggle.addEventListener('click', function() {
+          const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', !isExpanded);
+          primaryNav.classList.toggle('is-open');
+        });
+      }
+
+      // 2. Sistema de Abas (Lei Maria da Penha)
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const tabPanels = document.querySelectorAll('.tab-panel');
+
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Desativar todas as abas
+          tabButtons.forEach(btn => btn.setAttribute('aria-selected', 'false'));
+          tabPanels.forEach(panel => panel.classList.remove('is-active'));
+
+          // Ativar aba atual
+          button.setAttribute('aria-selected', 'true');
+          const panelId = button.getAttribute('aria-controls');
+          document.getElementById(panelId).classList.add('is-active');
+        });
+      });
+
+      // 3. Accordions (Mitos/Verdades e FAQ)
+      const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+
+      accordionTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+          const contentId = trigger.getAttribute('aria-controls');
+          const content = document.getElementById(contentId);
+
+          trigger.setAttribute('aria-expanded', !isExpanded);
+          if (content) {
+            content.classList.toggle('is-open');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

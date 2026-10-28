@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Ciclo da Violência | Apesar de Você — Informação, Conscientização e Acolhimento</title>
+    <meta name="description" content="Compreenda o funcionamento do ciclo da violência, reconheça sinais de abuso e saiba onde encontrar acolhimento e proteção legal sem pressões.">
+    <link rel="icon" type="image/png" href="/imagens/logosite.png">
+
+    <!-- Fontes Google (Poppins e Playfair Display para visual institucional refinado) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para ícones acessíveis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+
+        /* ==========================================================================
+   FAIXA SUPERIOR & NAVBAR NATIVA (COM DROPDOWNS)
+   ========================================================================== */
+.top-bar {
+  height: 5px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1002;
+  background-color: #e6205d;
+}
+
+.bar-carmin {
+  width: 100%;
+  height: 100%;
+  background-color: #2b035c;
+}
+
+.navbar {
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 8%;
+  border-bottom: 1px solid #eaeaea;
+  position: fixed;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+  box-shadow: 0 2px 10px rgba(43, 3, 92, 0.03);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+/* LOGO NAVBAR */
+.brand-logo {
+  width: 62px;
+  height: auto;
+}
+
+.brand-text h1 {
+  font-size: 20px;
+  color: #e6205d;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.brand-text span {
+  font-size: 11px;
+  color: #7c7b7b;
+  font-style: italic;
+}
+
+/* Menu Principal e Submenus (Dropdown) */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #4a4a4a;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+}
+
+.nav-link .arrow {
+  font-size: 9px;
+  transition: transform 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #e6205d;
+}
+
+/* Estilo do Dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  list-style: none;
+  min-width: 220px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 1010;
+}
+
+.nav-item:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-item:hover .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 20px;
+  color: #4a4a4a;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-menu li a:hover {
+  background: #fdf6f7;
+  color: #e4205c;
+}
+
+.nav-actions-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-inscricao,
+.btn-denuncia {
+  background-color: #2b035c;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease;
+}
+
+.btn-inscricao:hover,
+.btn-denuncia:hover {
+  background-color: #e6205d;
+}
+
+        /* ==========================================================================
+           1. VARIÁVEIS E PALETA DE CORES INSTITUCIONAL
+           ========================================================================== */
+        :root {
+            --brand-purple: #341133;      /* Roxo institucional e títulos */
+            --brand-purple-light: #4a1949;/* Roxo intermediário para hover/estados */
+            --brand-carmine: #E6005C;     /* Rosa intenso / destaques e ações */
+            --brand-carmine-dark: #c0004d;/* Rosa intenso para hover */
+            --brand-rose-soft: #FAF7F9;   /* Fundos suaves de seções */
+            --brand-rose-border: #f0e6ec; /* Bordas e divisórias suaves */
+            --brand-white: #FFFFFF;       /* Cartões e fundos puros */
+            --brand-dark: #33303A;        /* Cor principal de texto legível */
+            --brand-muted: #666070;       /* Textos secundários */
+            --brand-focus: #005fcc;       /* Cor de foco acessível para navegação via teclado */
+            --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --transition-speed: 0.3s;
+        }
+
+        /* Reset básico e tipografia acessível */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--brand-dark);
+            background-color: var(--brand-rose-soft);
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Respeito à preferência de movimento reduzido (Acessibilidade WCAG 2.2) */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* Estilo de Foco Visível Obrigatório para Teclado */
+        :focus-visible {
+            outline: 3px solid var(--brand-carmine);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        /* Elementos utilitários para leitor de tela */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Container padrão */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ==========================================================================
+           BARRA SUPERIOR DE SEGURANÇA E NAVEGAÇÃO
+           ========================================================================== */
+        .top-bar {
+            background-color: var(--brand-purple);
+            color: var(--brand-white);
+            padding: 0.6rem 0;
+            font-size: 0.825rem;
+            border-bottom: 2px solid var(--brand-carmine);
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #10B981;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .btn-quick-exit {
+            background-color: var(--brand-carmine);
+            color: var(--brand-white);
+            border: none;
+            padding: 0.35rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: background-color var(--transition-speed);
+        }
+
+        .btn-quick-exit:hover {
+            background-color: var(--brand-carmine-dark);
+        }
+
+        /* HEADER E NAVBAR INSTITUCIONAL */
+        .site-header {
+            background-color: var(--brand-white);
+            border-bottom: 1px solid var(--brand-rose-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(52, 17, 51, 0.03);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1rem 0;
+        }
+
+        .brand-logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--brand-purple);
+        }
+
+        .brand-logo-img {
+            height: 42px;
+            width: auto;
+        }
+
+        .brand-title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .brand-subtitle {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            color: var(--brand-carmine);
+            display: block;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.75rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--brand-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color var(--transition-speed);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--brand-carmine);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--brand-carmine);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--brand-purple);
+            cursor: pointer;
+        }
+
+        /* ==========================================================================
+           SEÇÃO HERO PRINCIPAL
+           ========================================================================== */
+        .hero-section {
+            padding: 4.5rem 0 4rem 0;
+            background: linear-gradient(180deg, var(--brand-rose-soft) 0%, var(--brand-white) 100%);
+            border-bottom: 1px solid var(--brand-rose-border);
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .badge-tag {
+            display: inline-block;
+            background-color: rgba(230, 0, 92, 0.08);
+            color: var(--brand-carmine);
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(230, 0, 92, 0.15);
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: 2.75rem;
+            color: var(--brand-purple);
+            line-height: 1.25;
+            margin-bottom: 1.25rem;
+            font-weight: 700;
+        }
+
+        .hero-text {
+            font-size: 1.05rem;
+            color: var(--brand-muted);
+            margin-bottom: 2rem;
+            max-width: 580px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary {
+            background-color: var(--brand-carmine);
+            color: var(--brand-white);
+            text-decoration: none;
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            box-shadow: 0 4px 15px rgba(230, 0, 92, 0.2);
+            transition: all var(--transition-speed);
+            border: 2px solid var(--brand-carmine);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--brand-carmine-dark);
+            border-color: var(--brand-carmine-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--brand-purple);
+            text-decoration: none;
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            border: 2px solid var(--brand-purple);
+            transition: all var(--transition-speed);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--brand-purple);
+            color: var(--brand-white);
+            transform: translateY(-2px);
+        }
+
+        .hero-disclaimer {
+            font-size: 0.85rem;
+            color: var(--brand-muted);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            border-left: 3px solid var(--brand-carmine);
+        }
+
+        /* Composição Gráfica Conceitual do Hero (Sem imagens explícitas) */
+        .hero-illustration {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .concept-art-container {
+            width: 100%;
+            max-width: 440px;
+            height: 380px;
+            background: var(--brand-white);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(52, 17, 51, 0.08);
+            border: 1px solid var(--brand-rose-border);
+            padding: 2.5rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .concept-ring {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 3px dashed var(--brand-carmine);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            animation: rotateSlow 40s linear infinite;
+        }
+
+        @keyframes rotateSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .concept-center-icon {
+            font-size: 2.5rem;
+            color: var(--brand-purple);
+        }
+
+        .concept-node {
+            position: absolute;
+            width: 36px;
+            height: 36px;
+            background-color: var(--brand-white);
+            border: 2px solid var(--brand-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--brand-purple);
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .node-1 { top: -18px; left: calc(50% - 18px); }
+        .node-2 { bottom: 15px; right: -10px; }
+        .node-3 { bottom: 15px; left: -10px; }
+
+        .concept-label {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            color: var(--brand-purple);
+            font-weight: 700;
+        }
+
+        /* ==========================================================================
+           SEÇÃO 3 — O QUE É O CICLO DA VIOLÊNCIA
+           ========================================================================== */
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 3.5rem auto;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            color: var(--brand-purple);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            font-size: 1.05rem;
+            color: var(--brand-muted);
+        }
+
+        .explanation-card {
+            background-color: var(--brand-white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 25px rgba(52, 17, 51, 0.04);
+            border: 1px solid var(--brand-rose-border);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .explanation-text p {
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+            color: var(--brand-dark);
+        }
+
+        .highlight-quote {
+            background-color: var(--brand-rose-soft);
+            border-left: 4px solid var(--brand-carmine);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+
+        .highlight-quote p {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            color: var(--brand-purple);
+            font-weight: 600;
+            margin-bottom: 0;
+            font-style: italic;
+        }
+
+        /* ==========================================================================
+           SEÇÃO 4 — AS FASES DO CICLO DA VIOLÊNCIA (CENTRAL)
+           ========================================================================== */
+        .phases-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .phase-card {
+            background-color: var(--brand-white);
+            border-radius: 20px;
+            border: 1px solid var(--brand-rose-border);
+            box-shadow: 0 6px 30px rgba(52, 17, 51, 0.04);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .phase-card:hover {
+            box-shadow: 0 12px 35px rgba(52, 17, 51, 0.08);
+        }
+
+        .phase-badge-sidebar {
+            background-color: var(--brand-purple);
+            color: var(--brand-white);
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .phase-card:nth-child(2) .phase-badge-sidebar {
+            background-color: var(--brand-carmine);
+        }
+
+        .phase-card:nth-child(3) .phase-badge-sidebar {
+            background-color: #4a1949;
+        }
+
+        .phase-number {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-title-sidebar {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            line-height: 1.25;
+            font-weight: 700;
+        }
+
+        .phase-content {
+            padding: 2.5rem;
+        }
+
+        .phase-description {
+            font-size: 1.05rem;
+            color: var(--brand-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .examples-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--brand-purple);
+            margin-bottom: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .examples-list {
+            list-style: none;
+            margin-bottom: 1.75rem;
+        }
+
+        .examples-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.65rem;
+            font-size: 0.95rem;
+            color: var(--brand-muted);
+        }
+
+        .examples-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0.5rem;
+            color: var(--brand-carmine);
+            font-weight: bold;
+        }
+
+        .phase-support-text {
+            background-color: var(--brand-rose-soft);
+            padding: 1.25rem 1.5rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: var(--brand-purple);
+            border: 1px solid var(--brand-rose-border);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .phase-support-text i {
+            color: var(--brand-carmine);
+            font-size: 1.1rem;
+            margin-top: 0.15rem;
+        }
+
+        /* Modalidades de Violência na Fase 2 */
+        .violence-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .violence-type-box {
+            background: var(--brand-rose-soft);
+            padding: 1rem 1.2rem;
+            border-radius: 10px;
+            border: 1px solid var(--brand-rose-border);
+        }
+
+        .violence-type-box h4 {
+            font-size: 0.9rem;
+            color: var(--brand-purple);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .violence-type-box p {
+            font-size: 0.825rem;
+            color: var(--brand-muted);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* ==========================================================================
+           SEÇÃO 5 — COMO ESSE PADRÃO PODE SE REPETIR
+           ========================================================================== */
+        .repetition-section {
+            background-color: var(--brand-white);
+            border-top: 1px solid var(--brand-rose-border);
+            border-bottom: 1px solid var(--brand-rose-border);
+        }
+
+        .cycle-diagram-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            background-color: var(--brand-rose-soft);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            border: 1px solid var(--brand-rose-border);
+            text-align: center;
+        }
+
+        .diagram-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+            position: relative;
+        }
+
+        .diagram-step-item {
+            background-color: var(--brand-white);
+            padding: 1.75rem 1.25rem;
+            border-radius: 16px;
+            border: 1px solid var(--brand-rose-border);
+            box-shadow: 0 4px 15px rgba(52, 17, 51, 0.03);
+            position: relative;
+        }
+
+        .diagram-step-number {
+            width: 32px;
+            height: 32px;
+            background-color: var(--brand-purple);
+            color: var(--brand-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin: 0 auto 1rem auto;
+        }
+
+        .diagram-step-title {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            color: var(--brand-purple);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .diagram-step-desc {
+            font-size: 0.825rem;
+            color: var(--brand-muted);
+            line-height: 1.5;
+        }
+
+        .diagram-note {
+            font-size: 0.9rem;
+            color: var(--brand-muted);
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+           SEÇÃO 6 — SINAIS QUE MERECEM ATENÇÃO
+           ========================================================================== */
+        .warning-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .warning-card {
+            background-color: var(--brand-white);
+            padding: 1.75rem;
+            border-radius: 16px;
+            border: 1px solid var(--brand-rose-border);
+            box-shadow: 0 4px 15px rgba(52, 17, 51, 0.02);
+            transition: transform var(--transition-speed), border-color var(--transition-speed);
+        }
+
+        .warning-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(230, 0, 92, 0.3);
+        }
+
+        .warning-icon {
+            width: 44px;
+            height: 44px;
+            background-color: rgba(230, 0, 92, 0.08);
+            color: var(--brand-carmine);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .warning-title {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            color: var(--brand-purple);
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .warning-desc {
+            font-size: 0.875rem;
+            color: var(--brand-muted);
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+           SEÇÃO 7 — MITOS E VERDADES
+           ========================================================================== */
+        .faq-accordion {
+            max-width: 850px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background-color: var(--brand-white);
+            border-radius: 14px;
+            border: 1px solid var(--brand-rose-border);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(52, 17, 51, 0.02);
+        }
+
+        .faq-header {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.35rem 1.5rem;
+            text-align: left;
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--brand-purple);
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: color var(--transition-speed);
+        }
+
+        .faq-header:hover {
+            color: var(--brand-carmine);
+        }
+
+        .faq-icon-toggle {
+            color: var(--brand-carmine);
+            transition: transform var(--transition-speed);
+        }
+
+        .faq-item.active .faq-icon-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            padding: 0 1.5rem;
+        }
+
+        .faq-item.active .faq-body {
+            max-height: 300px;
+            padding: 0 1.5rem 1.5rem 1.5rem;
+        }
+
+        .faq-verdict {
+            display: inline-block;
+            background-color: rgba(230, 0, 92, 0.1);
+            color: var(--brand-carmine);
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-text {
+            font-size: 0.95rem;
+            color: var(--brand-dark);
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+           SEÇÃO 8 — VOCÊ PODE BUSCAR AJUDA
+           ========================================================================== */
+        .help-section {
+            background: linear-gradient(135deg, var(--brand-purple) 0%, #1d071c 100%);
+            color: var(--brand-white);
+            padding: 5.5rem 0;
+            position: relative;
+        }
+
+        .help-header {
+            text-align: center;
+            max-width: 780px;
+            margin: 0 auto 3.5rem auto;
+        }
+
+        .help-header h2 {
+            font-family: var(--font-serif);
+            font-size: 2.3rem;
+            color: var(--brand-white);
+            margin-bottom: 1.25rem;
+            font-weight: 700;
+        }
+
+        .help-header p {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+        }
+
+        .help-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .help-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 2.25rem;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .help-card-icon {
+            font-size: 2rem;
+            color: var(--brand-carmine);
+            margin-bottom: 1.25rem;
+        }
+
+        .help-card-title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            color: var(--brand-white);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .help-card-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 1.75rem;
+            line-height: 1.6;
+        }
+
+        .btn-help-action {
+            background-color: var(--brand-carmine);
+            color: var(--brand-white);
+            text-decoration: none;
+            padding: 0.8rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: background-color var(--transition-speed);
+        }
+
+        .btn-help-action:hover {
+            background-color: var(--brand-carmine-dark);
+        }
+
+        /* ==========================================================================
+           SEÇÃO 9 — ORIENTAÇÕES DE SEGURANÇA DIGITAL E PESSOAL
+           ========================================================================== */
+        .security-section {
+            padding: 4rem 0;
+            background-color: var(--brand-rose-soft);
+        }
+
+        .security-box {
+            background-color: var(--brand-white);
+            border: 1px solid var(--brand-rose-border);
+            border-left: 5px solid var(--brand-purple);
+            border-radius: 16px;
+            padding: 2.5rem;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .security-box-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .security-box-header i {
+            font-size: 1.75rem;
+            color: var(--brand-purple);
+        }
+
+        .security-box-header h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--brand-purple);
+            font-weight: 700;
+        }
+
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .security-item {
+            font-size: 0.875rem;
+            color: var(--brand-muted);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+        }
+
+        .security-item i {
+            color: var(--brand-carmine);
+            margin-top: 0.2rem;
+            font-size: 0.85rem;
+        }
+
+        /* ==========================================================================
+           SEÇÃO 10 — ENCERRAMENTO INSTITUCIONAL
+           ========================================================================== */
+        .closing-section {
+            padding: 5rem 0;
+            background-color: var(--brand-white);
+            text-align: center;
+        }
+
+        .closing-content {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            color: var(--brand-purple);
+            margin-bottom: 1.25rem;
+            font-weight: 700;
+        }
+
+        .closing-text {
+            font-size: 1.05rem;
+            color: var(--brand-muted);
+            margin-bottom: 2.25rem;
+            line-height: 1.7;
+        }
+
+        .closing-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* ==========================================================================
+           SEÇÃO 11 — RODAPÉ INSTITUCIONAL COM REFERÊNCIAS
+           ========================================================================== */
+        .site-footer {
+            background-color: var(--brand-purple);
+            color: var(--brand-white);
+            padding: 4.5rem 0 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .footer-brand-title {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.85rem;
+        }
+
+        .footer-brand-desc {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            max-width: 320px;
+        }
+
+        .footer-column-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--brand-carmine);
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.65rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color var(--transition-speed);
+        }
+
+        .footer-links a:hover {
+            color: var(--brand-white);
+        }
+
+        .footer-references-list {
+            font-size: 0.785rem;
+            color: rgba(255, 255, 255, 0.65);
+            list-style: none;
+        }
+
+        .footer-references-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-references-list a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* ==========================================================================
+           RESPONSIVIDADE E ADAPTAÇÕES MOBILE
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .hero-illustration {
+                order: -1;
+            }
+
+            .phase-card {
+                grid-template-columns: 1fr;
+            }
+
+            .phase-badge-sidebar {
+                padding: 1.75rem 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--brand-white);
+                flex-direction: column;
+                padding: 1.5rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                border-top: 1px solid var(--brand-rose-border);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.1rem;
+            }
+
+            .diagram-steps {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Faixa colorida superior -->
+    <div class="top-bar">
+        <div class="bar-carmin"></div>
+    </div>
+
+    <!-- NAVBAR NATIVA -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <img src="/imagens/logosite.png" alt="Logo Apesar de Você" class="brand-logo">
+            <div class="brand-text">
+                <h1>Apesar de VOCÊ</h1>
+                <span>Amanhã será um novo dia.</span>
+            </div>
+        </a>
+
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link active">INÍCIO</a></li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">SOBRE NÓS <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="apesardevoce.html">SOBRE O PROJETO</a></li>
+                    <li><a href="quem-somos.html">QUEM SOMOS</a></li>
+                    <li><a href="contato.html">CONTATO</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">SOBRE A VIOLÊNCIA <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="entenda-a-violencia.html">ENTENDA A VIOLÊNCIA</a></li>
+                    <li><a href="ciclo.html">CICLO DA VIOLÊNCIA</a></li>
+                    <li><a href="direitos.html">SEUS DIREITOS</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item"><a href="comunidade.html" class="nav-link">COMUNIDADE</a></li>
+            <li class="nav-item"><a href="noticias.html" class="nav-link">NOTÍCIAS</a></li>
+            <li class="nav-item"><a href="cadastro.html" class="nav-link">CADASTRE-SE</a></li>
+        </ul>
+
+        <div class="nav-actions-wrapper">
+            <a href="https://www.youtube.com" class="btn-inscricao">SAÍDA RAPIDA</a>
+
+                <div class="nav-actions-wrapper">
+            <a href="denuncie.html" class="btn-inscricao">DENUNCIE</a>
+            <button class="menu-toggle" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- SEÇÃO 1 — CABEÇALHO E NAVEGAÇÃO INSTITUCIONAL -->
+    <header class="site-header">
+        <div class="container">
+            <nav class="navbar" aria-label="Navegação Principal">
+                <a href="index.html" class="brand-logo-wrapper">
+                    <img src="/imagens/logosite.png" alt="Logotipo Apesar de Você" class="brand-logo-img" onerror="this.style.display='none'">
+                    <div>
+                        <span class="brand-title">Apesar de VOCÊ</span>
+                        <span class="brand-subtitle">Amanhã será um novo dia.</span>
+                    </div>
+                </a>
+
+                <button class="menu-toggle" id="menuToggleBtn" aria-expanded="false" aria-controls="mainNavMenu" aria-label="Abrir Menu de Navegação">
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                </button>
+
+                <ul class="nav-menu" id="mainNavMenu">
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="entenda-a-violencia.html" class="nav-link">Tipos de Violência</a></li>
+                    <li><a href="ciclo.html" class="nav-link active" aria-current="page">O Ciclo da Violência</a></li>
+                    <li><a href="direitos.html" class="nav-link">Seus Direitos</a></li>
+                    <li><a href="contatos.html" class="nav-link">Rede de Apoio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- SEÇÃO 2 — HERO PRINCIPAL -->
+        <section class="hero-section" aria-labelledby="hero-heading">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <span class="badge-tag">INFORMAÇÃO • CONSCIENTIZAÇÃO • ACOLHIMENTO</span>
+                        <h1 id="hero-heading" class="hero-title">A violência pode se repetir. Você não precisa enfrentar isso sozinha.</h1>
+                        <p class="hero-text">
+                            Nem sempre a violência começa com uma agressão física. Às vezes, ela se manifesta em pequenas formas de controle, humilhação, medo ou isolamento. Compreender como esses comportamentos podem se repetir é um passo importante para reconhecer situações abusivas e conhecer caminhos de proteção.
+                        </p>
+                        
+                        <div class="hero-actions">
+                            <a href="#entenda-o-ciclo" class="btn-primary">
+                                <span>Entenda o ciclo da violência</span>
+                                <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+                            </a>
+                            <a href="#buscar-ajuda" class="btn-secondary">
+                                <span>Preciso de orientação</span>
+                                <i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>
+                            </a>
+                        </div>
+
+                        <div class="hero-disclaimer">
+                            <i class="fa-solid fa-circle-info" aria-hidden="true" style="color: var(--brand-carmine); margin-top: 0.15rem;"></i>
+                            <span><strong>Importante:</strong> Cada história é diferente. A violência pode acontecer com ou sem um ciclo identificável.</span>
+                        </div>
+                    </div>
+
+                    <!-- ILUSTRAÇÃO CONCEITUAL ABSTRATA DE RUPTURA E RECONSTRUÇÃO -->
+                    <div class="hero-illustration">
+                        <div class="concept-art-container" role="img" aria-label="Ilustração conceitual representando o ciclo contínuo e o ponto de ruptura em busca de autonomia">
+                            <div class="concept-ring">
+                                <i class="fa-solid fa-feather-pointed concept-center-icon" aria-hidden="true"></i>
+                                <span class="concept-node node-1">1</span>
+                                <span class="concept-node node-2">2</span>
+                                <span class="concept-node node-3">3</span>
+                            </div>
+                            <span class="concept-label">Padrão & Conscientização</span>
+                            <p style="font-size: 0.8rem; color: var(--brand-muted); margin-top: 0.5rem;">
+                                Reconhecer o padrão é o primeiro passo para encontrar caminhos de saída seguros.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3 — ANTES DE ENTENDER O CICLO -->
+        <section id="entenda-o-ciclo" class="section-padding" aria-labelledby="section-about-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="section-about-title">O que é o ciclo da violência?</h2>
+                    <p>Uma ferramenta didática desenvolvida para compreender dinâmicas de poder e repetição.</p>
+                </div>
+
+                <div class="explanation-card">
+                    <div class="explanation-text">
+                        <p>
+                            O conceito de <strong>Ciclo da Violência</strong> foi formulado e popularizado pela psicóloga estadunidense <strong>Lenore E. Walker</strong> no final da década de 1970. Ao estudar relacionamentos afetivos abusivos, Walker identificou que muitos casos de violência doméstica não aconteciam de forma aleatória ou isolada, mas sim através de um padrão com fases que tendem a se repetir e se intensificar com o passar do tempo.
+                        </p>
+                        <p>
+                            No modelo clássico, o ciclo é frequentemente explicado a partir de <strong>três fases conectadas</strong>: o Aumento da Tensão, o Episódio de Violência e a Reconciliação (também chamada de "lua de mel").
+                        </p>
+                        
+                        <div class="highlight-quote">
+                            <p>“A violência nunca é justificada pelo comportamento, pelas palavras ou pelas decisões da vítima.”</p>
+                        </div>
+
+                        <p>
+                            É fundamental destacar que esse modelo é uma <strong>ferramenta didática e explicativa</strong>, e não uma regra universal, diagnóstico fixo ou sequência obrigatória. Muitas mulheres vivenciam violência contínua sem fases de tranquilidade, ou situações em que nunca ocorre pedido de desculpas. A ausência de uma dessas fases não torna o abuso menos grave.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4 — AS FASES DO CICLO DA VIOLÊNCIA (SEÇÃO CENTRAL) -->
+        <section class="section-padding" style="background-color: var(--brand-rose-soft);" aria-labelledby="section-phases-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="section-phases-title">As Três Fases do Modelo Clássico</h2>
+                    <p>Compreenda os comportamentos e sinais frequentemente associados a cada etapa.</p>
+                </div>
+
+                <div class="phases-container">
+                    
+                    <!-- FASE 1 -->
+                    <article class="phase-card" aria-labelledby="phase-1-title">
+                        <div class="phase-badge-sidebar">
+                            <span class="phase-number">Fase 01</span>
+                            <h3 id="phase-1-title" class="phase-title-sidebar">Aumento da Tensão</h3>
+                        </div>
+                        <div class="phase-content">
+                            <p class="phase-description">
+                                Nesta fase inicial, surgem comportamentos graduais de hostilidade, controle e irritabilidade desproporcional. A tensão acumula-se no dia a dia por motivos banais ou injustificados.
+                            </p>
+                            
+                            <span class="examples-title">
+                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                                Exemplos e Sinais Observáveis:
+                            </span>
+                            <ul class="examples-list">
+                                <li>Questionamentos insistentes sobre onde a mulher está, com quem conversa ou o que faz.</li>
+                                <li>Tentativas de controlar roupas, amizades, acesso ao dinheiro ou rotina de trabalho.</li>
+                                <li>Irritabilidade constante, acusações infundadas e desvalorização da vítima.</li>
+                                <li>Ameaças veladas, indiretas ou destruição de objetos próximos para causar intimidação.</li>
+                                <li>Criação de um ambiente em que a mulher sente que precisa "medir cada palavra" para evitar atritos.</li>
+                            </ul>
+
+                            <div class="phase-support-text">
+                                <i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>
+                                <div>
+                                    Quando alguém passa a modificar constantemente o próprio comportamento por medo da reação de outra pessoa, esse sentimento merece atenção. Você não precisa esperar uma agressão física para reconhecer que algo está errado.
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- FASE 2 -->
+                    <article class="phase-card" aria-labelledby="phase-2-title">
+                        <div class="phase-badge-sidebar">
+                            <span class="phase-number">Fase 02</span>
+                            <h3 id="phase-2-title" class="phase-title-sidebar">Episódio de Violência</h3>
+                        </div>
+                        <div class="phase-content">
+                            <p class="phase-description">
+                                A tensão acumulada descarrega-se em um episódio agudo de violência. É importante compreender que a violência <strong>não se limita a agressões físicas</strong> e pode se manifestar de diversas formas simultâneas.
+                            </p>
+
+                            <span class="examples-title">
+                                <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+                                Modalidades de Violência (Lei Maria da Penha):
+                            </span>
+                            
+                            <div class="violence-types-grid">
+                                <div class="violence-type-box">
+                                    <h4><i class="fa-solid fa-hand" aria-hidden="true"></i> Física</h4>
+                                    <p>Empurrões, sacudões, tapas, agressões que deixam ou não marcas visíveis no corpo.</p>
+                                </div>
+                                <div class="violence-type-box">
+                                    <h4><i class="fa-solid fa-brain" aria-hidden="true"></i> Psicológica</h4>
+                                    <p>Humilhações, isolamento, chantagem emocional, perseguição e ameaças.</p>
+                                </div>
+                                <div class="violence-type-box">
+                                    <h4><i class="fa-solid fa-venus" aria-hidden="true"></i> Sexual</h4>
+                                    <p>Forçar atos sexuais não desejados, coação ou impedimento do uso de contraceptivos.</p>
+                                </div>
+                                <div class="violence-type-box">
+                                    <h4><i class="fa-solid fa-wallet" aria-hidden="true"></i> Patrimonial</h4>
+                                    <p>Reter dinheiro, destruir documentos, rasgar roupas ou tomar instrumentos de trabalho.</p>
+                                </div>
+                            </div>
+
+                            <div class="phase-support-text" style="background-color: rgba(230, 0, 92, 0.05); border-color: rgba(230, 0, 92, 0.15);">
+                                <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Não é necessário haver marcas no corpo para que uma violência seja real.</strong> É comum sentir confusão, vergonha ou paralisia após esse momento. O sentimento de dúvida não anula o abuso sofrido.
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- FASE 3 -->
+                    <article class="phase-card" aria-labelledby="phase-3-title">
+                        <div class="phase-badge-sidebar">
+                            <span class="phase-number">Fase 03</span>
+                            <h3 id="phase-3-title" class="phase-title-sidebar">Reconciliação ou Tranquilidade</h3>
+                        </div>
+                        <div class="phase-content">
+                            <p class="phase-description">
+                                Após o episódio violento, pode ocorrer um período de aparente calmaria. O agressor frequentemente demonstra remorso, pede desculpas, faz promessas de mudança ou tenta minimizar a gravidade do ocorrido.
+                            </p>
+                            
+                            <span class="examples-title">
+                                <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+                                Comportamentos Típicos desta Fase:
+                            </span>
+                            <ul class="examples-list">
+                                <li>Promessas enfáticas de que o comportamento violento nunca mais irá se repetir.</li>
+                                <li>Atribuição da culpa a fatores externos, como estresse, problemas no trabalho ou consumo de álcool.</li>
+                                <li>Demonstrações excessivas de afeto, presentes e tentativa de convencer de que o fato foi isolado.</li>
+                                <li>Momentos reais de tranquilidade que convivem com a memória do abuso sofrido.</li>
+                                <li>Surgimento da esperança de que o relacionamento volte a ser harmonioso como no início.</li>
+                            </ul>
+
+                            <div class="phase-support-text">
+                                <i class="fa-solid fa-heart" aria-hidden="true"></i>
+                                <div>
+                                    Momentos de afeto não apagam a violência vivida. Você pode reconhecer sentimentos contraditórios e, ainda assim, merecer segurança, respeito e proteção. Pedir desculpas não equivale a uma mudança efetiva.
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5 — COMO ESSE PADRÃO PODE SE REPETIR -->
+        <section class="section-padding repetition-section" aria-labelledby="section-repetition-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="section-repetition-title">Como o Padrão Pode se Repetir?</h2>
+                    <p>Entenda a dinâmica de repetição e o encurtamento dos intervalos entre episódios.</p>
+                </div>
+
+                <div class="cycle-diagram-wrapper">
+                    <h3 style="font-family: var(--font-serif); color: var(--brand-purple); font-size: 1.4rem; margin-bottom: 1rem;">
+                        Diagrama da Dinâmica Cíclica
+                    </h3>
+                    <p style="font-size: 0.95rem; color: var(--brand-muted); max-width: 600px; margin: 0 auto;">
+                        Representação didática de como a tensão pode acumular novamente após o período de reconciliação.
+                    </p>
+
+                    <div class="diagram-steps" role="region" aria-label="Diagrama em três etapas explicativas">
+                        <div class="diagram-step-item">
+                            <div class="diagram-step-number">1</div>
+                            <h4 class="diagram-step-title">Tensão em Acúmulo</h4>
+                            <p class="diagram-step-desc">Controle, hostilidade e pequenas agressões verbais veladas.</p>
+                        </div>
+
+                        <div class="diagram-step-item">
+                            <div class="diagram-step-number">2</div>
+                            <h4 class="diagram-step-title">Explosão da Violência</h4>
+                            <p class="diagram-step-desc">Agressão física, psicológica, sexual, moral ou patrimonial.</p>
+                        </div>
+
+                        <div class="diagram-step-item">
+                            <div class="diagram-step-number">3</div>
+                            <h4 class="diagram-step-title">Reconciliação / Calmaria</h4>
+                            <p class="diagram-step-desc">Pedidos de desculpas, promessas e aparente tranquilidade.</p>
+                        </div>
+                    </div>
+
+                    <p class="diagram-note">
+                        <i class="fa-solid fa-arrows-rotate" aria-hidden="true" style="color: var(--brand-carmine);"></i>
+                        <strong>Atenção:</strong> Com a repetição continuada, a fase de reconciliação tende a se tornar cada vez mais curta ou desaparecer por completo, fazendo com que a violência se torne mais frequente ou severa.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 6 — SINAIS QUE MERECEM ATENÇÃO -->
+        <section class="section-padding" aria-labelledby="section-warning-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="section-warning-title">Nem toda violência começa com uma agressão</h2>
+                    <p>Fique atenta a estes sinais de alerta no relacionamento antes que a violência se intensifique.</p>
+                </div>
+
+                <div class="warning-cards-grid">
+                    
+                    <div class="warning-card">
+                        <div class="warning-icon"><i class="fa-solid fa-eye" aria-hidden="true"></i></div>
+                        <h3 class="warning-title">Controle e Vigilância</h3>
+                        <p class="warning-desc">Exigir senhas, monitorar mensagens de celular, checar a localização constantemente ou pedir provas de onde você está.</p>
+                    </div>
+
+                    <div class="warning-card">
+                        <div class="warning-icon"><i class="fa-solid fa-user-slash" aria-hidden="true"></i></div>
+                        <h3 class="warning-title">Isolamento Social</h3>
+                        <p class="warning-desc">Criticar sistematicamente sua família e amizades, criando intrigas para afastar você das suas redes de apoio.</p>
+                    </div>
+
+                    <div class="warning-card">
+                        <div class="warning-icon"><i class="fa-solid fa-comment-slash" aria-hidden="true"></i></div>
+                        <h3 class="warning-title">Humilhação Pública</h3>
+                        <p class="warning-desc">Fazer piadas de mau gosto sobre suas habilidades, corpo ou inteligência na frente de outras pessoas.</p>
+                    </div>
+
+                    <div class="warning-card">
+                        <div class="warning-icon"><i class="fa-solid fa-building-columns" aria-hidden="true"></i></div>
+                        <h3 class="warning-title">Controle Financeiro</h3>
+                        <p class="warning-desc">Impedir que você trabalhe, estude ou gerencie seu próprio dinheiro, exigindo prestação de contas de cada centavo.</p>
+                    </div>
+
+                    <div class="warning-card">
+                        <div class="warning-icon"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></div>
+                        <h3 class="warning-title">Intimidação e Ameaças</h3>
+                        <p class="warning-desc">Gestar socos em paredes, quebrar seus objetos pessoais ou ameaçar ferir pessoas ou animais que você ama.</p>
+                    </div>
+
+                    <div class="warning-card">
+                        <div class="warning-icon"><i class="fa-solid fa-lock" aria-hidden="true"></i></div>
+                        <h3 class="warning-title">Coerção Sexual</h3>
+                        <p class="warning-desc">Pressionar ou chantagear você emocionalmente para realizar práticas sexuais com as quais não se sente confortável.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 7 — MITOS E VERDADES -->
+        <section class="section-padding" style="background-color: var(--brand-white); border-top: 1px solid var(--brand-rose-border);" aria-labelledby="section-faq-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="section-faq-title">Mitos e Verdades</h2>
+                    <p>Esclarecimentos importantes sobre a dinâmica do abuso e o ciclo da violência.</p>
+                </div>
+
+                <div class="faq-accordion" id="faqAccordion">
+                    
+                    <div class="faq-item">
+                        <button class="faq-header" aria-expanded="false" aria-controls="faq-1">
+                            <span>“Se não houve agressão física, não é violência.”</span>
+                            <i class="fa-solid fa-chevron-down faq-icon-toggle" aria-hidden="true"></i>
+                        </button>
+                        <div id="faq-1" class="faq-body" role="region">
+                            <span class="faq-verdict">Mito</span>
+                            <p class="faq-text">Existem diversas formas de violência reconhecidas por lei, incluindo a violência psicológica, moral, patrimonial e sexual. Abusos emocionais e controle coercitivo causam sérios danos à saúde e dignidade, mesmo sem marcas corporais.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-header" aria-expanded="false" aria-controls="faq-2">
+                            <span>“Se ela continuou na relação, é porque não sofreu violência.”</span>
+                            <i class="fa-solid fa-chevron-down faq-icon-toggle" aria-hidden="true"></i>
+                        </button>
+                        <div id="faq-2" class="faq-body" role="region">
+                            <span class="faq-verdict">Mito</span>
+                            <p class="faq-text">A decisão de permanecer ou demorar para romper Envolve fatores complexos, como dependência financeira, isolamento, ameaças diretas à vida, proteção dos filhos e vínculos afetivos. Nenhuma dessas circunstâncias transfere a responsabilidade do abuso para a vítima.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-header" aria-expanded="false" aria-controls="faq-3">
+                            <span>“Pedir desculpas significa que tudo mudou definitivamente.”</span>
+                            <i class="fa-solid fa-chevron-down faq-icon-toggle" aria-hidden="true"></i>
+                        </button>
+                        <div id="faq-3" class="faq-body" role="region">
+                            <span class="faq-verdict">Mito</span>
+                            <p class="faq-text">Pedidos de desculpas fazem parte da terceira fase do ciclo (reconciliação). A mudança real exige atitudes consistentes ao longo do tempo, responsabilização pessoal do agressor e interrupção completa dos comportamentos de controle e agressão.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-header" aria-expanded="false" aria-controls="faq-4">
+                            <span>“A vítima é responsável por impedir que a violência aconteça.”</span>
+                            <i class="fa-solid fa-chevron-down faq-icon-toggle" aria-hidden="true"></i>
+                        </button>
+                        <div id="faq-4" class="faq-body" role="region">
+                            <span class="faq-verdict">Mito</span>
+                            <p class="faq-text">A responsabilidade pelo ato violento é única e exclusivamente de quem o pratica. Nenhuma atitude, escolha de roupa, palavra ou decisão da mulher justifica a agressão.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-header" aria-expanded="false" aria-controls="faq-5">
+                            <span>“Toda relação abusiva segue exatamente as três fases.”</span>
+                            <i class="fa-solid fa-chevron-down faq-icon-toggle" aria-hidden="true"></i>
+                        </button>
+                        <div id="faq-5" class="faq-body" role="region">
+                            <span class="faq-verdict">Mito</span>
+                            <p class="faq-text">O ciclo da violência é um modelo explicativo didático, e não uma regra obrigatória. Em muitos relacionamentos, a violência acontece sem período de reconciliação ou de forma ininterrupta.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 8 — VOCÊ PODE BUSCAR AJUDA -->
+        <section id="buscar-ajuda" class="help-section" aria-labelledby="section-help-title">
+            <div class="container">
+                <div class="help-header">
+                    <h2 id="section-help-title">Você não precisa ter todas as respostas para procurar apoio</h2>
+                    <p>Se alguma dessas situações faz parte da sua realidade, saiba que você merece ser ouvida e respeitada. Você não precisa apresentar provas ou tomar uma decisão imediata para conhecer seus direitos e serviços de proteção.</p>
+                </div>
+
+                <div class="help-cards-grid">
+                    
+                    <div class="help-card">
+                        <div>
+                            <div class="help-card-icon"><i class="fa-solid fa-headset" aria-hidden="true"></i></div>
+                            <h3 class="help-card-title">Ligue 180 — Central de Atendimento</h3>
+                            <p class="help-card-desc">Serviço público gratuito, confidencial e disponível 24 horas. Oferece orientação jurídica, informações sobre direitos e encaminhamento para serviços especializados.</p>
+                        </div>
+                        <a href="https://www.gov.br/mulheres/pt-br/ligue180" target="_blank" rel="noopener noreferrer" class="btn-help-action">
+                            <span>Conheça o Ligue 180</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <div class="help-card">
+                        <div>
+                            <div class="help-card-icon"><i class="fa-solid fa-shield-cat" aria-hidden="true"></i></div>
+                            <h3 class="help-card-title">Emergência — Polícia Militar (190)</h3>
+                            <p class="help-card-desc">Em situações de perigo imediato ou agressão em andamento, acione a Polícia Militar pelo telefone 190 para atendimento emergencial.</p>
+                        </div>
+                        <a href="contatos.html" class="btn-help-action" style="background-color: transparent; border: 1px solid var(--brand-white);">
+                            <span>Como agir em uma emergência</span>
+                        </a>
+                    </div>
+
+                    <div class="help-card">
+                        <div>
+                            <div class="help-card-icon"><i class="fa-solid fa-people-roof" aria-hidden="true"></i></div>
+                            <h3 class="help-card-title">Rede de Atendimento Local</h3>
+                            <p class="help-card-desc">Consulte Delegacias da Mulher (DEAM), Defensoria Pública, Centros de Referência (CRAM/CREAS) e serviços de saúde da sua região.</p>
+                        </div>
+                        <a href="contatos.html" class="btn-help-action">
+                            <span>Encontrar Rede de Apoio</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 9 — ORIENTAÇÕES DE SEGURANÇA DIGITAL E PESSOAL -->
+        <section class="security-section" aria-labelledby="section-security-title">
+            <div class="container">
+                <div class="security-box">
+                    <div class="security-box-header">
+                        <i class="fa-solid fa-user-shield" aria-hidden="true"></i>
+                        <h3 id="section-security-title">Orientações de Segurança Pessoal e Digital</h3>
+                    </div>
+                    
+                    <div class="security-grid">
+                        <div class="security-item">
+                            <i class="fa-solid fa-check" aria-hidden="true"></i>
+                            <span>Se houver risco imediato, priorize sua integridade física e procure um local seguro.</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fa-solid fa-check" aria-hidden="true"></i>
+                            <span>Se o seu dispositivo for monitorado, busque informações utilizando um celular ou computador confiável.</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fa-solid fa-check" aria-hidden="true"></i>
+                            <span>Lembre-se de que a aba anônima não impede a visualização direta de telas ou aplicativos.</span>
+                        </div>
+                        <div class="security-item">
+                            <i class="fa-solid fa-check" aria-hidden="true"></i>
+                            <span>Planejar a saída de uma situação abusiva exige cuidado e orientação de profissionais especializados.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 10 — ENCERRAMENTO INSTITUCIONAL -->
+        <section class="closing-section" aria-labelledby="section-closing-title">
+            <div class="container">
+                <div class="closing-content">
+                    <h2 id="section-closing-title" class="closing-title">Sua história não se resume à violência que você viveu</h2>
+                    <p class="closing-text">
+                        Informação pode abrir caminhos, mas cada pessoa tem seu tempo, suas circunstâncias e suas necessidades. Você merece viver com dignidade, autonomia, respeito e segurança. Buscar apoio é uma possibilidade, e você não precisa enfrentar tudo sozinha.
+                    </p>
+                    <div class="closing-actions">
+                        <a href="direitos.html" class="btn-primary">
+                            <span>Conheça seus direitos</span>
+                        </a>
+                        <a href="contatos.html" class="btn-secondary">
+                            <span>Encontre apoio</span>
+                        </a>
+                        <a href="index.html" class="btn-secondary" style="border-color: var(--brand-rose-border); color: var(--brand-muted);">
+                            <span>Voltar ao início</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- SEÇÃO 11 — RODAPÉ INSTITUCIONAL COM REFERÊNCIAS -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="footer-brand-title">Apesar de VOCÊ</h3>
+                    <p class="footer-brand-desc">Plataforma independente de informação, conscientização, acolhimento e orientação sobre direitos das mulheres no Brasil.</p>
+                </div>
+
+                <div>
+                    <h4 class="footer-column-title">Navegação</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="entenda-a-violencia.html">Tipos de Violência</a></li>
+                        <li><a href="ciclo.html">O Ciclo da Violência</a></li>
+                        <li><a href="direitos.html">Seus Direitos</a></li>
+                        <li><a href="contatos.html">Rede de Apoio</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-column-title">Canais Oficiais</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://www.gov.br/mulheres/pt-br/ligue180" target="_blank" rel="noopener noreferrer">Ligue 180 (Central)</a></li>
+                        <li><a href="contatos.html">Polícia Militar (190)</a></li>
+                        <li><a href="contatos.html">Defensoria Pública</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-column-title">Fontes e Referências Educativas</h4>
+                    <ul class="footer-references-list">
+                        <li>• WALKER, Lenore E. <em>The Battered Woman Syndrome</em>. Springer Publishing, 1979.</li>
+                        <li>• BRASIL. <a href="https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11340.htm" target="_blank" rel="noopener noreferrer">Lei nº 11.340/2006 (Lei Maria da Penha)</a>.</li>
+                        <li>• MINISTÉRIO DAS MULHERES. Diretrises de Atendimento à Mulher. <a href="https://www.gov.br/mulheres/pt-br" target="_blank" rel="noopener noreferrer">gov.br/mulheres</a>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Apesar de Você. Todos os direitos reservados. Conteúdo estritamente educativo e institucional.</p>
+                <p>Navegação protegida • Acessibilidade WCAG 2.2 AA</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT SIMPLE DE INTERAÇÃO E ACESSIBILIDADE -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menu Mobile Toggle
+            const menuToggleBtn = document.getElementById('menuToggleBtn');
+            const mainNavMenu = document.getElementById('mainNavMenu');
+
+            if (menuToggleBtn && mainNavMenu) {
+                menuToggleBtn.addEventListener('click', function() {
+                    const isExpanded = menuToggleBtn.getAttribute('aria-expanded') === 'true';
+                    menuToggleBtn.setAttribute('aria-expanded', !isExpanded);
+                    mainNavMenu.classList.toggle('active');
+                });
+            }
+
+            // FAQ Accordion
+            const faqHeaders = document.querySelectorAll('.faq-header');
+            faqHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const item = this.parentElement;
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+                    // Opcional: Fechar outros abertos
+                    document.querySelectorAll('.faq-item').forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.faq-header').setAttribute('aria-expanded', 'false');
+                        }
+                    });
+
+                    item.classList.toggle('active');
+                    this.setAttribute('aria-expanded', !isExpanded);
+                });
+            });
+
+            // Atalho de Teclado 'ESC' para Saída Rápida de Emergência
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    window.location.href = 'https://www.google.com';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

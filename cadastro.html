@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - Apesar de Você</title>
+  <link rel="icon" href="/imagens/logosite.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<style>
+/* ==========================================================================
+   PÁGINAS DE AUTENTICAÇÃO (CADASTRO E LOGIN)
+   ========================================================================== */
+body.auth-page {
+  background-color: #fcf8f8;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.auth-card {
+  background: #ffffff;
+  border: 1px solid #f2d6dc;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 540px;
+  padding: 40px 35px;
+  box-shadow: 0 10px 30px rgba(43, 3, 92, 0.05);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.auth-badge {
+  display: inline-block;
+  background-color: #2b035c;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.auth-header h2 {
+  font-size: 28px;
+  color: #e6205d;
+  margin-bottom: 8px;
+}
+
+.auth-header p {
+  font-size: 14px;
+  color: #666666;
+  line-height: 1.5;
+}
+
+/* FORMULÁRIO */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-row-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.auth-form label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #2b035c;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+}
+
+.auth-form input:focus {
+  border-color: #e6205d;
+  box-shadow: 0 0 0 3px rgba(230, 32, 93, 0.1);
+}
+
+.input-hint {
+  font-size: 11px;
+  color: #888888;
+}
+
+/* SENHA E VISIBILIDADE */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.7;
+  padding: 4px;
+}
+
+.toggle-password:hover {
+  opacity: 1;
+}
+
+/* CHECKBOX PERSONALIZADO */
+.checkbox-group {
+  margin-top: 5px;
+}
+
+.custom-checkbox {
+  font-size: 13px;
+  color: #555555;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.auth-link {
+  color: #e6205d;
+  text-decoration: underline;
+}
+
+/* BOTÃO E MENSAGENS DE ERRO */
+.btn-auth-submit {
+  background-color: #e6205d;
+  color: #ffffff;
+  border: none;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+
+.btn-auth-submit:hover {
+  background-color: #c2003b;
+  transform: translateY(-2px);
+}
+
+.auth-error-msg {
+  background-color: #fdf0f2;
+  color: #c2003b;
+  border: 1px solid #f2d6dc;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.auth-footer {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #eeeeee;
+  text-align: center;
+  font-size: 14px;
+  color: #666666;
+}
+
+.auth-link-bold {
+  color: #2b035c;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.auth-link-bold:hover {
+  color: #e6205d;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+  .auth-card {
+    padding: 30px 20px;
+  }
+
+  .form-row-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<body class="auth-page">
+
+  <!-- FAIXA SUPERIOR & NAVBAR -->
+  <div class="top-bar">
+    <div class="bar-carmin"></div>
+  </div>
+
+  <header class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="brand-text">
+        <h1>Apesar de Você</h1>
+        <span>Amanha será outro dia.</span>
+      </div>
+    </a>
+    <a href="index.html" class="nav-link">← Voltar ao Início</a>
+  </header>
+
+  <!-- CONTAINER PRINCIPAL DE CADASTRO -->
+  <main class="auth-container">
+    <div class="auth-card">
+      <div class="auth-header">
+        <span class="auth-badge">Espaço Seguro</span>
+        <h2>Crie a sua conta</h2>
+        <p>Junte-se à nossa comunidade para acessar o fórum de relatos, guardar conteúdos favoritos e interagir com segurança.</p>
+      </div>
+
+      <form id="signupForm" class="auth-form" onsubmit="handleSignup(event)">
+        
+        <div class="form-group">
+          <label for="fullName">Nome Completo ou Pseudônimo:</label>
+          <input type="text" id="fullName" placeholder="Como prefere ser chamada(o)?" required>
+          <small class="input-hint">Pode usar um pseudônimo caso prefira preservar sua identidade na plataforma.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail *</label>
+          <input type="email" id="email" placeholder="seuemail@exemplo.com" required>
+        </div>
+
+        <div class="form-row-grid">
+          <div class="form-group">
+            <label for="password">Senha *</label>
+            <div class="password-wrapper">
+              <input type="password" id="password" placeholder="Mínimo 8 caracteres" minlength="8" required>
+              <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password', this)">👁️</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirmar Senha *</label>
+            <div class="password-wrapper">
+              <input type="password" id="confirmPassword" placeholder="Repita a senha" minlength="8" required>
+              <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirmPassword', this)">👁️</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="passwordError" class="auth-error-msg" style="display: none;">
+          As senhas não coincidem.
+        </div>
+
+        <div class="form-group checkbox-group">
+          <label class="custom-checkbox">
+            <input type="checkbox" id="termsCheck" required>
+            <span class="checkmark"></span>
+            Li e aceito os <a href="#" class="auth-link">Termos de Uso</a> e a <a href="#" class="auth-link">Política de Privacidade</a>.
+          </label>
+        </div>
+
+        <button type="submit" class="btn-auth-submit">Concluir Cadastro</button>
+      </form>
+
+      <div class="auth-footer">
+        <p>Já possui uma conta? <a href="login.html" class="auth-link-bold">Fazer Login</a></p>
+      </div>
+    </div>
+  </main>
+
+<script src="js/cadastro.js"></script>
+</body>
+</html>

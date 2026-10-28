@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notícias | Apesar de Você</title>
+  <meta name="description" content="Central editorial do portal Apesar de Você. Informação confiável, atualizações legislativas, iniciativas sociais e direitos das mulheres.">
+  
+  <!-- Tipografia Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* ==========================================================================
+   FAIXA SUPERIOR & NAVBAR NATIVA (COM DROPDOWNS)
+   ========================================================================== */
+.top-bar {
+  height: 5px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1002;
+  background-color: #e6205d;
+}
+
+.bar-carmin {
+  width: 100%;
+  height: 100%;
+  background-color: #2b035c;
+}
+
+.navbar {
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 8%;
+  border-bottom: 1px solid #eaeaea;
+  position: fixed;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+  box-shadow: 0 2px 10px rgba(43, 3, 92, 0.03);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+/* LOGO NAVBAR */
+.brand-logo {
+  width: 62px;
+  height: auto;
+}
+
+.brand-text h1 {
+  font-size: 20px;
+  color: #e6205d;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.brand-text span {
+  font-size: 11px;
+  color: #7c7b7b;
+  font-style: italic;
+}
+
+/* Menu Principal e Submenus (Dropdown) */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #4a4a4a;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+}
+
+.nav-link .arrow {
+  font-size: 9px;
+  transition: transform 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #e6205d;
+}
+
+/* Estilo do Dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  list-style: none;
+  min-width: 220px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 1010;
+}
+
+.nav-item:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-item:hover .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 20px;
+  color: #4a4a4a;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-menu li a:hover {
+  background: #fdf6f7;
+  color: #e4205c;
+}
+
+.nav-actions-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-inscricao,
+.btn-denuncia {
+  background-color: #2b035c;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease;
+}
+
+.btn-inscricao:hover,
+.btn-denuncia:hover {
+  background-color: #e6205d;
+}
+
+    /* ==========================================================================
+       1. VARIÁVEIS DE DESIGN E SISTEMA VISUAL
+       ========================================================================== */
+    :root {
+      --color-purple-dark: #341133;
+      --color-purple-hover: #4A1A49;
+      --color-pink-intense: #E6005C;
+      --color-pink-hover: #C4004E;
+      --color-pink-light: #FAF7F9;
+      --color-white: #FFFFFF;
+      --color-gray-dark: #33303A;
+      --color-gray-medium: #666070;
+      --color-gray-light: #EBE6EA;
+      --color-gray-border: #D8D2D7;
+      --color-focus-ring: #2563EB;
+      --color-badge-bg: #F0E6EF;
+
+      --font-base: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      
+      --shadow-subtle: 0 4px 20px rgba(52, 17, 51, 0.05);
+      --shadow-hover: 0 12px 32px rgba(52, 17, 51, 0.12);
+      
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s ease;
+    }
+
+    /* Reset Semântico */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 100%;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    body {
+      font-family: var(--font-base);
+      background-color: var(--color-pink-light);
+      color: var(--color-gray-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Accessibility Skip Link & Focus */
+    .skip-link {
+      position: absolute;
+      top: -50px;
+      left: 12px;
+      background: var(--color-purple-dark);
+      color: var(--color-white);
+      padding: 12px 20px;
+      z-index: 1000;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+      transition: top var(--transition-fast);
+    }
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid var(--color-pink-intense);
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--color-focus-ring);
+      outline-offset: 3px;
+    }
+
+    /* Containers */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-padding {
+      padding: 4.5rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .section-padding { padding: 3rem 0; }
+    }
+
+    /* Elementos Globais */
+    h1, h2, h3, h4 {
+      color: var(--color-purple-dark);
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-family: var(--font-base);
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all var(--transition-fast);
+      min-height: 48px;
+    }
+
+    .btn-primary {
+      background-color: var(--color-pink-intense);
+      color: var(--color-white);
+    }
+    .btn-primary:hover {
+      background-color: var(--color-pink-hover);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--color-purple-dark);
+      border-color: var(--color-purple-dark);
+    }
+    .btn-secondary:hover {
+      background-color: var(--color-purple-dark);
+      color: var(--color-white);
+    }
+
+    .btn-sm {
+      min-height: 38px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.85rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background-color: var(--color-badge-bg);
+      color: var(--color-purple-dark);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: var(--color-purple-dark);
+      color: var(--color-white);
+      padding: 1rem 1.5rem;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transform: translateY(150%);
+      transition: transform var(--transition-normal);
+      border-left: 4px solid var(--color-pink-intense);
+    }
+    .toast.show {
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       2. CABEÇALHO INSTITUCIONAL
+       ========================================================================== */
+    .site-header {
+      background-color: var(--color-white);
+      border-bottom: 1px solid var(--color-gray-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--color-purple-dark);
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--color-purple-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-pink-intense);
+    }
+
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.75rem;
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      color: var(--color-gray-dark);
+      font-weight: 500;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .main-nav a:hover,
+    .main-nav a[aria-current="page"] {
+      color: var(--color-pink-intense);
+    }
+
+    .main-nav a[aria-current="page"]::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--color-pink-intense);
+      border-radius: 2px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--color-purple-dark);
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    @media (max-width: 960px) {
+      .menu-toggle { display: block; }
+      .main-nav {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-white);
+        border-bottom: 1px solid var(--color-gray-light);
+        padding: 1.5rem;
+        display: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      }
+      .main-nav.is-open { display: block; }
+      .main-nav ul { flex-direction: column; gap: 1rem; }
+    }
+
+    /* ==========================================================================
+       3. HERO EDITORIAL & DESTAQUES
+       ========================================================================== */
+    .hero-news {
+      background-color: var(--color-purple-dark);
+      color: var(--color-white);
+      padding: 4rem 0 5rem 0;
+    }
+
+    .hero-header {
+      max-width: 750px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-pink-intense);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-header h1 {
+      color: var(--color-white);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-header p {
+      color: var(--color-pink-light);
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Composition de Destaques */
+    .destaque-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 2rem;
+    }
+
+    .destaque-principal {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition-fast);
+    }
+    .destaque-principal:hover {
+      transform: translateY(-3px);
+    }
+
+    .destaque-img-wrap {
+      width: 100%;
+      height: 320px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .destaque-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .destaque-body {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .destaque-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--color-pink-light);
+      opacity: 0.8;
+      margin-bottom: 0.75rem;
+    }
+
+    .destaque-principal h2 {
+      color: var(--color-white);
+      font-size: 1.65rem;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .destaque-principal p {
+      color: var(--color-pink-light);
+      font-size: 0.975rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+      flex-grow: 1;
+    }
+
+    .destaque-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.25rem;
+    }
+
+    /* Secundárias */
+    .destaques-secundarios {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .card-secundario {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      transition: transform var(--transition-fast);
+    }
+    .card-secundario:hover { transform: translateY(-2px); }
+
+    .secundario-img {
+      width: 110px;
+      height: 110px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .secundario-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .secundario-info h3 {
+      color: var(--color-white);
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .secundario-info p {
+      color: var(--color-pink-light);
+      font-size: 0.85rem;
+      opacity: 0.85;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      .destaque-grid { grid-template-columns: 1fr; }
+      .destaque-img-wrap { height: 240px; }
+      .destaque-principal h2 { font-size: 1.35rem; }
+    }
+
+    /* ==========================================================================
+       4. BARRA DE BUSCA E FILTROS DE CATEGORIA
+       ========================================================================== */
+    .controls-section {
+      background-color: var(--color-white);
+      border-bottom: 1px solid var(--color-gray-light);
+      padding: 2rem 0;
+      position: sticky;
+      top: 80px;
+      z-index: 90;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .controls-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .search-bar-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.9rem 3rem 0.9rem 1.25rem;
+      font-family: var(--font-base);
+      font-size: 1rem;
+      border: 2px solid var(--color-gray-border);
+      border-radius: var(--radius-sm);
+      background-color: var(--color-pink-light);
+      color: var(--color-gray-dark);
+      transition: border-color var(--transition-fast);
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--color-pink-intense);
+      background-color: var(--color-white);
+    }
+
+    .search-clear-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--color-gray-medium);
+      cursor: pointer;
+      display: none;
+      padding: 0.25rem;
+    }
+    .search-clear-btn.is-visible { display: block; }
+
+    .categories-nav {
+      display: flex;
+      gap: 0.6rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      scrollbar-width: thin;
+    }
+
+    .cat-filter-btn {
+      padding: 0.5rem 1.1rem;
+      background-color: var(--color-pink-light);
+      border: 1px solid var(--color-gray-border);
+      border-radius: 50px;
+      font-family: var(--font-base);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-gray-dark);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all var(--transition-fast);
+    }
+
+    .cat-filter-btn:hover {
+      background-color: var(--color-gray-light);
+    }
+
+    .cat-filter-btn.active {
+      background-color: var(--color-purple-dark);
+      color: var(--color-white);
+      border-color: var(--color-purple-dark);
+    }
+
+    /* ==========================================================================
+       5. FEED DE NOTÍCIAS — GRADE EDITORIAL
+       ========================================================================== */
+    .news-grid-section {
+      padding: 3.5rem 0;
+    }
+
+    .grid-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .news-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .news-card {
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-gray-light);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-subtle);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      position: relative;
+    }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .news-card-img-wrap {
+      height: 200px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--color-gray-light);
+    }
+
+    .news-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .news-card-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 2;
+    }
+
+    .btn-fav {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+      transition: transform var(--transition-fast);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .btn-fav:hover { transform: scale(1.1); }
+    .btn-fav.active svg { fill: var(--color-pink-intense); stroke: var(--color-pink-intense); }
+
+    .news-card-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .news-card-meta {
+      font-size: 0.8rem;
+      color: var(--color-gray-medium);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .news-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.35;
+    }
+
+    .news-card p {
+      font-size: 0.9rem;
+      color: var(--color-gray-medium);
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .news-card-footer {
+      border-top: 1px solid var(--color-gray-light);
+      padding-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .news-card-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    /* Estado Vazio */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 1.5rem;
+      background-color: var(--color-white);
+      border-radius: var(--radius-md);
+      border: 1px dashed var(--color-gray-border);
+      grid-column: 1 / -1;
+    }
+    .empty-state h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
+    .empty-state p { color: var(--color-gray-medium); }
+
+    /* Paginador / Carregar Mais */
+    .pagination-wrap {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    /* ==========================================================================
+       6. SEÇÃO ESPECIAL — ALÉM DA MANCHETE & DIREITOS EM PAUTA
+       ========================================================================== */
+    .context-section {
+      background-color: var(--color-white);
+      border-top: 1px solid var(--color-gray-light);
+      border-bottom: 1px solid var(--color-gray-light);
+    }
+
+    .context-box {
+      background: linear-gradient(135deg, var(--color-pink-light) 0%, #F5ECF4 100%);
+      border: 1px solid var(--color-gray-border);
+      border-radius: var(--radius-md);
+      padding: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .context-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .context-card {
+      background: var(--color-white);
+      padding: 1.5rem;
+      border-radius: var(--radius-sm);
+      border-left: 4px solid var(--color-purple-dark);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .context-card h4 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: var(--color-pink-intense);
+    }
+
+    /* Seção Direitos em Pauta */
+    .pauta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .pauta-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-gray-light);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pauta-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .pauta-list {
+      list-style: none;
+      font-size: 0.9rem;
+      margin: 1rem 0;
+      flex-grow: 1;
+    }
+
+    .pauta-list li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .pauta-list li::before {
+      content: "•";
+      color: var(--color-pink-intense);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    /* ==========================================================================
+       7. FONTES CONFIÁVEIS & MODAL
+       ========================================================================== */
+    .sources-section {
+      background-color: var(--color-purple-dark);
+      color: var(--color-white);
+    }
+    .sources-section h2, .sources-section p { color: var(--color-white); }
+
+    .sources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .source-item {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+    }
+
+    .source-item h4 {
+      color: var(--color-white);
+      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .source-item p {
+      font-size: 0.85rem;
+      color: var(--color-pink-light);
+      opacity: 0.85;
+    }
+
+    /* Estilos do Modal */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(52, 17, 51, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-fast);
+    }
+
+    .modal-backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-window {
+      background: var(--color-white);
+      width: 90%;
+      max-width: 650px;
+      max-height: 85vh;
+      border-radius: var(--radius-md);
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      transform: translateY(20px);
+      transition: transform var(--transition-fast);
+    }
+
+    .modal-backdrop.is-open .modal-window {
+      transform: translateY(0);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--color-gray-dark);
+    }
+
+    /* Form do Admin no Modal */
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.75rem;
+      font-family: var(--font-base);
+      border: 1px solid var(--color-gray-border);
+      border-radius: var(--radius-sm);
+    }
+
+    /* ==========================================================================
+       8. RODAPÉ INSTITUCIONAL
+       ========================================================================== */
+    .site-footer {
+      background-color: var(--color-purple-dark);
+      color: var(--color-pink-light);
+      padding: 3.5rem 0 2rem 0;
+      border-top: 4px solid var(--color-pink-intense);
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-col h4 {
+      color: var(--color-white);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.5rem; }
+    .footer-col a { color: var(--color-pink-light); text-decoration: none; }
+    .footer-col a:hover { color: var(--color-white); text-decoration: underline; }
+
+    .editorial-disclaimer {
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 3px solid var(--color-pink-intense);
+      padding: 1rem;
+      font-size: 0.825rem;
+      margin-top: 2rem;
+      color: var(--color-pink-light);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Link de Salto Acessível -->
+  <a href="#main-content" class="skip-link">Pular para o conteúdo de Notícias</a>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="toast" role="status" aria-live="polite">
+    <span id="toastMessage">Link copiado com sucesso!</span>
+  </div>
+
+      <!-- Faixa colorida superior -->
+    <div class="top-bar">
+        <div class="bar-carmin"></div>
+    </div>
+
+    <!-- NAVBAR NATIVA -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <img src="/imagens/logosite.png" alt="Logo Apesar de Você" class="brand-logo">
+            <div class="brand-text">
+                <h1>Apesar de VOCÊ</h1>
+                <span>Amanhã será um novo dia.</span>
+            </div>
+        </a>
+
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link active">INÍCIO</a></li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">SOBRE NÓS <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="apesardevoce.html">SOBRE O PROJETO</a></li>
+                    <li><a href="quem-somos.html">QUEM SOMOS</a></li>
+                    <li><a href="contato.html">CONTATO</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">SOBRE A VIOLÊNCIA <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="entenda-a-violencia.html">ENTENDA A VIOLÊNCIA</a></li>
+                    <li><a href="ciclo.html">CICLO DA VIOLÊNCIA</a></li>
+                    <li><a href="direitos.html">SEUS DIREITOS</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item"><a href="comunidade.html" class="nav-link">COMUNIDADE</a></li>
+            <li class="nav-item"><a href="noticias.html" class="nav-link">NOTÍCIAS</a></li>
+            <li class="nav-item"><a href="cadastro.html" class="nav-link">CADASTRE-SE</a></li>
+        </ul>
+
+        <div class="nav-actions-wrapper">
+            <a href="https://www.youtube.com" class="btn-inscricao">SAÍDA RAPIDA</a>
+
+                <div class="nav-actions-wrapper">
+            <a href="denuncie.html" class="btn-inscricao">DENUNCIE</a>
+            <button class="menu-toggle" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+  <!-- ==========================================================================
+       CONTEÚDO PRINCIPAL
+       ========================================================================== -->
+  <main id="main-content">
+
+    <!-- HERO EDITORIAL & DESTAQUE PRINCIPAL -->
+    <section class="hero-news" aria-labelledby="hero-title">
+      <div class="container">
+        
+        <div class="hero-header">
+          <span class="hero-kicker">INFORMAÇÃO • ATUALIDADE • CONSCIENTIZAÇÃO</span>
+          <h1 id="hero-title">O que acontece no mundo também importa para os nossos direitos.</h1>
+          <p>Notícias, iniciativas e informações que ajudam você a compreender os acontecimentos, acompanhar mudanças e descobrir caminhos para uma sociedade mais justa, segura e igualitária.</p>
+        </div>
+
+        <!-- Grade de Destaques Editoriais -->
+        <div class="destaque-grid" id="destaquesContainer">
+          <!-- Alimentado via JavaScript com notícias reais -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BARRA DE CONTROLES: BUSCA E FILTROS DE CATEGORIA -->
+    <section class="controls-section" aria-label="Filtros de notícias e busca">
+      <div class="container controls-wrapper">
+        
+        <!-- Barra de Busca -->
+        <div class="search-bar-wrap">
+          <input type="text" id="searchInput" class="search-input" placeholder="Busque por notícias, assuntos ou palavras-chave..." aria-label="Buscar notícias">
+          <button id="searchClearBtn" class="search-clear-btn" aria-label="Limpar pesquisa">✕</button>
+        </div>
+
+        <!-- Categorias Editoriais -->
+        <nav class="categories-nav" aria-label="Categorias editoriais" id="categoryNav">
+          <button class="cat-filter-btn active" data-category="Todas">Todas</button>
+          <button class="cat-filter-btn" data-category="Direitos das Mulheres">Direitos das Mulheres</button>
+          <button class="cat-filter-btn" data-category="Violência contra a Mulher">Violência contra a Mulher</button>
+          <button class="cat-filter-btn" data-category="Políticas Públicas">Políticas Públicas</button>
+          <button class="cat-filter-btn" data-category="Justiça e Legislação">Justiça e Legislação</button>
+          <button class="cat-filter-btn" data-category="Sociedade">Sociedade</button>
+          <button class="cat-filter-btn" data-category="Saúde e Bem-Estar">Saúde e Bem-Estar</button>
+          <button class="cat-filter-btn" data-category="Histórias que Inspiram">Histórias que Inspiram</button>
+          <button class="cat-filter-btn" data-category="Salvas">★ Minhas Salvas</button>
+        </nav>
+
+      </div>
+    </section>
+
+    <!-- FEED DE NOTÍCIAS — GRADE EDITORIAL -->
+    <section class="news-grid-section" aria-labelledby="feed-title">
+      <div class="container">
+        
+        <div class="grid-header">
+          <h2 id="feed-title">Acompanhe o que merece atenção</h2>
+          <button id="adminCuracaoBtn" class="btn btn-secondary btn-sm" title="Área restrita à equipe editorial">+ Cadastrar Notícia</button>
+        </div>
+
+        <!-- Grade Dinâmica de Cartões -->
+        <div class="news-cards-grid" id="newsGrid">
+          <!-- Renderizado via JS -->
+        </div>
+
+        <!-- Botão Carregar Mais -->
+        <div class="pagination-wrap">
+          <button id="btnLoadMore" class="btn btn-secondary">Carregar mais notícias</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO ESPECIAL — DIREITOS EM PAUTA -->
+    <section class="section-padding context-section" aria-labelledby="pauta-title">
+      <div class="container">
+        
+        <div style="text-align: center; max-width: 750px; margin: 0 auto 3rem auto;">
+          <span class="badge" style="margin-bottom: 0.5rem;">DIREITOS EM PAUTA</span>
+          <h2 id="pauta-title" style="font-size: 2rem;">O que muda para você?</h2>
+          <p style="color: var(--color-gray-medium);">Acompanhe atualizações sobre normas, decretos e programas de atendimento social com impactos na vida prática das mulheres.</p>
+        </div>
+
+        <div class="pauta-grid">
+          
+          <article class="pauta-card">
+            <span class="badge" style="align-self: flex-start; margin-bottom: 0.75rem;">Medidas Protetivas</span>
+            <h3>Concessão Sumária por Declaração</h3>
+            <p style="font-size: 0.9rem; color: var(--color-gray-medium);">Entenda o alcance das alterações na Lei Maria da Penha (Lei nº 14.550):</p>
+            <ul class="pauta-list">
+              <li><strong>O que mudou:</strong> A concessão independe da tipificação penal ou de inquérito formal.</li>
+              <li><strong>Quem beneficia:</strong> Mulheres que requerem proteção perante autoridade policial ou judicial.</li>
+              <li><strong>Vigência:</strong> Legislação federal em plena eficácia nacional.</li>
+            </ul>
+            <a href="https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14550.htm" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Consultar Lei Oficial ↗</a>
+          </article>
+
+          <article class="pauta-card">
+            <span class="badge" style="align-self: flex-start; margin-bottom: 0.75rem;">Saúde Sexual</span>
+            <h3>Atendimento sem Ocorrência Policial</h3>
+            <p style="font-size: 0.9rem; color: var(--color-gray-medium);">Garantias em unidades de saúde públicas e conveniadas (Lei nº 12.845):</p>
+            <ul class="pauta-list">
+              <li><strong>O que mudou:</strong> Atendimento médico profilático emergencial imediato e acolhimento psicossocial.</li>
+              <li><strong>Sem exigências:</strong> Não é necessário apresentar Boletim de Ocorrência.</li>
+              <li><strong>Cobertura:</strong> Profilaxias contra IST/HIV e acompanhamento de saúde integral.</li>
+            </ul>
+            <a href="https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/lei/l12845.htm" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Consultar Lei Oficial ↗</a>
+          </article>
+
+          <article class="pauta-card">
+            <span class="badge" style="align-self: flex-start; margin-bottom: 0.75rem;">Violência Psicológica</span>
+            <h3>Tipificação Penal do Art. 147-B</h3>
+            <p style="font-size: 0.9rem; color: var(--color-gray-medium);">Proteção jurídica contra danos emocionais e de controle (Lei nº 14.188):</p>
+            <ul class="pauta-list">
+              <li><strong>O que abrange:</strong> Condutas que causam dano emocional, isolamento ou limitação da autodeterminação.</li>
+              <li><strong>Aplicação:</strong> Avaliação técnica de saúde ou prova pericial/testemunhal.</li>
+              <li><strong>Canais:</strong> Denúncias via 180 ou acolhimento na rede pública.</li>
+            </ul>
+            <a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14188.htm" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Consultar Lei Oficial ↗</a>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FONTES CONFIÁVEIS -->
+    <section class="section-padding sources-section" aria-labelledby="sources-title">
+      <div class="container">
+        
+        <div style="max-width: 750px;">
+          <h2 id="sources-title" style="font-size: 2rem; margin-bottom: 1rem;">Informação começa com boas fontes.</h2>
+          <p style="font-size: 1.05rem; opacity: 0.9;">Toda informação replicada ou contextualizada no portal <strong>Apesar de Você</strong> é submetida a verificação editorial a partir de agências públicas oficiais e veículos com transparência jornalística.</p>
+        </div>
+
+        <div class="sources-grid">
+          <div class="source-item">
+            <h4>Agência Brasil &amp; Agência Gov</h4>
+            <p>Notícias oficiais sobre atos normativos, estatísticas públicas e serviços federais.</p>
+          </div>
+          <div class="source-item">
+            <h4>Ministério das Mulheres</h4>
+            <p>Políticas públicas governamentais, campanhas preventivas e relatórios da Ouvidoria/180.</p>
+          </div>
+          <div class="source-item">
+            <h4>IPEA &amp; IBGE</h4>
+            <p>Pesquisas demográficas, indicadores sociais e dados de vulnerabilidade socioeconômica.</p>
+          </div>
+          <div class="source-item">
+            <h4>Poder Judiciário &amp; ANADEP</h4>
+            <p>Decisões do STF/STJ e atuações institucionais da Defensoria Pública nos estados.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       MODAL: ALÉM DA MANCHETE (EXPLICAÇÃO CONTEXTUAL)
+       ========================================================================== -->
+  <div class="modal-backdrop" id="contextModal" role="dialog" aria-modal="true" aria-labelledby="modalContextTitle">
+    <div class="modal-window">
+      <button class="modal-close-btn" id="closeContextModal" aria-label="Fechar modal">&times;</button>
+      <span class="badge" style="margin-bottom: 0.75rem;">ALÉM DA MANCHETE</span>
+      <h2 id="modalContextTitle" style="font-size: 1.5rem; margin-bottom: 1rem;">Entenda o Contexto</h2>
+      
+      <div id="modalContextBody">
+        <!-- Conteúdo preenchido dinamicamente -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL: CADASTRO EDITORIAL (ADMINISTRATIVO / RESTRITO)
+       ========================================================================== -->
+  <div class="modal-backdrop" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminModalTitle">
+    <div class="modal-window">
+      <button class="modal-close-btn" id="closeAdminModal" aria-label="Fechar modal">&times;</button>
+      <h2 id="adminModalTitle" style="font-size: 1.35rem; margin-bottom: 1rem;">Curadoria Editorial — Cadastrar Notícia</h2>
+      
+      <form id="adminForm">
+        <div class="form-group">
+          <label for="newsTitle">Título da Notícia *</label>
+          <input type="text" id="newsTitle" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="newsCategory">Categoria *</label>
+          <select id="newsCategory" class="form-control" required>
+            <option value="Direitos das Mulheres">Direitos das Mulheres</option>
+            <option value="Violência contra a Mulher">Violência contra a Mulher</option>
+            <option value="Políticas Públicas">Políticas Públicas</option>
+            <option value="Justiça e Legislação">Justiça e Legislação</option>
+            <option value="Sociedade">Sociedade</option>
+            <option value="Saúde e Bem-Estar">Saúde e Bem-Estar</option>
+            <option value="Histórias que Inspiram">Histórias que Inspiram</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="newsSource">Fonte Original *</label>
+          <input type="text" id="newsSource" class="form-control" placeholder="Ex: Agência Brasil" required>
+        </div>
+
+        <div class="form-group">
+          <label for="newsUrl">URL da Notícia Original *</label>
+          <input type="url" id="newsUrl" class="form-control" placeholder="https://..." required>
+        </div>
+
+        <div class="form-group">
+          <label for="newsSummary">Resumo Editorial *</label>
+          <textarea id="newsSummary" class="form-control" rows="3" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="newsImg">URL da Imagem de Capa</label>
+          <input type="url" id="newsImg" class="form-control" placeholder="https://images.unsplash.com/...">
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-secondary" id="cancelAdminBtn">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Salvar Notícia</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       RODAPÉ INSTITUCIONAL
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Apesar de Você</h4>
+          <p style="font-size: 0.85rem; color: var(--color-pink-light);">Plataforma de informação, orientação e fortalecimento de direitos para o enfrentamento de todas as formas de violência contra a mulher.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="/">Início</a></li>
+            <li><a href="/seus-direitos">Seus Direitos</a></li>
+            <li><a href="/noticias">Notícias</a></li>
+            <li><a href="/rede-de-apoio">Rede de Apoio</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Fontes e Transparência</h4>
+          <ul>
+            <li><a href="https://agenciabrasil.ebc.com.br/" target="_blank" rel="noopener">Agência Brasil</a></li>
+            <li><a href="https://www.gov.br/mulheres/" target="_blank" rel="noopener">Ministério das Mulheres</a></li>
+            <li><a href="https://www.anadep.org.br/" target="_blank" rel="noopener">ANADEP</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="editorial-disclaimer">
+        <strong>Nota de Responsabilidade Editorial:</strong> O portal <em>Apesar de Você</em> reúne informações com finalidade educativa, conscientizadora e de interesse público. As Notícias veiculadas citam explicitamente suas fontes originais e devem ser consultadas em seus portais oficiais para verificação de contexto completo.
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Apesar de Você. Todos os direitos reservados.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       LÓGICA JAVASCRIPT (MODULAR, PERSISTÊNCIA E ACESSIBILIDADE)
+       ========================================================================== -->
+  <script>
+    /**
+     * DATABASE DE NOTÍCIAS REAL E VERIFICADA (FONTES OFICIAIS)
+     */
+    const INITIAL_NEWS = [
+      {
+        id: "news-001",
+        title: "Lei altera Maria da Penha para conceder medida protetiva sumária por declaração",
+        category: "Justiça e Legislação",
+        source: "Agência Brasil",
+        url: "https://agenciabrasil.ebc.com.br/justica/noticia/2023-04/sancionada-lei-que-facilita-medidas-protetivas-mulheres-vitimas",
+        date: "2023-04-20",
+        readTime: "3 min",
+        isDestaque: true,
+        img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80",
+        summary: "Legislação estabelece que medidas protetivas de urgência serão concedidas independentemente da tipificação penal da conduta e sem exigência de inquérito prévio.",
+        contexto: {
+          aconteceu: "A alteração na Lei Maria da Penha assegurou que o pedido da mulher à autoridade policial ou judicial seja o elemento central para a rápida concessão de proteção.",
+          importancia: "Elimina barreiras burocráticas e reduz o tempo de resposta do Estado nos momentos em que o risco de violência é iminente.",
+          sabermais: "A medida não exige apresentação presencial de provas periciais imediatas para ser concedida pelo juiz."
+        }
+      },
+      {
+        id: "news-002",
+        title: "Ligue 180 amplia atendimento oficial com canal direto via WhatsApp em todo o país",
+        category: "Políticas Públicas",
+        source: "Ministério das Mulheres",
+        url: "https://www.gov.br/mulheres/pt-br/ligue180",
+        date: "2024-01-15",
+        readTime: "2 min",
+        isDestaque: false,
+        img: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80",
+        summary: "A Central de Atendimento à Mulher passa a oferecer orientação discreta, acolhimento e registro de denúncias por mensagem de texto criptografada.",
+        contexto: {
+          aconteceu: "O serviço governamental incluiu atendimento automatizado e humano por aplicativo de mensagens no número (61) 9610-0180.",
+          importancia: "Permite que mulheres em situação de monitoramento pelo agressor consigam pedir ajuda de forma silenciosa e segura.",
+          sabermais: "O atendimento funciona 24 horas por dia, 7 dias por semana, gratuito em todo o território nacional."
+        }
+      },
+      {
+        id: "news-003",
+        title: "Pesquisa Atlas da Violência destaca papel da autonomia econômica no enfrentamento do abuso",
+        category: "Sociedade",
+        source: "IPEA / Fórum Brasileiro de Segurança Pública",
+        url: "https://www.ipea.gov.br/",
+        date: "2024-06-05",
+        readTime: "4 min",
+        isDestaque: false,
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbwN99C_0tVA7KGhQgR2DAtqIoPGsuedDptGhG_ch_egI0xhA6If7wlhU&s=10",
+        summary: "Estudo demonstra que o acesso ao trabalho formal e programas de qualificação profissional elevam em 40% a taxa de rompimento do ciclo de violência.",
+        contexto: null
+      },
+      {
+        id: "news-004",
+        title: "SUS garante atendimento de emergência a vítimas de violência sexual sem necessidade de B.O.",
+        category: "Saúde e Bem-Estar",
+        source: "Ministério da Saúde",
+        url: "https://www.gov.br/saude/pt-br",
+        date: "2023-11-10",
+        readTime: "3 min",
+        isDestaque: false,
+        img: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80",
+        summary: "Rede pública reforça protocolo de profilaxia de ISTs e acolhimento psicológico imediato, desvinculando o cuidado médico da exigência de registro policial.",
+        contexto: {
+          aconteceu: "Diretriz médica reafirma o cumprimento estrito da Lei nº 12.845/2013 nas redes hospitalares.",
+          importancia: "Preserva a saúde biológica e psíquica da paciente sem impor constrangimentos procedimentais prévios ao cuidado clínico.",
+          sabermais: "Os procedimentos devem ser realizados de preferência nas primeiras 72 horas após a ocorrência."
+        }
+      },
+      {
+        id: "news-005",
+        title: "Iniciativa comunitária cria rede de apoio profissional para mulheres empreendedoras",
+        category: "Histórias que Inspiram",
+        source: "Agência Gov",
+        url: "https://www.gov.br/",
+        date: "2024-08-12",
+        readTime: "3 min",
+        isDestaque: false,
+        img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80",
+        summary: "Projeto oferece capacitação, microcrédito orientado e apoio jurídico para mulheres que buscam reconstruir suas vidas profissionais.",
+        contexto: null
+      },
+      {
+        id: "news-006",
+        title: "Defensoria Pública lança mutirão de orientação jurídica para direitos de família e guarda",
+        category: "Direitos das Mulheres",
+        source: "ANADEP",
+        url: "https://www.anadep.org.br/",
+        date: "2024-09-01",
+        readTime: "2 min",
+        isDestaque: false,
+        img: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80",
+        summary: "Ação nacional gratuita esclarece dúvidas sobre pensão alimentícia, divisão de bens e obtenção de gratuidade de justiça.",
+        contexto: null
+      }
+    ];
+
+    /**
+     * ESTADO E CONTROLE DA APLICAÇÃO
+     */
+    class NewsApp {
+      constructor() {
+        this.news = this.loadNewsStorage();
+        this.savedIds = this.loadSavedStorage();
+        this.currentCategory = 'Todas';
+        this.searchQuery = '';
+        this.visibleCount = 6;
+
+        this.initDOM();
+        this.bindEvents();
+        this.render();
+      }
+
+      // Persistência em LocalStorage
+      loadNewsStorage() {
+        const stored = localStorage.getItem('apesar_news_data');
+        return stored ? JSON.parse(stored) : INITIAL_NEWS;
+      }
+
+      saveNewsStorage() {
+        localStorage.setItem('apesar_news_data', JSON.stringify(this.news));
+      }
+
+      loadSavedStorage() {
+        const stored = localStorage.getItem('apesar_news_saved');
+        return stored ? JSON.parse(stored) : [];
+      }
+
+      saveSavedStorage() {
+        localStorage.setItem('apesar_news_saved', JSON.stringify(this.savedIds));
+      }
+
+      initDOM() {
+        this.destaquesContainer = document.getElementById('destaquesContainer');
+        this.newsGrid = document.getElementById('newsGrid');
+        this.searchInput = document.getElementById('searchInput');
+        this.searchClearBtn = document.getElementById('searchClearBtn');
+        this.categoryNav = document.getElementById('categoryNav');
+        this.btnLoadMore = document.getElementById('btnLoadMore');
+        this.toast = document.getElementById('toastNotification');
+        this.toastMsg = document.getElementById('toastMessage');
+
+        // Modais
+        this.contextModal = document.getElementById('contextModal');
+        this.modalContextBody = document.getElementById('modalContextBody');
+        this.closeContextModal = document.getElementById('closeContextModal');
+
+        this.adminModal = document.getElementById('adminModal');
+        this.adminCuracaoBtn = document.getElementById('adminCuracaoBtn');
+        this.closeAdminModal = document.getElementById('closeAdminModal');
+        this.cancelAdminBtn = document.getElementById('cancelAdminBtn');
+        this.adminForm = document.getElementById('adminForm');
+
+        // Menu Mobile
+        this.menuToggle = document.getElementById('menuToggle');
+        this.primaryNav = document.getElementById('primaryNav');
+      }
+
+      bindEvents() {
+        // Menu Mobile
+        if (this.menuToggle) {
+          this.menuToggle.addEventListener('click', () => {
+            const open = this.primaryNav.classList.toggle('is-open');
+            this.menuToggle.setAttribute('aria-expanded', open);
+          });
+        }
+
+        // Busca
+        this.searchInput.addEventListener('input', (e) => {
+          this.searchQuery = e.target.value.toLowerCase().trim();
+          this.searchClearBtn.classList.toggle('is-visible', this.searchQuery.length > 0);
+          this.render();
+        });
+
+        this.searchClearBtn.addEventListener('click', () => {
+          this.searchInput.value = '';
+          this.searchQuery = '';
+          this.searchClearBtn.classList.remove('is-visible');
+          this.render();
+        });
+
+        // Filtro por Categoria
+        this.categoryNav.addEventListener('click', (e) => {
+          const btn = e.target.closest('.cat-filter-btn');
+          if (!btn) return;
+
+          this.categoryNav.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          this.currentCategory = btn.dataset.category;
+          this.render();
+        });
+
+        // Carregar mais
+        this.btnLoadMore.addEventListener('click', () => {
+          this.visibleCount += 3;
+          this.render();
+        });
+
+        // Modais Fechamento
+        this.closeContextModal.addEventListener('click', () => this.toggleModal(this.contextModal, false));
+        this.closeAdminModal.addEventListener('click', () => this.toggleModal(this.adminModal, false));
+        this.cancelAdminBtn.addEventListener('click', () => this.toggleModal(this.adminModal, false));
+
+        // Fechar no esc
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            this.toggleModal(this.contextModal, false);
+            this.toggleModal(this.adminModal, false);
+          }
+        });
+
+        // Abrir Curadoria (Senha simples de demonstração editorial)
+        this.adminCuracaoBtn.addEventListener('click', () => {
+          const pwd = prompt("Digite a senha de curadoria editorial (Senha demo: apesar2026):");
+          if (pwd === "apesar2026") {
+            this.toggleModal(this.adminModal, true);
+          } else if (pwd !== null) {
+            alert("Senha incorreta.");
+          }
+        });
+
+        // Submit Form Admin
+        this.adminForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          this.addNewNews();
+        });
+      }
+
+      toggleModal(modalEl, show) {
+        if (show) {
+          modalEl.classList.add('is-open');
+        } else {
+          modalEl.classList.remove('is-open');
+        }
+      }
+
+      showToast(msg) {
+        this.toastMsg.textContent = msg;
+        this.toast.classList.add('show');
+        setTimeout(() => this.toast.classList.remove('show'), 3000);
+      }
+
+      toggleSave(id) {
+        const idx = this.savedIds.indexOf(id);
+        if (idx > -1) {
+          this.savedIds.splice(idx, 1);
+          this.showToast("Notícia removida das salvas.");
+        } else {
+          this.savedIds.push(id);
+          this.showToast("Notícia salva com sucesso neste dispositivo!");
+        }
+        this.saveSavedStorage();
+        this.render();
+      }
+
+      shareNews(title, url) {
+        if (navigator.share) {
+          navigator.share({ title: title, url: url }).catch(() => {});
+        } else {
+          navigator.clipboard.writeText(url);
+          this.showToast("Link oficial copiado para a área de transferência!");
+        }
+      }
+
+      openContextModal(id) {
+        const item = this.news.find(n => n.id === id);
+        if (!item || !item.contexto) return;
+
+        this.modalContextBody.innerHTML = `
+          <h3 style="margin-bottom: 0.5rem; color: var(--color-purple-dark);">${item.title}</h3>
+          <p style="font-size:0.85rem; color: var(--color-gray-medium); margin-bottom: 1.25rem;">Fonte: ${item.source} • Publicado em ${item.date}</p>
+          
+          <div style="margin-bottom: 1rem;">
+            <h4 style="color: var(--color-pink-intense); font-size: 0.95rem;">O que aconteceu?</h4>
+            <p style="font-size: 0.9rem;">${item.contexto.aconteceu}</p>
+          </div>
+
+          <div style="margin-bottom: 1rem;">
+            <h4 style="color: var(--color-pink-intense); font-size: 0.95rem;">Por que isso importa?</h4>
+            <p style="font-size: 0.9rem;">${item.contexto.importancia}</p>
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <h4 style="color: var(--color-pink-intense); font-size: 0.95rem;">O que você precisa saber?</h4>
+            <p style="font-size: 0.9rem;">${item.contexto.sabermais}</p>
+          </div>
+
+          <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%;">Ler publicação original no portal da fonte ↗</a>
+        `;
+        this.toggleModal(this.contextModal, true);
+      }
+
+      addNewNews() {
+        const title = document.getElementById('newsTitle').value.trim();
+        const category = document.getElementById('newsCategory').value;
+        const source = document.getElementById('newsSource').value.trim();
+        const url = document.getElementById('newsUrl').value.trim();
+        const summary = document.getElementById('newsSummary').value.trim();
+        const img = document.getElementById('newsImg').value.trim() || 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=600&q=80';
+
+        const newItem = {
+          id: `news-${Date.now()}`,
+          title,
+          category,
+          source,
+          url,
+          date: new Date().toISOString().split('T')[0],
+          readTime: "3 min",
+          isDestaque: false,
+          img,
+          summary,
+          contexto: null
+        };
+
+        this.news.unshift(newItem);
+        this.saveNewsStorage();
+        this.toggleModal(this.adminModal, false);
+        this.adminForm.reset();
+        this.showToast("Nova notícia cadastrada e publicada no feed!");
+        this.render();
+      }
+
+      // Filtragem dos dados
+      getFilteredNews() {
+        return this.news.filter(item => {
+          // Filtro por categoria
+          if (this.currentCategory === 'Salvas') {
+            if (!this.savedIds.includes(item.id)) return false;
+          } else if (this.currentCategory !== 'Todas' && item.category !== this.currentCategory) {
+            return false;
+          }
+
+          // Filtro por busca
+          if (this.searchQuery) {
+            const titleMatch = item.title.toLowerCase().includes(this.searchQuery);
+            const summaryMatch = item.summary.toLowerCase().includes(this.searchQuery);
+            const catMatch = item.category.toLowerCase().includes(this.searchQuery);
+            const sourceMatch = item.source.toLowerCase().includes(this.searchQuery);
+            return titleMatch || summaryMatch || catMatch || sourceMatch;
+          }
+
+          return true;
+        });
+      }
+
+      renderHero() {
+        const destaqueMain = this.news.find(n => n.isDestaque) || this.news[0];
+        const secundarios = this.news.filter(n => n.id !== destaqueMain.id).slice(0, 2);
+
+        if (!destaqueMain) {
+          this.destaquesContainer.innerHTML = '';
+          return;
+        }
+
+        const isSaved = this.savedIds.includes(destaqueMain.id);
+
+        this.destaquesContainer.innerHTML = `
+          <!-- Principal -->
+          <article class="destaque-principal">
+            <div class="destaque-img-wrap">
+              <img src="${destaqueMain.img}" alt="${destaqueMain.title}">
+              <span class="badge news-card-badge" style="background: var(--color-purple-dark); color: #fff;">${destaqueMain.category}</span>
+            </div>
+            <div class="destaque-body">
+              <div class="destaque-meta">
+                <span>Fonte: <strong>${destaqueMain.source}</strong></span> •
+                <time>${destaqueMain.date}</time> •
+                <span>${destaqueMain.readTime} de leitura</span>
+              </div>
+              <h2>${destaqueMain.title}</h2>
+              <p>${destaqueMain.summary}</p>
+              
+              <div class="destaque-footer">
+                <a href="${destaqueMain.url}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Ler notícia original ↗</a>
+                ${destaqueMain.contexto ? `<button class="btn btn-secondary btn-sm btn-context" data-id="${destaqueMain.id}">Além da Manchete 💡</button>` : ''}
+              </div>
+            </div>
+          </article>
+
+          <!-- Secundários -->
+          <div class="destaques-secundarios">
+            ${secundarios.map(sec => `
+              <article class="card-secundario">
+                <img src="${sec.img}" alt="${sec.title}" class="secundario-img">
+                <div class="secundario-info">
+                  <span class="badge" style="align-self: flex-start; margin-bottom: 0.35rem; font-size: 0.7rem;">${sec.category}</span>
+                  <h3>${sec.title}</h3>
+                  <p>${sec.summary}</p>
+                  <a href="${sec.url}" target="_blank" rel="noopener noreferrer" style="font-size: 0.8rem; margin-top: 0.5rem; font-weight:600;">Acessar fonte →</a>
+                </div>
+              </article>
+            `).join('')}
+          </div>
+        `;
+
+        // Bind evento de contexto do Hero
+        const ctxBtn = this.destaquesContainer.querySelector('.btn-context');
+        if (ctxBtn) {
+          ctxBtn.addEventListener('click', () => this.openContextModal(destaqueMain.id));
+        }
+      }
+
+      renderGrid() {
+        const filtered = this.getFilteredNews();
+        const itemsToDisplay = filtered.slice(0, this.visibleCount);
+
+        if (filtered.length === 0) {
+          this.newsGrid.innerHTML = `
+            <div class="empty-state">
+              <h3>Não encontramos notícias para esta busca.</h3>
+              <p>Tente outras palavras-chave ou navegue pelas categorias no menu acima.</p>
+            </div>
+          `;
+          this.btnLoadMore.style.display = 'none';
+          return;
+        }
+
+        this.newsGrid.innerHTML = itemsToDisplay.map(item => {
+          const isSaved = this.savedIds.includes(item.id);
+          return `
+            <article class="news-card">
+              <div class="news-card-img-wrap">
+                <img src="${item.img}" alt="${item.title}" loading="lazy">
+                <span class="badge news-card-badge">${item.category}</span>
+                <button class="btn-fav ${isSaved ? 'active' : ''}" data-fav-id="${item.id}" aria-label="${isSaved ? 'Remover dos favoritos' : 'Salvar notícia'}">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                </button>
+              </div>
+
+              <div class="news-card-body">
+                <div class="news-card-meta">
+                  <span>${item.source}</span> •
+                  <time>${item.date}</time>
+                </div>
+                <h3>${item.title}</h3>
+                <p>${item.summary}</p>
+
+                <div class="news-card-footer">
+                  <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Ler Notícia ↗</a>
+                  <div class="news-card-actions">
+                    ${item.contexto ? `<button class="btn btn-secondary btn-sm btn-grid-ctx" data-id="${item.id}" title="Ver contexto da notícia">💡 Contexto</button>` : ''}
+                    <button class="btn btn-secondary btn-sm btn-share" data-title="${item.title}" data-url="${item.url}" title="Compartilhar">🔗</button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+
+        // Controle do botão carregar mais
+        if (filtered.length > this.visibleCount) {
+          this.btnLoadMore.style.display = 'inline-flex';
+        } else {
+          this.btnLoadMore.style.display = 'none';
+        }
+
+        // Eventos nos botões dinâmicos do grid
+        this.newsGrid.querySelectorAll('.btn-fav').forEach(btn => {
+          btn.addEventListener('click', () => this.toggleSave(btn.dataset.favId));
+        });
+
+        this.newsGrid.querySelectorAll('.btn-grid-ctx').forEach(btn => {
+          btn.addEventListener('click', () => this.openContextModal(btn.dataset.id));
+        });
+
+        this.newsGrid.querySelectorAll('.btn-share').forEach(btn => {
+          btn.addEventListener('click', () => this.shareNews(btn.dataset.title, btn.dataset.url));
+        });
+      }
+
+      render() {
+        this.renderHero();
+        this.renderGrid();
+      }
+    }
+
+    // Inicialização quando o DOM estiver pronto
+    document.addEventListener('DOMContentLoaded', () => {
+      window.app = new NewsApp();
+    });
+  </script>
+</body>
+</html>

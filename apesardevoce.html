@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apesar de VOCÊ</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="icon" type="image/png" href="/imagens/logosite.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            purple: '#2b035c',
+                            carmine: '#e6205d',
+                            carmineDark: '#c2003b',
+                            roseSoft: '#fdf6f7',
+                            offWhite: '#fcf8f8',
+                            dark: '#2c2c2c',
+                            graySub: '#666666'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>body {
+    font-family: 'Inter', sans-serif;
+    color: #2c2c2c;
+    background-color: #fcf8f8;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   ESTRUTURA DA LINHA DO TEMPO (HISTÓRIA)
+   ========================================================================== */
+.timeline-wrapper {
+    position: relative;
+}
+
+/* Linha Contínua Vertical - Posicionada na coluna da bolinha */
+.timeline-line {
+    position: absolute;
+    top: 24px;
+    bottom: 24px;
+    left: 20px; /* Alinhada na coluna mobile */
+    width: 2px;
+    background-color: #e6205d;
+    z-index: 1;
+}
+
+@media (min-width: 640px) {
+    .timeline-line {
+        left: 110px; /* Alinhada exatamente entre o Ano (100px) e o Card */
+    }
+}
+
+/* Item da Timeline */
+.timeline-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+@media (min-width: 640px) {
+    .timeline-item {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 0;
+    }
+}
+
+/* Coluna 1: Ano */
+.timeline-year-col {
+    display: flex;
+    align-items: center;
+    padding-left: 45px;
+}
+
+@media (min-width: 640px) {
+    .timeline-year-col {
+        width: 100px;
+        min-width: 100px;
+        padding-left: 0;
+        justify-content: flex-end;
+        padding-right: 15px;
+        padding-top: 18px;
+    }
+}
+
+.timeline-year-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 9999px;
+    background-color: #ffffff;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #2b035c;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    border: 1px solid rgba(230, 32, 93, 0.15);
+}
+
+/* Coluna 2: Bolinha (Intersecção com a Linha) */
+.timeline-dot-col {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 42px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+}
+
+@media (min-width: 640px) {
+    .timeline-dot-col {
+        position: relative;
+        width: 22px;
+        min-width: 22px;
+        height: auto;
+        padding-top: 24px;
+    }
+}
+
+.timeline-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid #e6205d;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    background-color: #e6205d;
+    box-shadow: 0 0 0 6px rgba(230, 32, 93, 0.2);
+    transform: scale(1.1);
+}
+
+/* Coluna 3: Conteúdo do Card */
+.timeline-card-col {
+    flex: 1;
+    padding-left: 45px;
+}
+
+@media (min-width: 640px) {
+    .timeline-card-col {
+        padding-left: 20px;
+    }
+}
+
+.timeline-card-content {
+    background-color: #ffffff;
+    padding: 24px 28px;
+    border-radius: 16px;
+    border: 1px solid rgba(230, 32, 93, 0.12);
+    box-shadow: 0 4px 15px rgba(43, 3, 92, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-item:hover .timeline-card-content {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(43, 3, 92, 0.08);
+}
+
+/* ==========================================================================
+   OUTROS ESTILOS DA PÁGINA
+   ========================================================================== */
+.dot-bg-1 {
+    background-image: radial-gradient(#e6205d 10%, transparent 10%);
+    background-size: 20px 20px;
+    opacity: 0.12;
+}
+
+.value-card {
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.value-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px -10px rgba(43, 3, 92, 0.12);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+ </style>
+
+</head>
+<body>
+    <!-- Faixa colorida superior -->
+    <div class="top-bar">
+        <div class="bar-carmin"></div>
+    </div>
+
+    <!-- NAVBAR NATIVA -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <img src="/imagens/logosite.png" alt="Logo Apesar de Você" class="brand-logo">
+            <div class="brand-text">
+                <h1>Apesar de VOCÊ</h1>
+                <span>Amanhã será um novo dia.</span>
+            </div>
+        </a>
+
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link active">INÍCIO</a></li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">SOBRE NÓS <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="apesardevoce.html">SOBRE O PROJETO</a></li>
+                    <li><a href="como-atuamos.html">COMO ATUAMOS</a></li>
+                    <li><a href="nossa-missao.html">NOSSA MISSÃO</a></li>
+                    <li><a href="contato.html">CONTATO</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">ENTENDA A VIOLÊNCIA <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="entenda-a-violencia.html">TIPOS DE VIOLÊNCIA</a></li>
+                    <li><a href="sinais.html">RECONHEÇA OS SINAIS</a></li>
+                    <li><a href="ciclo.html">CICLO DA VIOLÊNCIA</a></li>
+                    <li><a href="direitos.html">SEUS DIREITOS</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item"><a href="comunidade.html" class="nav-link">COMUNIDADE</a></li>
+            <li class="nav-item"><a href="https://apesardvoce.substack.com" class="nav-link">NOTÍCIAS</a></li>
+            <li class="nav-item"><a href="cadastro.html" class="nav-link">CADASTRE-SE</a></li>
+        </ul>
+
+        <div class="nav-actions-wrapper">
+            <a href="https://www.youtube.com" class="btn-inscricao">SAÍDA RAPIDA</a>
+
+                <div class="nav-actions-wrapper">
+            <a href="denuncie.html" class="btn-inscricao">DENUNCIE</a>
+            <button class="menu-toggle" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main>
+
+        <!-- SEÇÃO 1: APRESENTAÇÃO INSTITUCIONAL (GRID 2 COLUNAS - ESTILO CASAGRANDE) -->
+        <section id="apresentacao" class="relative py-20 lg:py-28 bg-brand-offWhite overflow-hidden">
+            <!-- Partículas decorativas sutis -->
+            <div class="absolute inset-0 dot-bg-1 pointer-events-none"></div>
+            <div class="absolute top-10 right-10 w-64 h-64 bg-brand-carmine/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 left-10 w-80 h-80 bg-brand-purple/5 rounded-full blur-3xl"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                    
+                    <!-- Coluna Esquerda: Título Principal em Destaque -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-brand-carmine bg-brand-carmine/10">
+                            Institucional & Acolhimento
+                        </span>
+                        <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-purple leading-tight">
+                            Conheça mais sobre o projeto <span class="text-brand-carmine">Apesar de Você</span>
+                        </h1>
+                        <div class="w-20 h-1.5 bg-brand-carmine rounded-full"></div>
+                    </div>
+
+                    <!-- Coluna Direita: Textos Descritivos Estruturados -->
+                    <div class="lg:col-span-7 space-y-6 text-brand-dark/90 text-base sm:text-lg leading-relaxed font-normal">
+                        <p class="font-medium text-brand-purple text-lg sm:text-xl">
+                            O <strong>Apesar de Você</strong> é uma iniciativa independente e comprometida com a defesa irrestrita dos direitos das mulheres, o acolhimento seguro e a disseminação de dados e informação de impacto social no Brasil.
+                        </p>
+                        <p>
+                            Com uma comunidade engajada e em expansão contínua, unimos jornalismo independente, suporte jurídico e redes de apoio comunitário para dar visibilidade a causas urgentes e combater a violência de gênero com responsabilidade e acolhimento.
+                        </p>
+                        <p>
+                            Continuamos avançando no desenvolvimento de ferramentas acessíveis, canais de denúncia, reportagens investigativas e espaços seguros que fortalecem a autonomia de milhares de pessoas em todo o país.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+     <!-- SEÇÃO 2: NOSSA HISTÓRIA / TIMELINE VERTICAL CONTÍNUA -->
+<section id="historia" class="py-24 bg-brand-roseSoft relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            
+            <!-- Lado Esquerdo Fixado / Cabeçalho da História -->
+            <div class="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
+                <span class="px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-brand-purple bg-brand-purple/10">
+                    Nossa Trajetória
+                </span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-purple">
+                    Nossa História
+                </h2>
+                <p class="text-brand-dark/80 text-base leading-relaxed">
+                    Uma jornada que nasceu da necessidade urgente de criar pontes de acolhimento, dar voz a quem precisa e enfrentar estruturas de violência com dados, verdade e solidariedade. Entenda como nos tornamos uma rede de referência.
+                </p>
+                
+                <div class="pt-2">
+                    <a href="#contato" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white bg-brand-purple hover:bg-brand-carmine transition-all shadow-md">
+                        <span>Fale com o Apoio</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Lado Direito: Linha do Tempo Unificada -->
+            <div class="lg:col-span-8 relative timeline-wrapper">
+                
+                <!-- Linha Conectora Contínua -->
+                <div class="timeline-line"></div>
+
+                <!-- Lista de Itens -->
+                <div class="space-y-12">
+                    
+                    <!-- Marco 1: 2020 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year-col">
+                            <span class="timeline-year-badge">2020</span>
+                        </div>
+                        <div class="timeline-dot-col">
+                            <div class="timeline-dot"></div>
+                        </div>
+                        <div class="timeline-card-col">
+                            <div class="timeline-card-content">
+                                <h3 class="font-serif text-xl sm:text-2xl font-bold text-brand-purple">
+                                    A Semente da Mudança
+                                </h3>
+                                <p class="text-brand-dark/80 leading-relaxed text-sm sm:text-base">
+                                    Tudo começou no auge do isolamento social, quando os índices de violência doméstica dispararam. Um grupo de jornalistas, advogadas e psicólogas uniu forças para criar o primeiro canal de apoio informativo digital e seguro.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Marco 2: 2021 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year-col">
+                            <span class="timeline-year-badge">2021</span>
+                        </div>
+                        <div class="timeline-dot-col">
+                            <div class="timeline-dot"></div>
+                        </div>
+                        <div class="timeline-card-col">
+                            <div class="timeline-card-content">
+                                <h3 class="font-serif text-xl sm:text-2xl font-bold text-brand-purple">
+                                    Expandindo Horizontes
+                                </h3>
+                                <p class="text-brand-dark/80 leading-relaxed text-sm sm:text-base">
+                                    Com o aumento das demandas, ampliamos a rede para cobrir também a assessoria jurídica gratuita e o mapeamento nacional de abrigos de proteção. Lançamos a plataforma interativa de relatórios de dados de gênero.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Marco 3: 2023 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year-col">
+                            <span class="timeline-year-badge">2023</span>
+                        </div>
+                        <div class="timeline-dot-col">
+                            <div class="timeline-dot"></div>
+                        </div>
+                        <div class="timeline-card-col">
+                            <div class="timeline-card-content">
+                                <h3 class="font-serif text-xl sm:text-2xl font-bold text-brand-purple">
+                                    O Reconhecimento e Consolidação
+                                </h3>
+                                <p class="text-brand-dark/80 leading-relaxed text-sm sm:text-base">
+                                    Fortalecemos nossas publicações no Substack e redes de transmissão, alcançando mais de 100 mil leitoras e apoiadores mensais. Firmamos parcerias com coletivos regionais de direitos humanos em todo o Brasil.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Marco 4: 2026 -->
+                    <div class="timeline-item">
+                        <div class="timeline-year-col">
+                            <span class="timeline-year-badge">2026</span>
+                        </div>
+                        <div class="timeline-dot-col">
+                            <div class="timeline-dot"></div>
+                        </div>
+                        <div class="timeline-card-col">
+                            <div class="timeline-card-content">
+                                <h3 class="font-serif text-xl sm:text-2xl font-bold text-brand-purple">
+                                    Novas Tecnologias e Acolhimento Vivo
+                                </h3>
+                                <p class="text-brand-dark/80 leading-relaxed text-sm sm:text-base">
+                                    Celebramos a consolidação da nossa plataforma unificada, agregando ecossistemas de informação, guias práticos de autodefesa e apoio psicológico continuado. Uma história construída para garantir futuro e dignidade.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+        <!-- SEÇÃO 3: NOSSOS VALORES PRIMORDIAIS (GRID DE CARDS COM ÍCONES) -->
+        <section id="valores" class="py-24 bg-white relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Cabeçalho de Valores -->
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <span class="px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-brand-carmine bg-brand-carmine/10">
+                        Pilares do Projeto
+                    </span>
+                    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-purple">
+                        Nossos Valores Primordiais
+                    </h2>
+                    <p class="text-brand-dark/70 text-base sm:text-lg">
+                        Princípios inegociáveis que norteiam todas as nossas ações, publicações, redes de acolhimento e orientações jurídicas.
+                    </p>
+                </div>
+
+                <!-- Grid de Valores (Estilo Layout Casagrande com Cores do Sistema) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Valor 1 -->
+                    <div class="value-card bg-brand-roseSoft p-8 rounded-2xl border border-brand-carmine/10 space-y-5">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-carmine/10 flex items-center justify-center text-brand-carmine text-2xl">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-brand-purple">
+                            Acolhimento Humanizado
+                        </h3>
+                        <p class="text-brand-dark/80 text-sm sm:text-base leading-relaxed">
+                            Priorizamos a escuta sem julgamentos, garantindo sigilo absoluto e criando ambientes seguros para que cada mulher exercite sua voz e decisões.
+                        </p>
+                    </div>
+
+                    <!-- Valor 2 -->
+                    <div class="value-card bg-brand-roseSoft p-8 rounded-2xl border border-brand-carmine/10 space-y-5">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-purple/10 flex items-center justify-center text-brand-purple text-2xl">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-brand-purple">
+                            Equidade e Justiça
+                        </h3>
+                        <p class="text-brand-dark/80 text-sm sm:text-base leading-relaxed">
+                            Comprometemo-nos com a promoção da igualdade real de direitos, assegurando orientação jurídica clara e acesso simplificado a leis protetivas.
+                        </p>
+                    </div>
+
+                    <!-- Valor 3 -->
+                    <div class="value-card bg-brand-roseSoft p-8 rounded-2xl border border-brand-carmine/10 space-y-5">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-carmine/10 flex items-center justify-center text-brand-carmine text-2xl">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-brand-purple">
+                            Ética e Transparência
+                        </h3>
+                        <p class="text-brand-dark/80 text-sm sm:text-base leading-relaxed">
+                            Atuamos com rigor técnico em relatórios e dados públicos, mantendo elevados padrões de honestidade e compromisso com a verdade factual.
+                        </p>
+                    </div>
+
+                    <!-- Valor 4 -->
+                    <div class="value-card bg-brand-roseSoft p-8 rounded-2xl border border-brand-carmine/10 space-y-5">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-purple/10 flex items-center justify-center text-brand-purple text-2xl">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-brand-purple">
+                            Respeito à Diversidade
+                        </h3>
+                        <p class="text-brand-dark/80 text-sm sm:text-base leading-relaxed">
+                            Reconhecemos e abraçamos a pluralidade de raça, orientação sexual e identidade de gênero, assegurando que nossas ações contemplem todas as mulheres.
+                        </p>
+                    </div>
+
+                    <!-- Valor 5 -->
+                    <div class="value-card bg-brand-roseSoft p-8 rounded-2xl border border-brand-carmine/10 space-y-5">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-carmine/10 flex items-center justify-center text-brand-carmine text-2xl">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-brand-purple">
+                            Autonomia e Informação
+                        </h3>
+                        <p class="text-brand-dark/80 text-sm sm:text-base leading-relaxed">
+                            Acreditamos no poder transformador do conhecimento. Munimos nossas leitoras com dados e guias para tomadas de decisão conscientes.
+                        </p>
+                    </div>
+
+                    <!-- Valor 6 -->
+                    <div class="value-card bg-brand-roseSoft p-8 rounded-2xl border border-brand-carmine/10 space-y-5">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-purple/10 flex items-center justify-center text-brand-purple text-2xl">
+                            <i class="fa-solid fa-hands-holding-child"></i>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-brand-purple">
+                            Solidariedade Ativa
+                        </h3>
+                        <p class="text-brand-dark/80 text-sm sm:text-base leading-relaxed">
+                            Construímos redes vivas de cooperação entre coletivos, advogadas, psicólogas e voluntárias para fortalecer o apoio comunitário contínuo.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO CTA / BANNER DE IMPACTO -->
+        <section id="impacto" class="py-20 bg-gradient-to-br from-brand-purple to-brand-carmine text-white relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold max-w-3xl mx-auto leading-tight">
+                    Juntas, transformamos o medo em conhecimento e segurança.
+                </h2>
+                <p class="text-white/90 text-lg max-w-2xl mx-auto leading-relaxed">
+                    Acompanhe nossas análises diárias, relatórios sobre violência de gênero e diretrizes de apoio no Substack e redes parceiras.
+                </p>
+                <div class="pt-4 flex flex-wrap justify-center gap-4">
+                    <a href="https://apesardvoce.substack.com" target="_blank" rel="noopener" class="px-8 py-4 rounded-full bg-white text-brand-purple hover:bg-brand-roseSoft font-bold shadow-xl transition-all transform hover:-translate-y-1">
+                        Acessar Canal no Substack <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                    </a>
+                    <a href="#contato" class="px-8 py-4 rounded-full bg-transparent border-2 border-white/80 hover:border-white text-white font-bold transition-all">
+                        Canais de Emergência
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+   <!-- FOOTER INSTITUCIONAL -->
+    <footer class="main-footer" id="contato">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="/imagens/logosite.png" alt="Apesar de VOCÊ" class="footer-logo">
+                <div class="footer-brand-text">
+                    <h2>Apesar de VOCÊ</h2>
+                    <span>Central de Apoio e Prevenção Contra a Violência à Mulher</span>
+                </div>
+            </div>
+
+            <div class="footer-info">
+                <p><strong>Aviso de Emergência:</strong> Este portal tem caráter informativo, de acolhimento e
+                    denunciação.
+                    Mas <strong>não substitui</strong> os órgãos oficiais de segurança, saúde e justiça.</p>
+            </div>
+
+            <div class="footer-contact">
+                <h4>CONTATO COM A EQUIPE</h4>
+                <a href="mailto:apesardevocecontato@gmail.com">apesardevocecontato@gmail.com</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 Apesar de VOCÊ. <br> Todos os direitos reservados.</p>
+            <p> Conteúdo baseado na Lei Maria da Penha e
+                em dados do Fórum Brasileiro de Segurança Pública.</p>
+        </div>
+    </footer>
+
+        </div>
+    </footer>
+
+    <script>
+        // Interatividade do Menu Mobile
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+    </script>
+</body>
+</html>

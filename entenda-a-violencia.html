@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entenda a Violência & Sinalômetro - Apesar de VOCÊ</title>
+    <link rel="icon" type="image/png" href="/imagens/logosite.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            purple: '#2b035c',
+                            purpleLight: '#3d0980',
+                            carmine: '#e6205d',
+                            carmineDark: '#c2003b',
+                            roseSoft: '#fdf6f7',
+                            offWhite: '#fcf8f8',
+                            dark: '#1f1f1f',
+                            graySub: '#666666'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+
+        /* ==========================================================================
+   FAIXA SUPERIOR & NAVBAR NATIVA (COM DROPDOWNS)
+   ========================================================================== */
+.top-bar {
+  height: 5px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1002;
+  background-color: #e6205d;
+}
+
+.bar-carmin {
+  width: 100%;
+  height: 100%;
+  background-color: #2b035c;
+}
+
+.navbar {
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 8%;
+  border-bottom: 1px solid #eaeaea;
+  position: fixed;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+  box-shadow: 0 2px 10px rgba(43, 3, 92, 0.03);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+/* LOGO NAVBAR */
+.brand-logo {
+  width: 62px;
+  height: auto;
+}
+
+.brand-text h1 {
+  font-size: 20px;
+  color: #e6205d;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.brand-text span {
+  font-size: 11px;
+  color: #7c7b7b;
+  font-style: italic;
+}
+
+/* Menu Principal e Submenus (Dropdown) */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #4a4a4a;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+}
+
+.nav-link .arrow {
+  font-size: 9px;
+  transition: transform 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #e6205d;
+}
+
+/* Estilo do Dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  list-style: none;
+  min-width: 220px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 1010;
+}
+
+.nav-item:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-item:hover .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 20px;
+  color: #4a4a4a;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-menu li a:hover {
+  background: #fdf6f7;
+  color: #e4205c;
+}
+
+.nav-actions-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-inscricao,
+.btn-denuncia {
+  background-color: #2b035c;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease;
+}
+
+.btn-inscricao:hover,
+.btn-denuncia:hover {
+  background-color: #e6205d;
+}
+
+        .custom-checkbox:checked {
+            background-color: #e6205d;
+            border-color: #e6205d;
+        }
+        /* Efeito de transição suave do modal */
+        #detailModal {
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+        #detailModal.hidden-modal {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        #detailModal.visible-modal {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        /* ==========================================================================
+   FOOTER INSTITUCIONAL
+   ========================================================================== */
+.main-footer {
+  background: #faf2f7;
+  color: #4a4a4a;
+  padding: 50px 8% 25px 8%;
+  border-top: 1px solid #f0e0e6;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  border-bottom: 1px solid #e0d0d8;
+  padding-bottom: 30px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-logo {
+  width: 48px;
+  height: auto;
+}
+
+.footer-brand-text h2 {
+  font-size: 20px;
+  color: #e6205d;
+}
+
+.footer-brand-text span {
+  font-size: 12px;
+  color: #666666;
+}
+
+.footer-info {
+  max-width: 450px;
+  font-size: 13px;
+  color: #555555;
+}
+
+.footer-contact h4 {
+  font-size: 12px;
+  color: #2b035c;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.footer-contact a {
+  color: #2b035c;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #777777;
+}
+    </style>
+</head>
+<body class="bg-brand-offWhite text-brand-dark font-sans antialiased selection:bg-brand-carmine selection:text-white">
+
+        <!-- Faixa colorida superior -->
+    <div class="top-bar">
+        <div class="bar-carmin"></div>
+    </div>
+
+    <!-- NAVBAR NATIVA -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <img src="/imagens/logosite.png" alt="Logo Apesar de Você" class="brand-logo">
+            <div class="brand-text">
+                <h1>Apesar de VOCÊ</h1>
+                <span>Amanhã será um novo dia.</span>
+            </div>
+        </a>
+
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link active">INÍCIO</a></li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">SOBRE NÓS <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="apesardevoce.html">SOBRE O PROJETO</a></li>
+                    <li><a href="quem-somos.html">QUEM SOMOS</a></li>
+                    <li><a href="contato.html">CONTATO</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">SOBRE A VIOLÊNCIA <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="entenda-a-violencia.html">ENTENDA A VIOLÊNCIA</a></li>
+                    <li><a href="ciclo.html">CICLO DA VIOLÊNCIA</a></li>
+                    <li><a href="direitos.html">SEUS DIREITOS</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item"><a href="comunidade.html" class="nav-link">COMUNIDADE</a></li>
+            <li class="nav-item"><a href="noticias.html" class="nav-link">NOTÍCIAS</a></li>
+            <li class="nav-item"><a href="cadastro.html" class="nav-link">CADASTRE-SE</a></li>
+        </ul>
+
+        <div class="nav-actions-wrapper">
+            <a href="https://www.youtube.com" class="btn-inscricao">SAÍDA RAPIDA</a>
+
+                <div class="nav-actions-wrapper">
+            <a href="denuncie.html" class="btn-inscricao">DENUNCIE</a>
+            <button class="menu-toggle" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MAIN HEADER INSTITUCIONAL -->
+    <header class="pt-24 pb-14 bg-gradient-to-b from-brand-roseSoft via-brand-offWhite to-white border-b border-brand-carmine/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-brand-carmine bg-brand-carmine/10 border border-brand-carmine/20">
+                <i class="fa-solid fa-shield-halved"></i> Mapeamento Científico das 29 Formas de Violência
+            </span>
+            <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-brand-purple leading-tight">
+                Entenda a Violência & Sinalômetro
+            </h1>
+            <p class="max-w-3xl mx-auto text-brand-dark/80 text-base sm:text-lg leading-relaxed font-normal">
+                A violência de gênero é progressiva e nem sempre se manifesta através de agressões físicas imediatas. Selecione abaixo as situações vividas para mapear anônimante seu nível de risco ou <strong>clique nos cards para ver a explicação detalhada com dispositivo legal</strong>.
+            </p>
+        </div>
+    </header>
+
+    <!-- NAVEGAÇÃO ENTRE ABAS PRINCIPAIS -->
+    <div class="bg-white border-b border-brand-carmine/10 sticky top-8 z-40 shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 flex justify-center gap-3 py-3 text-xs sm:text-sm font-bold">
+            <button onclick="switchTab('tabSinalometro')" id="btnTabSinalometro" class="px-6 py-2.5 rounded-full bg-brand-purple text-white shadow-sm transition-all flex items-center gap-2">
+                <i class="fa-solid fa-gauge-high"></i> Sinalômetro de Risco Interativo
+            </button>
+            <button onclick="switchTab('tabTipos')" id="btnTabTipos" class="px-6 py-2.5 rounded-full bg-brand-roseSoft text-brand-purple hover:bg-brand-carmine/10 transition-all flex items-center gap-2">
+                <i class="fa-solid fa-book-bookmark"></i> As 29 Formas Explicadas
+            </button>
+        </div>
+    </div>
+
+    <main class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- ========================================================================== -->
+        <!-- SEÇÃO 1: SINALÔMETRO DE RISCO INTERATIVO                                  -->
+        <!-- ========================================================================== -->
+        <section id="tabSinalometro" class="space-y-8">
+            
+            <!-- PAINEL FIXO DE MEDIÇÃO EM TEMPO REAL -->
+            <div id="riskGaugeCard" class="p-6 sm:p-8 rounded-2xl bg-white border-2 border-emerald-200 shadow-md transition-all space-y-4">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="space-y-1 text-center md:text-left flex-1">
+                        <div class="flex items-center justify-center md:justify-start gap-2">
+                            <span id="riskBadge" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800">
+                                Diagnóstico Neutro
+                            </span>
+                        </div>
+                        <h2 id="riskLevelTitle" class="font-serif text-2xl sm:text-3xl font-extrabold text-emerald-900">
+                            Nenhum Sinal Selecionado
+                        </h2>
+                        <p id="riskLevelDesc" class="text-xs sm:text-sm text-brand-dark/70 max-w-2xl">
+                            Marque os comportamentos identificados abaixo no seu cotidiano para calcular automaticamente o nível de risco.
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-brand-offWhite px-6 py-4 rounded-xl border border-gray-200 min-w-[200px] justify-between">
+                        <div>
+                            <span class="text-[11px] font-bold text-brand-dark/60 uppercase block">Sinais Marcados</span>
+                            <span id="selectedCount" class="font-serif text-3xl font-extrabold text-brand-purple">0 / 29</span>
+                        </div>
+                        <button onclick="resetGauge()" title="Limpar seleções" class="w-9 h-9 rounded-full bg-white text-brand-dark/60 hover:text-brand-carmine hover:bg-brand-roseSoft flex items-center justify-center transition-colors border border-gray-200">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- BARRA DE PROGRESSO DO RISCO -->
+                <div class="w-full bg-gray-200 h-3 rounded-full overflow-hidden">
+                    <div id="riskProgressBar" class="bg-emerald-500 h-full w-0 transition-all duration-500"></div>
+                </div>
+            </div>
+
+            <!-- CHECKBOXES SEPARADOS POR NÍVEIS DE GRAVIDADE -->
+            <div class="space-y-10">
+                
+                <!-- NÍVEL 1: SINAIS INICIAIS DE CONTROLE -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-amber-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b border-amber-100 pb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="w-4 h-4 rounded-full bg-amber-400 flex-shrink-0"></span>
+                            <h3 class="font-serif text-xl font-bold text-brand-purple">
+                                Nível 1: Sinais Iniciais & Controle Velado (Itens 1 a 10)
+                            </h3>
+                        </div>
+                        <span class="text-xs font-semibold text-amber-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+                            Atenção Requerida
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5" id="groupLevel1"></div>
+                </div>
+
+                <!-- NÍVEL 2: ALERTA & ABUSO SISTEMÁTICO -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-orange-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b border-orange-100 pb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="w-4 h-4 rounded-full bg-orange-500 flex-shrink-0"></span>
+                            <h3 class="font-serif text-xl font-bold text-brand-purple">
+                                Nível 2: Alerta & Abuso Sistemático (Itens 11 a 20)
+                            </h3>
+                        </div>
+                        <span class="text-xs font-semibold text-orange-700 bg-orange-50 px-3 py-1 rounded-full border border-orange-200">
+                            Sinal Amarelo
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5" id="groupLevel2"></div>
+                </div>
+
+                <!-- NÍVEL 3: PERIGO EXTREMO À VIDA -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-red-200 shadow-sm space-y-4">
+                    <div class="flex items-center justify-between border-b border-red-100 pb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="w-4 h-4 rounded-full bg-brand-carmine flex-shrink-0"></span>
+                            <h3 class="font-serif text-xl font-bold text-brand-purple">
+                                Nível 3: Perigo Grave & Risco à Vida (Itens 21 a 29)
+                            </h3>
+                        </div>
+                        <span class="text-xs font-semibold text-brand-carmine bg-red-50 px-3 py-1 rounded-full border border-red-200">
+                            Urgência Absoluta
+                        </span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5" id="groupLevel3"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================== -->
+        <!-- SEÇÃO 2: GUIA COMPLETO DAS 29 FORMAS DE VIOLÊNCIA                         -->
+        <!-- ========================================================================== -->
+        <section id="tabTipos" class="hidden space-y-8">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-brand-carmine/10 shadow-sm space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-purple">
+                            Detalhamento das 29 Formas de Violência
+                        </h2>
+                        <p class="text-brand-dark/70 text-xs sm:text-sm">
+                            Clique em qualquer card para abrir as orientações completas e a legislação aplicável.
+                        </p>
+                    </div>
+
+                    <div class="relative min-w-[280px]">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-brand-dark/40 text-xs"></i>
+                        <input type="text" id="searchForms" onkeyup="filterForms()" placeholder="Buscar por palavra-chave..." class="w-full pl-9 pr-4 py-2.5 bg-brand-offWhite border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-brand-carmine">
+                    </div>
+                </div>
+
+                <!-- CATEGORIAS DE FILTRO -->
+                <div class="flex flex-wrap gap-2 text-xs font-semibold pt-2 border-t border-gray-100">
+                    <button onclick="filterCategory('todas')" class="px-3.5 py-1.5 rounded-full bg-brand-purple text-white">Todas (29)</button>
+                    <button onclick="filterCategory('psicologica')" class="px-3.5 py-1.5 rounded-full bg-brand-offWhite text-brand-dark hover:bg-gray-200">Psicológica & Moral</button>
+                    <button onclick="filterCategory('patrimonial')" class="px-3.5 py-1.5 rounded-full bg-brand-offWhite text-brand-dark hover:bg-gray-200">Patrimonial & Digital</button>
+                    <button onclick="filterCategory('fisica')" class="px-3.5 py-1.5 rounded-full bg-brand-offWhite text-brand-dark hover:bg-gray-200">Física & Extrema</button>
+                    <button onclick="filterCategory('especializada')" class="px-3.5 py-1.5 rounded-full bg-brand-offWhite text-brand-dark hover:bg-gray-200">Transfóbica, Vicária & Outras</button>
+                </div>
+            </div>
+
+            <!-- GRID DOS CARDS INTERATIVOS -->
+            <div id="formsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
+
+    </main>
+
+    <!-- ========================================================================== -->
+    <!-- MODAL / CARD EXPLICATIVO FLUTUANTE (ABRE AO CLICAR EM UM CARD)            -->
+    <!-- ========================================================================== -->
+    <div id="detailModal" class="hidden-modal fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-purple/70 backdrop-blur-sm">
+        <div class="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-brand-carmine/20 overflow-hidden my-8 max-h-[90vh] flex flex-col">
+            
+            <!-- CABEÇALHO DO MODAL COM BOTÃO X DE FECHAR -->
+            <div class="p-6 bg-gradient-to-r from-brand-purple to-brand-purpleLight text-white flex items-start justify-between gap-4 flex-shrink-0">
+                <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                        <span id="modalItemNumber" class="text-xs font-bold text-brand-carmine bg-white/10 px-2.5 py-0.5 rounded-full"></span>
+                        <span id="modalBadgeNivel" class="text-xs font-bold"></span>
+                    </div>
+                    <h3 id="modalTitle" class="font-serif text-2xl font-bold leading-tight pt-1"></h3>
+                </div>
+                <!-- BOTÃO DE FECHAR (X) -->
+                <button onclick="closeModal()" title="Fechar card" class="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-carmine text-white flex items-center justify-center text-lg transition-colors flex-shrink-0">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- CORPO DO MODAL (COM ROLAGEM SE NECESSÁRIO) -->
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-6 text-brand-dark">
+                
+                <!-- O que caracteriza -->
+                <div class="space-y-2">
+                    <h4 class="text-xs font-bold text-brand-purple uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-circle-info text-brand-carmine"></i> O que caracteriza esta forma de violência?
+                    </h4>
+                    <p id="modalDesc" class="text-sm text-brand-dark/80 leading-relaxed bg-brand-roseSoft/60 p-4 rounded-xl border border-brand-carmine/10"></p>
+                </div>
+
+                <!-- Amparo Legal -->
+                <div class="space-y-2">
+                    <h4 class="text-xs font-bold text-brand-purple uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-scale-balanced text-brand-carmine"></i> Amparo Legal & Leis Aplicáveis
+                    </h4>
+                    <div id="modalLegal" class="text-sm font-semibold text-brand-purple bg-brand-offWhite p-4 rounded-xl border border-gray-200"></div>
+                </div>
+
+                <!-- Orientação Prática -->
+                <div class="space-y-2">
+                    <h4 class="text-xs font-bold text-brand-purple uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-hand-holding-hand text-brand-carmine"></i> Como agir ou buscar proteção?
+                    </h4>
+                    <div id="modalAction" class="text-xs sm:text-sm text-brand-dark/80 leading-relaxed space-y-2"></div>
+                </div>
+
+            </div>
+
+            <!-- RODAPÉ DO MODAL COM BOTÕES -->
+            <div class="p-4 bg-brand-offWhite border-t border-gray-100 flex items-center justify-between gap-4 flex-shrink-0 text-xs">
+                <span class="text-brand-dark/60 font-medium">Ligue 180 para orientação anônima de emergência</span>
+                <button onclick="closeModal()" class="px-5 py-2.5 rounded-full bg-brand-purple hover:bg-brand-carmine text-white font-bold transition-colors">
+                    Fechar
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER INSTITUCIONAL -->
+    <footer class="main-footer" id="contato">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="/imagens/logosite.png" alt="Apesar de VOCÊ" class="footer-logo">
+                <div class="footer-brand-text">
+                    <h2>Apesar de VOCÊ</h2>
+                    <span>Central de Apoio e Prevenção Contra a Violência à Mulher</span>
+                </div>
+            </div>
+
+            <div class="footer-info">
+                <p><strong>Aviso de Emergência:</strong> Este portal tem caráter informativo, de acolhimento e
+                    denunciação.
+                    Mas <strong>não substitui</strong> os órgãos oficiais de segurança, saúde e justiça.</p>
+            </div>
+
+            <div class="footer-contact">
+                <h4>CONTATO COM A EQUIPE</h4>
+                <a href="mailto:apesardevocecontato@gmail.com">apesardevocecontato@gmail.com</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 Apesar de VOCÊ. <br> Todos os direitos reservados.</p>
+            <p> Conteúdo baseado na Lei Maria da Penha e
+                em dados do Fórum Brasileiro de Segurança Pública.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DE PROGRAMAÇÃO E INTERATIVIDADE -->
+    <script>
+        // BASE COMPLETA DAS 29 FORMAS DE VIOLÊNCIA COM DETALHES EXPANDIDOS
+        const vinteENoveViolencias = [
+            // NÍVEL 1
+            { id: 1, nivel: 1, cat: "psicologica", titulo: "Piadas Machistas e Humilhações Públicas", desc: "Desqualificação velada em reuniões de amigos ou redes sociais sob pretexto de 'brincadeira'.", amparoLegal: "Lei Maria da Penha (Art. 7º, II - Violência Psicológica)", orientacao: "Guarde prints, áudios ou relatos com data e testemunhas. Esse comportamento visa abalar a autoestima e a credibilidade social da vítima." },
+            { id: 2, nivel: 1, cat: "psicologica", titulo: "Chantagear Emocionalmente", desc: "Fazer a vítima se sentir culpada pelas atitudes erradas do agressor ou ameaçar término/autoagressão para conseguir algo.", amparoLegal: "Lei Maria da Penha (Art. 7º, II)", orientacao: "Reconheça que o comportamento do outro não é sua responsabilidade. Busque apoio psicológico seguro." },
+            { id: 3, nivel: 1, cat: "psicologica", titulo: "Ignorar e 'Tratamento de Silêncio'", desc: "Punição através do silêncio e indiferença sistemática para desestabilizar emocionalmente e forçar submissão.", amparoLegal: "Violência Psicológica (Art. 147-B do Código Penal)", orientacao: "O silêncio punitivo é uma forma de manipulação emocional. Mantenha rede de apoio fora da relação." },
+            { id: 4, nivel: 1, cat: "psicologica", titulo: "Ciúmes Excessivo e Posse", desc: "Controlar roupas, maquiagens e horários justificando como 'excesso de cuidado e amor'.", amparoLegal: "Lei Maria da Penha (Art. 7º, II)", orientacao: "Ciúme não é prova de afeto, mas sim de controle territorial. Estabeleça limites firmes de privacidade." },
+            { id: 5, nivel: 1, cat: "patrimonial", titulo: "Controle de Amizades e Redes Sociais", desc: "Exigir senhas, vistoriar mensagens privadas e exigir o afastamento de amigos ou familiares.", amparoLegal: "Violência Psicológica e Violação de Privacidade", orientacao: "Nunca compartilhe senhas pessoais de redes sociais ou banco. Mantenha contatos de emergência salvos sob nomes neutros." },
+            { id: 6, nivel: 1, cat: "psicologica", titulo: "Distorção da Realidade (Gaslighting)", desc: "Fazer a vítima duvidar da própria memória, sanidade mental ou percepção da realidade.", amparoLegal: "Lei Maria da Penha (Art. 7º, II) / Código Penal (Art. 147-B)", orientacao: "Anote acontecimentos importantes em um diário seguro (digital ou físico) para ter confirmação factual do que vivenciou." },
+            { id: 7, nivel: 1, cat: "patrimonial", titulo: "Monopolizar Recursos Financeiros", desc: "Impedir que a mulher trabalhe, estude ou tenha sua própria conta bancária independente.", amparoLegal: "Violência Patrimonial (Art. 7º, IV da Lei Maria da Penha)", orientacao: "Procure ter uma reserva financeira secreta em conta individual e busque autonomia profissional por meio de cursos de capacitação." },
+            { id: 8, nivel: 1, cat: "psicologica", titulo: "Ofensas Morais e Calúnia", desc: "Atribuir falsamente à vítima fatos que ferem sua reputação, honra ou dignidade moral.", amparoLegal: "Código Penal (Art. 138, 139 e 140 - Calúnia, Difamação e Injúria)", orientacao: "Grave áudios ou guarde mensagens contendo ofensas. Essas provas fundamentam ações criminais e medidas de proteção." },
+            { id: 9, nivel: 1, cat: "patrimonial", titulo: "Perseguição Digital (Cyberstalking)", desc: "Monitoramento obsessivo de curtidas, seguidores, localização ou criação de perfis fakes para vigiar.", amparoLegal: "Código Penal (Art. 147-A - Crime de Perseguição)", orientacao: "Desative recursos de localização no celular, altere senhas e registre boletim de ocorrência com os prints dos perfis suspeitos." },
+            { id: 10, nivel: 1, cat: "psicologica", titulo: "Pressão Psicológica na Maternidade", desc: "Críticas destrutivas à forma como a mulher cuida dos filhos para abalar sua confiança e autoridade mãe.", amparoLegal: "Violência Psicológica (Art. 7º, II)", orientacao: "Consulte orientação pediátrica ou jurídica para resguardar a guarda e afastar interferências abusivas." },
+
+            // NÍVEL 2
+            { id: 11, nivel: 2, cat: "patrimonial", titulo: "Destruição de Objetos e Documentos", desc: "Rasgar roupas, quebrar celular, rasgar documentos pessoais ou destruir instrumentos de trabalho.", amparoLegal: "Violência Patrimonial (Art. 7º, IV) e Dano (Art. 163 do CP)", orientacao: "Mantenha cópias digitais de documentos importantes armazenadas na nuvem sob conta segura." },
+            { id: 12, nivel: 2, cat: "patrimonial", titulo: "Reter Cartões e Salário", desc: "Tomar o dinheiro, benefícios sociais ou salário da vítima sem seu consentimento expresso.", amparoLegal: "Violência Patrimonial (Art. 7º, IV)", orientacao: "Cancele os cartões junto ao banco e solicite que seus benefícios sejam pagos em nova conta corrente exclusiva." },
+            { id: 13, nivel: 2, cat: "psicologica", titulo: "Ameaça Implícita e Intimidação", desc: "Socos na parede, quebrar copos perto da mulher ou gestos ameaçadores para impor medo e obediência.", amparoLegal: "Violência Psicológica e Ameaça (Art. 147 do CP)", orientacao: "A violência física iminente costuma vir após intimidações corporais. Identifique saídas rápidas de emergência na casa." },
+            { id: 14, nivel: 2, cat: "fisica", titulo: "Pressão e Coação Sexual", desc: "Exigir relações sexuais sem vontade da parceira através de chantagem, choro ou insistência abusiva.", amparoLegal: "Violência Sexual (Art. 7º, III da LMP e Art. 216-A do CP)", orientacao: "O consentimento deve ser livre e espontâneo em qualquer momento da relação. Dizer 'não' é seu direito absoluto." },
+            { id: 15, nivel: 2, cat: "especializada", titulo: "Violência Obstétrica", desc: "Recusa de analgesia, procedimentos invasivos sem consentimento ou ofensas durante o parto.", amparoLegal: "Direitos Humanos e Resoluções do CFM / Código Penal", orientacao: "Faça valer a Lei do Acompanhante no parto e formalize denúncia na ouvidoria do hospital e no CRM." },
+            { id: 16, nivel: 2, cat: "patrimonial", titulo: "Nudez e Pornografia de Revanche", desc: "Divulgar ou ameaçar divulgar fotos/vídeos íntimos sem autorização após o término do relacionamento.", amparoLegal: "Código Penal (Art. 218-C - Divulgação de Cena de Sexo sem Consentimento)", orientacao: "Não apague os arquivos. Faça ata notarial das mensagens com a ameaça e registre ocorrência em Delegacia Virtual ou DDM." },
+            { id: 17, nivel: 2, cat: "especializada", titulo: "Violência Transfóbica / Rejeição de Identidade", desc: "Recusar o uso do nome social, destruir hormônios ou agredir verbalmente por identidade de gênero.", amparoLegal: "STF (Equiparação da Transfobia ao Crime de Racismo - Lei 7.716/89)", orientacao: "Procure Centros de Referência LGBT+ e Defensoria Pública especializada em Direitos Humanos." },
+            { id: 18, nivel: 2, cat: "especializada", titulo: "Violência Política de Gênero", desc: "Assédio, ameaças ou restrição do exercício político de mulheres líderes, parlamentares ou candidatas.", amparoLegal: "Lei 14.192/2021 (Previne e Combate a Violência Política contra a Mulher)", orientacao: "Comunique o Ministério Público Eleitoral e formalize denúncia nos órgãos partidários e de proteção." },
+            { id: 19, nivel: 2, cat: "especializada", titulo: "Violência Vicária", desc: "Usar os filhos ou animais de estimação para causar sofrimento e dano psicológico indireto à mulher.", amparoLegal: "Lei Maria da Penha (Atualizada para proteção de dependentes e animais)", orientacao: "Solicite a inclusão dos filhos e guarda de animais nas Medidas Protetivas de Urgência." },
+            { id: 20, nivel: 2, cat: "psicologica", titulo: "Isolamento Geográfico ou Social", desc: "Mudar-se para locais isolados e proibir a mulher de ter contato com vizinhos ou buscar ajuda externa.", amparoLegal: "Violência Psicológica (Art. 7º, II)", orientacao: "Mantenha contato frequente com pessoas de confiança por telefone ou mensagens no horário seguro." },
+
+            // NÍVEL 3
+            { id: 21, nivel: 3, cat: "fisica", titulo: "Empurrões, Sacudões e Apressões", desc: "Uso de força física 'moderada' para conter, empurrar contra a parede ou sacudir nos braços.", amparoLegal: "Violência Física (Art. 7º, I da Lei Maria da Penha)", orientacao: "Trata-se do início da violência física ostensiva. Registre Boletim de Ocorrência e peça Medida Protetiva de Urgência." },
+            { id: 22, nivel: 3, cat: "fisica", titulo: "Tapas, Chutes e Socos", desc: "Agressões físicas diretas resultando em dores, hematomas ou lesões corporais visíveis.", amparoLegal: "Código Penal (Art. 129, § 13 - Lesão Corporal contra a Mulher)", orientacao: "Realize Exame de Corpo de Delito no IML imediatamente para comprovar judicialmente as lesões." },
+            { id: 23, nivel: 3, cat: "fisica", titulo: "Estrangulamento ou Esganamento", desc: "Aperto no pescoço. Estatisticamente é o maior indicador de risco iminente de feminicídio.", amparoLegal: "Tentativa de Homicídio / Lesão Corporal Grave", orientacao: "Sua vida está em risco iminente. Acione o 190 ou dirija-se à delegacia mais próxima imediatamente." },
+            { id: 24, nivel: 3, cat: "fisica", titulo: "Estupro de Vulnerável ou Marital", desc: "Forçar ato sexual com violência, sob efeito de álcool/drogas ou sem capacidade de consentimento.", amparoLegal: "Código Penal (Art. 213 - Estupro e Art. 217-A)", orientacao: "Dirija-se a um hospital público em até 72h para profilaxia de ISTs/pílula do dia seguinte e vestígios periciais." },
+            { id: 25, nivel: 3, cat: "fisica", titulo: "Ameaça de Morte com Armas", desc: "Exibir facas, armas de fogo ou ameaçar explicitamente tirar a vida da mulher ou de sua família.", amparoLegal: "Código Penal (Art. 147) / Lei Maria da Penha (Apreensão de Armas)", orientacao: "Solicite o recolhimento imediato de armas em posse do agressor via Medida Protetiva de Urgência." },
+            { id: 26, nivel: 3, cat: "fisica", titulo: "Cativeiro ou Cárcere Privado", desc: "Trancar a mulher em casa, tomar as chaves e impedir sua saída sob ameaça física.", amparoLegal: "Código Penal (Art. 148 - Sequestro e Cárcere Privado)", orientacao: "Grite por socorro a vizinhos se possível ou tente emitir sinal discreto de socorro na janela/sacada." },
+            { id: 27, nivel: 3, cat: "especializada", titulo: "Violência Institucional", desc: "Revitimização, deboche ou negação de socorro por agentes de órgãos públicos ao tentar denunciar.", amparoLegal: "Lei 14.321/2022 (Crime de Violência Institucional)", orientacao: "Anote o nome do agente, horário e local da ocorrência e formalize denúncia na Corregedoria e na Ouvidoria do Estado." },
+            { id: 28, nivel: 3, cat: "fisica", titulo: "Agressão Física com Sequelas", desc: "Agressão grave necessitando de atendimento médico de emergência ou intervenção cirúrgica.", amparoLegal: "Lesão Corporal Gravíssima (Art. 129, § 2º do CP)", orientacao: "Exija que a equipe médica registre a suspeita de violência de gênero no prontuário hospitalar obrigatório." },
+            { id: 29, nivel: 3, cat: "fisica", titulo: "Tentativa de Feminicídio", desc: "Atentado direto contra a vida da mulher por razões da condição do sexo feminino.", amparoLegal: "Código Penal (Art. 121, § 2º, VI - Feminicídio)", orientacao: "Ligue 190 (Polícia Militar). Solicite abrigamento sigiloso de urgência e prisão preventiva do agressor." }
+        ];
+
+        let selecionados = new Set();
+
+        function renderSinalometro() {
+            const g1 = document.getElementById('groupLevel1');
+            const g2 = document.getElementById('groupLevel2');
+            const g3 = document.getElementById('groupLevel3');
+
+            g1.innerHTML = ''; g2.innerHTML = ''; g3.innerHTML = '';
+
+            vinteENoveViolencias.forEach(v => {
+                const itemHTML = `
+                    <label class="flex items-start gap-3 p-3.5 bg-brand-offWhite hover:bg-white rounded-xl border border-gray-200 cursor-pointer transition-all hover:border-brand-carmine/30">
+                        <input type="checkbox" onchange="toggleSignal(${v.id})" ${selecionados.has(v.id) ? 'checked' : ''} class="mt-0.5 w-4 h-4 text-brand-carmine rounded focus:ring-brand-carmine custom-checkbox">
+                        <div class="text-xs space-y-0.5">
+                            <strong class="text-brand-purple block font-bold">${v.id}. ${v.titulo}</strong>
+                            <span class="text-brand-dark/70 text-[11px] leading-relaxed block">${v.desc}</span>
+                        </div>
+                    </label>
+                `;
+
+                if (v.nivel === 1) g1.innerHTML += itemHTML;
+                else if (v.nivel === 2) g2.innerHTML += itemHTML;
+                else if (v.nivel === 3) g3.innerHTML += itemHTML;
+            });
+
+            renderFormsCards(vinteENoveViolencias);
+        }
+
+        function toggleSignal(id) {
+            if (selecionados.has(id)) selecionados.delete(id);
+            else selecionados.add(id);
+
+            updateGauge();
+        }
+
+        function resetGauge() {
+            selecionados.clear();
+            renderSinalometro();
+            updateGauge();
+        }
+
+        function updateGauge() {
+            const count = selecionados.size;
+            document.getElementById('selectedCount').innerText = `${count} / 29`;
+
+            const card = document.getElementById('riskGaugeCard');
+            const badge = document.getElementById('riskBadge');
+            const title = document.getElementById('riskLevelTitle');
+            const desc = document.getElementById('riskLevelDesc');
+            const progressBar = document.getElementById('riskProgressBar');
+
+            let temNivel3 = Array.from(selecionados).some(id => vinteENoveViolencias.find(v => v.id === id).nivel === 3);
+            let temNivel2 = Array.from(selecionados).some(id => vinteENoveViolencias.find(v => v.id === id).nivel === 2);
+
+            let pct = Math.round((count / 29) * 100);
+            progressBar.style.width = `${pct}%`;
+
+            if (count === 0) {
+                card.className = "p-6 sm:p-8 rounded-2xl bg-white border-2 border-emerald-200 shadow-md transition-all space-y-4";
+                badge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800";
+                badge.innerText = "Diagnóstico Neutro";
+                title.innerText = "Nenhum Sinal Selecionado";
+                title.className = "font-serif text-2xl sm:text-3xl font-extrabold text-emerald-900";
+                desc.innerText = "Marque os comportamentos identificados abaixo no seu cotidiano para calcular automaticamente o nível de risco.";
+                progressBar.className = "bg-emerald-500 h-full transition-all duration-500";
+            } else if (temNivel3 || count >= 8) {
+                card.className = "p-6 sm:p-8 rounded-2xl bg-red-50 border-2 border-brand-carmine shadow-md transition-all space-y-4";
+                badge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-red-200 text-brand-carmine";
+                badge.innerText = "ALERTA MÁXIMO DE PERIGO";
+                title.innerText = "PERIGO EXTREMO: RISCO À INTEGRIDADE E À VIDA";
+                title.className = "font-serif text-2xl sm:text-3xl font-extrabold text-brand-carmine";
+                desc.innerText = "Sua segurança pode estar gravemente comprometida. Busque ajuda imediatamente via Central Ligue 180, Polícia (190) ou vá a uma Casa Abrigo.";
+                progressBar.className = "bg-brand-carmine h-full transition-all duration-500";
+            } else if (temNivel2 || count >= 3) {
+                card.className = "p-6 sm:p-8 rounded-2xl bg-amber-50 border-2 border-orange-300 shadow-md transition-all space-y-4";
+                badge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-200 text-orange-900";
+                badge.innerText = "ALERTA INTERMEDIÁRIO GRAVE";
+                title.innerText = "SINAIS DE ABUSO SISTEMÁTICO E VIOLÊNCIA";
+                title.className = "font-serif text-2xl sm:text-3xl font-extrabold text-orange-900";
+                desc.innerText = "O relacionamento apresenta condutas abusivas recorrentes. Monte um plano de segurança e busque orientação jurídica ou psicológica.";
+                progressBar.className = "bg-orange-500 h-full transition-all duration-500";
+            } else {
+                card.className = "p-6 sm:p-8 rounded-2xl bg-yellow-50 border-2 border-yellow-300 shadow-md transition-all space-y-4";
+                badge.className = "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-yellow-200 text-yellow-900";
+                badge.innerText = "ATENÇÃO INICIAL";
+                title.innerText = "COMPORTAMENTOS INICIAIS DE CONTROLE VELADO";
+                title.className = "font-serif text-2xl sm:text-3xl font-extrabold text-yellow-900";
+                desc.innerText = "Fique atenta. Atitudes de controle, ciúmes e intimidação velada tendem a escalonar com o tempo.";
+                progressBar.className = "bg-amber-400 h-full transition-all duration-500";
+            }
+        }
+
+        function renderFormsCards(lista) {
+            const container = document.getElementById('formsContainer');
+            container.innerHTML = '';
+
+            lista.forEach(v => {
+                let badgeNivel = '';
+                if(v.nivel === 1) badgeNivel = '<span class="bg-amber-100 text-amber-900 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Sinal Inicial</span>';
+                else if(v.nivel === 2) badgeNivel = '<span class="bg-orange-100 text-orange-900 text-[10px] font-bold px-2.5 py-0.5 rounded-full">Alerta Intermediário</span>';
+                else badgeNivel = '<span class="bg-red-100 text-brand-carmine text-[10px] font-bold px-2.5 py-0.5 rounded-full">Perigo Extremo</span>';
+
+                const card = document.createElement('div');
+                card.className = "bg-white p-6 rounded-2xl border border-brand-carmine/10 shadow-sm space-y-3 hover:shadow-md hover:border-brand-carmine/40 transition-all cursor-pointer group";
+                card.onclick = () => openModal(v.id);
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="text-xs font-bold text-brand-purple group-hover:text-brand-carmine transition-colors">Item #${v.id} de 29</span>
+                        ${badgeNivel}
+                    </div>
+                    <h3 class="font-serif text-lg font-bold text-brand-purple leading-snug group-hover:text-brand-carmine transition-colors flex items-center justify-between gap-2">
+                        <span>${v.titulo}</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-brand-dark/30 group-hover:text-brand-carmine transition-colors"></i>
+                    </h3>
+                    <p class="text-brand-dark/80 text-xs sm:text-sm leading-relaxed">${v.desc}</p>
+                    <div class="pt-3 border-t border-gray-100 flex items-center justify-between text-[11px] text-brand-dark/60 font-medium">
+                        <span><i class="fa-solid fa-scale-balanced text-brand-carmine mr-1"></i> ${v.amparoLegal}</span>
+                        <span class="text-brand-carmine font-bold hover:underline">Ver detalhes →</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // ABRIR O MODAL EXPLICATIVO
+        function openModal(id) {
+            const item = vinteENoveViolencias.find(v => v.id === id);
+            if (!item) return;
+
+            document.getElementById('modalItemNumber').innerText = `FORMA DE VIOLÊNCIA #${item.id} DE 29`;
+            document.getElementById('modalTitle').innerText = item.titulo;
+            document.getElementById('modalDesc').innerText = item.desc;
+            document.getElementById('modalLegal').innerText = item.amparoLegal;
+            document.getElementById('modalAction').innerText = item.orientacao;
+
+            const badge = document.getElementById('modalBadgeNivel');
+            if (item.nivel === 1) {
+                badge.className = "text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900";
+                badge.innerText = "NÍVEL 1: SINAL INICIAL";
+            } else if (item.nivel === 2) {
+                badge.className = "text-xs font-bold px-2.5 py-0.5 rounded-full bg-orange-100 text-orange-900";
+                badge.innerText = "NÍVEL 2: ALERTA INTERMEDIÁRIO";
+            } else {
+                badge.className = "text-xs font-bold px-2.5 py-0.5 rounded-full bg-red-100 text-brand-carmine";
+                badge.innerText = "NÍVEL 3: PERIGO EXTREMO";
+            }
+
+            const modal = document.getElementById('detailModal');
+            modal.classList.remove('hidden-modal');
+            modal.classList.add('visible-modal');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // FECHAR O MODAL EXPLICATIVO
+        function closeModal() {
+            const modal = document.getElementById('detailModal');
+            modal.classList.remove('visible-modal');
+            modal.classList.add('hidden-modal');
+            document.body.style.overflow = '';
+        }
+
+        function filterForms() {
+            const q = document.getElementById('searchForms').value.toLowerCase();
+            const res = vinteENoveViolencias.filter(v => v.titulo.toLowerCase().includes(q) || v.desc.toLowerCase().includes(q) || v.amparoLegal.toLowerCase().includes(q));
+            renderFormsCards(res);
+        }
+
+        function filterCategory(cat) {
+            if (cat === 'todas') {
+                renderFormsCards(vinteENoveViolencias);
+            } else {
+                const res = vinteENoveViolencias.filter(v => v.cat === cat);
+                renderFormsCards(res);
+            }
+        }
+
+        function switchTab(tabId) {
+            document.getElementById('tabSinalometro').classList.add('hidden');
+            document.getElementById('tabTipos').classList.add('hidden');
+
+            document.getElementById('btnTabSinalometro').className = "px-6 py-2.5 rounded-full bg-brand-roseSoft text-brand-purple hover:bg-brand-carmine/10 transition-all";
+            document.getElementById('btnTabTipos').className = "px-6 py-2.5 rounded-full bg-brand-roseSoft text-brand-purple hover:bg-brand-carmine/10 transition-all";
+
+            document.getElementById(tabId).classList.remove('hidden');
+
+            if (tabId === 'tabSinalometro') {
+                document.getElementById('btnTabSinalometro').className = "px-6 py-2.5 rounded-full bg-brand-purple text-white shadow-sm transition-all";
+            } else {
+                document.getElementById('btnTabTipos').className = "px-6 py-2.5 rounded-full bg-brand-purple text-white shadow-sm transition-all";
+            }
+        }
+
+        function ditaAtalhoEsc(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('detailModal');
+                if (modal && modal.classList.contains('visible-modal')) {
+                    closeModal();
+                } else {
+                    saidaRapida();
+                }
+            }
+        }
+
+        function saidaRapida() {
+            window.location.replace("https://www.google.com");
+        }
+
+        // FECHAR MODAL AO CLICAR NA ÁREA ESCURA FORA DO CARD
+        document.getElementById('detailModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        window.addEventListener('keydown', ditaAtalhoEsc);
+        document.addEventListener('DOMContentLoaded', renderSinalometro);
+    </script>
+
+</body>
+</html>

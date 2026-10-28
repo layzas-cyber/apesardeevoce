@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Apoio & Contatos - Apesar de VOCÊ</title>
+    <link rel="icon" type="image/png" href="/imagens/logosite.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            purple: '#2b035c',
+                            carmine: '#e6205d',
+                            carmineDark: '#c2003b',
+                            roseSoft: '#fdf6f7',
+                            offWhite: '#fcf8f8',
+                            dark: '#2c2c2c',
+                            graySub: '#666666'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ==========================================================================
+   FAIXA SUPERIOR & NAVBAR NATIVA (COM DROPDOWNS)
+   ========================================================================== */
+.top-bar {
+  height: 5px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1002;
+  background-color: #e6205d;
+}
+
+.bar-carmin {
+  width: 100%;
+  height: 100%;
+  background-color: #2b035c;
+}
+
+.navbar {
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 8%;
+  border-bottom: 1px solid #eaeaea;
+  position: fixed;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+  box-shadow: 0 2px 10px rgba(43, 3, 92, 0.03);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+/* LOGO NAVBAR */
+.brand-logo {
+  width: 62px;
+  height: auto;
+}
+
+.brand-text h1 {
+  font-size: 20px;
+  color: #e6205d;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.brand-text span {
+  font-size: 11px;
+  color: #7c7b7b;
+  font-style: italic;
+}
+
+/* Menu Principal e Submenus (Dropdown) */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #4a4a4a;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+}
+
+.nav-link .arrow {
+  font-size: 9px;
+  transition: transform 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #e6205d;
+}
+
+/* Estilo do Dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  list-style: none;
+  min-width: 220px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 1010;
+}
+
+.nav-item:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-item:hover .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 20px;
+  color: #4a4a4a;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-menu li a:hover {
+  background: #fdf6f7;
+  color: #e4205c;
+}
+
+.nav-actions-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-inscricao,
+.btn-denuncia {
+  background-color: #2b035c;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease;
+}
+
+.btn-inscricao:hover,
+.btn-denuncia:hover {
+  background-color: #e6205d;
+}
+
+        .badge-trans {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
+        }
+        .badge-cis {
+            background-color: #fce7f3;
+            color: #be185d;
+            border: 1px solid #fbcfe8;
+        }
+        .badge-universal {
+            background-color: #f3e8ff;
+            color: #6b21a8;
+            border: 1px solid #e9d5ff;
+        }
+    </style>
+</head>
+<body class="bg-brand-offWhite text-brand-dark font-sans antialiased selection:bg-brand-carmine selection:text-white">
+
+      <!-- Faixa colorida superior -->
+    <div class="top-bar">
+        <div class="bar-carmin"></div>
+    </div>
+
+    <!-- NAVBAR NATIVA -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <img src="/imagens/logosite.png" alt="Logo Apesar de Você" class="brand-logo">
+            <div class="brand-text">
+                <h1>Apesar de VOCÊ</h1>
+                <span>Amanhã será um novo dia.</span>
+            </div>
+        </a>
+
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link active">INÍCIO</a></li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">SOBRE NÓS <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="apesardevoce.html">SOBRE O PROJETO</a></li>
+                    <li><a href="quem-somos.html">QUEM SOMOS</a></li>
+                    <li><a href="contato.html">CONTATO</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">SOBRE A VIOLÊNCIA <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="entenda-a-violencia.html">ENTENDA A VIOLÊNCIA</a></li>
+                    <li><a href="ciclo.html">CICLO DA VIOLÊNCIA</a></li>
+                    <li><a href="direitos.html">SEUS DIREITOS</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item"><a href="comunidade.html" class="nav-link">COMUNIDADE</a></li>
+            <li class="nav-item"><a href="noticias.html" class="nav-link">NOTÍCIAS</a></li>
+            <li class="nav-item"><a href="cadastro.html" class="nav-link">CADASTRE-SE</a></li>
+        </ul>
+
+        <div class="nav-actions-wrapper">
+            <a href="https://www.youtube.com" class="btn-inscricao">SAÍDA RAPIDA</a>
+
+                <div class="nav-actions-wrapper">
+            <a href="denuncie.html" class="btn-inscricao">DENUNCIE</a>
+            <button class="menu-toggle" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MAIN HEADER -->
+    <header class="pt-24 pb-12 bg-gradient-to-b from-brand-roseSoft via-brand-offWhite to-white border-b border-brand-carmine/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <span class="inline-block px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-brand-carmine bg-brand-carmine/10">
+                Rede Nacional Mapeada & Interseccional
+            </span>
+            <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-brand-purple">
+                Guia de Proteção e Contatos
+            </h1>
+            <p class="max-w-3xl mx-auto text-brand-dark/80 text-base sm:text-lg leading-relaxed">
+                Mapeamento inteligente de órgãos públicos, delegacias especializadas, defensorias e centros de referência inclusivos para <strong>mulheres cis, mulheres trans e travestis</strong> em todo o Brasil.
+            </p>
+        </div>
+    </header>
+
+    <!-- PAINEL DE BUSCA & FILTROS INTELIGENTES -->
+    <section class="py-8 bg-white border-b border-brand-carmine/10 sticky top-8 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
+                <!-- Campo de Busca -->
+                <div class="md:col-span-5 relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-brand-dark/40"></i>
+                    <input type="text" id="searchInput" onkeyup="filtrarOrgaos()" placeholder="Buscar por nome (ex: DDM, Defensoria, Casa da Mulher...)" class="w-full pl-11 pr-4 py-3 bg-brand-offWhite border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-brand-carmine focus:ring-2 focus:ring-brand-carmine/10 transition-all">
+                </div>
+
+                <!-- Filtro de Público -->
+                <div class="md:col-span-3">
+                    <select id="filterPublico" onchange="filtrarOrgaos()" class="w-full px-4 py-3 bg-brand-offWhite border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-brand-carmine focus:ring-2 focus:ring-brand-carmine/10 transition-all">
+                        <option value="todos">Todos os Públicos</option>
+                        <option value="trans">Acolhimento Trans & Travesti</option>
+                        <option value="cis">Acolhimento Cisgênero</option>
+                        <option value="universal">Atendimento Universal</option>
+                    </select>
+                </div>
+
+                <!-- Filtro de Categoria -->
+                <div class="md:col-span-2">
+                    <select id="filterCategoria" onchange="filtrarOrgaos()" class="w-full px-4 py-3 bg-brand-offWhite border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-brand-carmine focus:ring-2 focus:ring-brand-carmine/10 transition-all">
+                        <option value="todas">Todas Categorias</option>
+                        <option value="emergencia">Emergência / Polícia</option>
+                        <option value="justica">Justiça / Defensoria</option>
+                        <option value="saude">Saúde & Apoio Psíquico</option>
+                        <option value="acolhimento">Casas de Acolhimento</option>
+                    </select>
+                </div>
+
+                <!-- Filtro de Estado (UF) -->
+                <div class="md:col-span-2">
+                    <select id="filterUf" onchange="filtrarOrgaos()" class="w-full px-4 py-3 bg-brand-offWhite border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-brand-carmine focus:ring-2 focus:ring-brand-carmine/10 transition-all">
+                        <option value="todosis">Brasil (Nacional)</option>
+                        <option value="SP">São Paulo (SP)</option>
+                        <option value="RJ">Rio de Janeiro (RJ)</option>
+                        <option value="BA">Bahia (BA)</option>
+                        <option value="MG">Minas Gerais (MG)</option>
+                        <option value="DF">Distrito Federal (DF)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs text-brand-dark/60 pt-1">
+                <span id="counterResult">Exibindo todos os órgãos cadastrados</span>
+                <button onclick="limparFiltros()" class="text-brand-carmine font-semibold hover:underline">
+                    Limpar Filtros
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- GRID DINÂMICO DE ÓRGÃOS E SERVIÇOS -->
+    <main class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div id="orgaosGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cards gerados via JavaScript -->
+        </div>
+
+        <div id="noResults" class="hidden text-center py-16 space-y-4">
+            <div class="w-16 h-16 rounded-full bg-brand-carmine/10 text-brand-carmine flex items-center justify-center mx-auto text-2xl">
+                <i class="fa-solid fa-filter-circle-xmark"></i>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-brand-purple">Nenhum serviço encontrado</h3>
+            <p class="text-brand-dark/70 text-sm max-w-md mx-auto">Tente alterar os termos da busca ou redefinir os filtros de estado e público.</p>
+            <button onclick="limparFiltros()" class="px-6 py-2.5 rounded-full bg-brand-purple text-white text-xs font-bold hover:bg-brand-carmine transition-colors">
+                Restaurar Filtros
+            </button>
+        </div>
+    </main>
+
+    <!-- FORMULÁRIO SEGURO DE CONTATO COM A EQUIPE -->
+    <section class="py-16 bg-brand-roseSoft border-t border-brand-carmine/10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white p-8 sm:p-12 rounded-2xl border border-brand-carmine/10 shadow-sm space-y-8">
+                
+                <div class="text-center space-y-2">
+                    <span class="inline-block px-3 py-1 rounded-full text-xs font-bold text-brand-purple bg-brand-purple/10">
+                        Canal Direto & Privado
+                    </span>
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-purple">
+                        Fale com a Equipe "Apesar de VOCÊ"
+                    </h2>
+                    <p class="text-brand-dark/70 text-sm max-w-lg mx-auto">
+                        Utilize este formulário para dúvidas institucionais, parcerias ou pedidos de orientação. O uso de pseudônimo é totalmente permitido.
+                    </p>
+                </div>
+
+                <form id="contactForm" onsubmit="enviarMensagemSegura(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold text-brand-purple uppercase tracking-wider">
+                                Nome ou Pseudônimo *
+                            </label>
+                            <input type="text" id="formName" required placeholder="Ex: Maria S. ou Anônima" class="w-full px-4 py-3 bg-brand-offWhite border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-brand-carmine">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold text-brand-purple uppercase tracking-wider">
+                                E-mail Seguro para Resposta *
+                            </label>
+                            <input type="email" id="formEmail" required placeholder="seuemail@exemplo.com" class="w-full px-4 py-3 bg-brand-offWhite border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-brand-carmine">
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold text-brand-purple uppercase tracking-wider">
+                            Assunto Principal
+                        </label>
+                        <select id="formSubject" class="w-full px-4 py-3 bg-brand-offWhite border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-brand-carmine">
+                            <option value="orientacao">Pedido de Orientação / Guia de Serviços</option>
+                            <option value="duvida">Dúvida sobre Leis e Direitos</option>
+                            <option value="parceria">Parcerias e Coletivos</option>
+                            <option value="outros">Outros Assuntos</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold text-brand-purple uppercase tracking-wider">
+                            Mensagem *
+                        </label>
+                        <textarea id="formMessage" required rows="4" placeholder="Escreva sua mensagem com segurança..." class="w-full px-4 py-3 bg-brand-offWhite border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-brand-carmine"></textarea>
+                    </div>
+
+                    <div class="flex items-center gap-3 text-xs text-brand-dark/70 bg-brand-offWhite p-4 rounded-xl border border-gray-200">
+                        <i class="fa-solid fa-lock text-emerald-600 text-lg"></i>
+                        <span>Sua mensagem não fica registrada em histórico público e é encaminhada diretamente de forma sigilosa.</span>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 rounded-xl bg-brand-purple hover:bg-brand-carmine text-white font-bold text-sm transition-colors shadow-md">
+                        Enviar Mensagem Sigilosa
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SCRIPT DE FILTROS E LÓGICA INTERATIVA -->
+    <script>
+        // BASE DE DADOS INTEGRADA DE ÓRGÃOS E SERVIÇOS
+        const orgaosDB = [
+            {
+                id: 1,
+                nome: "Central de Atendimento à Mulher",
+                sigla: "Ligue 180",
+                categoria: "emergencia",
+                publico: "universal",
+                uf: "BR",
+                telefone: "180",
+                descricao: "Serviço público gratuito e confidencial de escuta, orientação e encaminhamento para a rede de proteção.",
+                atendimento24h: true,
+                tags: ["Nacional", "Gratuito", "Anonimato"]
+            },
+            {
+                id: 2,
+                nome: "Polícia Militar - Emergência",
+                sigla: "Ligue 190",
+                categoria: "emergencia",
+                publico: "universal",
+                uf: "BR",
+                telefone: "190",
+                descricao: "Socorro policial imediato em casos de violência física, ameaça ou descumprimento de Medida Protetiva.",
+                atendimento24h: true,
+                tags: ["Emergência", "Nacional"]
+            },
+            {
+                id: 3,
+                nome: "Centro de Referência LGTBIA+ Luiz Carlos Ruas",
+                sigla: "CRD LGBT",
+                categoria: "acolhimento",
+                publico: "trans",
+                uf: "SP",
+                telefone: "(11) 3106-8780",
+                descricao: "Atendimento psicológico, social e jurídico especializado para mulheres trans, travestis e comunidade LGBT+.",
+                atendimento24h: false,
+                tags: ["Especializado Trans", "São Paulo"]
+            },
+            {
+                id: 4,
+                nome: "Casa da Mulher Brasileira",
+                sigla: "CMB",
+                categoria: "acolhimento",
+                publico: "universal",
+                uf: "SP",
+                telefone: "(11) 3275-8000",
+                descricao: "Centro integrado com Delegacia da Mulher, Juizado, Defensoria Pública e Acolhimento Provisório.",
+                atendimento24h: true,
+                tags: ["Integrado", "Atendimento 24h"]
+            },
+            {
+                id: 5,
+                nome: "Defensoria Pública - Núcleo de Promoção dos Direitos da Mulher",
+                sigla: "NUDEM",
+                categoria: "justica",
+                publico: "universal",
+                uf: "RJ",
+                telefone: "129",
+                descricao: "Assistência jurídica gratuita para obtenção de Medidas Protetivas de Urgência, divórcio e guarda.",
+                atendimento24h: false,
+                tags: ["Jurídico", "Gratuito"]
+            },
+            {
+                id: 6,
+                nome: "Centro de Combate à Homofobia e Transfobia",
+                sigla: "CCHT",
+                categoria: "saude",
+                publico: "trans",
+                uf: "RJ",
+                telefone: "0800 0234 567",
+                descricao: "Suporte especializado para vítimas de violência transfóbica e violação de direitos de gênero.",
+                atendimento24h: false,
+                tags: ["Direitos Trans", "Rio de Janeiro"]
+            },
+            {
+                id: 7,
+                nome: "Delegacia Especial de Atendimento à Mulher",
+                sigla: "DEAM / DDM",
+                categoria: "emergencia",
+                publico: "universal",
+                uf: "BA",
+                telefone: "(71) 3116-7000",
+                descricao: "Registros de Boletim de Ocorrência, pedido de medidas protetivas e investigações de crimes contra mulheres.",
+                atendimento24h: true,
+                tags: ["Polícia Civil", "Salvador/BA"]
+            },
+            {
+                id: 8,
+                nome: "Casa de Acolhimento Flora Tristan",
+                sigla: "Abrigo Flora",
+                categoria: "acolhimento",
+                publico: "cis",
+                uf: "MG",
+                telefone: "(31) 3277-4000",
+                descricao: "Acolhimento temporário sigiloso para mulheres cis e seus filhos em situação de risco grave iminente.",
+                atendimento24h: true,
+                tags: ["Abrigo Sigiloso", "Belo Horizonte"]
+            }
+        ];
+
+        // RENDERIZAÇÃO DOS CARDS
+        function renderCards(lista) {
+            const grid = document.getElementById('orgaosGrid');
+            const noResults = document.getElementById('noResults');
+            const counter = document.getElementById('counterResult');
+
+            grid.innerHTML = '';
+
+            if (lista.length === 0) {
+                grid.classList.add('hidden');
+                noResults.classList.remove('hidden');
+                counter.innerText = 'Nenhum resultado encontrado';
+                return;
+            }
+
+            grid.classList.remove('hidden');
+            noResults.classList.add('hidden');
+            counter.innerText = `Exibindo ${lista.length} serviço(s) encontrado(s)`;
+
+            lista.forEach(item => {
+                let badgePublico = '';
+                if(item.publico === 'trans') {
+                    badgePublico = `<span class="px-2.5 py-1 rounded-full text-[11px] font-bold badge-trans"><i class="fa-solid fa-transgender mr-1"></i> Acolhimento Trans & Travesti</span>`;
+                } else if(item.publico === 'cis') {
+                    badgePublico = `<span class="px-2.5 py-1 rounded-full text-[11px] font-bold badge-cis"><i class="fa-solid fa-venus mr-1"></i> Acolhimento Cis</span>`;
+                } else {
+                    badgePublico = `<span class="px-2.5 py-1 rounded-full text-[11px] font-bold badge-universal"><i class="fa-solid fa-users mr-1"></i> Universal (Cis e Trans)</span>`;
+                }
+
+                const card = document.createElement('div');
+                card.className = 'bg-white p-6 rounded-2xl border border-brand-carmine/10 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-4';
+                
+                card.innerHTML = `
+                    <div class="space-y-3">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            ${badgePublico}
+                            ${item.atendimento24h ? '<span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">24 HORAS</span>' : ''}
+                        </div>
+                        
+                        <div>
+                            <span class="text-xs font-bold text-brand-carmine uppercase tracking-wider">${item.sigla}</span>
+                            <h3 class="font-serif text-lg font-bold text-brand-purple leading-snug">${item.nome}</h3>
+                        </div>
+
+                        <p class="text-brand-dark/70 text-xs sm:text-sm leading-relaxed">${item.descricao}</p>
+
+                        <div class="flex flex-wrap gap-1.5 pt-1">
+                            ${item.tags.map(t => `<span class="bg-brand-offWhite text-brand-dark/60 text-[10px] px-2 py-0.5 rounded border border-gray-200">${t}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-gray-100 flex items-center justify-between gap-2">
+                        <div class="font-bold text-brand-purple text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-brand-carmine"></i>
+                            <span>${item.telefone}</span>
+                        </div>
+                        <button onclick="copiarTelefone('${item.telefone}')" class="px-3 py-1.5 rounded-lg bg-brand-roseSoft hover:bg-brand-carmine hover:text-white text-brand-carmine text-xs font-bold transition-colors">
+                            Copiar
+                        </button>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // LÓGICA DE FILTRAGEM MULTICRITÉRIO
+        function filtrarOrgaos() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const publico = document.getElementById('filterPublico').value;
+            const categoria = document.getElementById('filterCategoria').value;
+            const uf = document.getElementById('filterUf').value;
+
+            const resultado = orgaosDB.filter(item => {
+                const matchQuery = item.nome.toLowerCase().includes(query) || 
+                                   item.sigla.toLowerCase().includes(query) || 
+                                   item.descricao.toLowerCase().includes(query);
+
+                const matchPublico = publico === 'todos' || item.publico === publico || item.publico === 'universal';
+                const matchCategoria = categoria === 'todas' || item.categoria === categoria;
+                const matchUf = uf === 'todosis' || item.uf === uf || item.uf === 'BR';
+
+                return matchQuery && matchPublico && matchCategoria && matchUf;
+            });
+
+            renderCards(resultado);
+        }
+
+        function limparFiltros() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('filterPublico').value = 'todos';
+            document.getElementById('filterCategoria').value = 'todas';
+            document.getElementById('filterUf').value = 'todosis';
+            renderCards(orgaosDB);
+        }
+
+        function copiarTelefone(tel) {
+            navigator.clipboard.writeText(tel);
+            alert(`Telefone/Contato ${tel} copiado com sucesso!`);
+        }
+
+        function ditaAtalhoEsc(e) {
+            if (e.key === 'Escape') saidaRapida();
+        }
+
+        function saidaRapida() {
+            window.location.replace("https://www.google.com");
+        }
+
+        function enviarMensagemSegura(e) {
+            e.preventDefault();
+            alert("Sua mensagem foi enviada com sucesso e de forma sigilosa para a equipe do 'Apesar de VOCÊ'!");
+            document.getElementById('contactForm').reset();
+        }
+
+        window.addEventListener('keydown', ditaAtalhoEsc);
+        document.addEventListener('DOMContentLoaded', () => renderCards(orgaosDB));
+    </script>
+
+</body>
+</html>

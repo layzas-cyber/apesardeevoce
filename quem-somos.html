@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como Atuamos & Nossa Missão | Apesar de VOCÊ</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            purple: '#2b035c',
+                            purpleDark: '#1e0242',
+                            purpleLight: '#430d85',
+                            carmine: '#e6205d',
+                            carmineDark: '#c2003b',
+                            roseSoft: '#fdf6f7',
+                            roseHover: '#f9eaed',
+                            offWhite: '#fcf8f8',
+                            dark: '#2c2c2c',
+                            graySub: '#666666',
+                            border: '#f2d6dc'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    },
+                    boxShadow: {
+                        'soft-glass': '0 8px 32px 0 rgba(43, 3, 92, 0.06)',
+                        'card-hover': '0 20px 40px -15px rgba(230, 32, 93, 0.12)',
+                        'glow': '0 0 25px rgba(230, 32, 93, 0.25)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+
+        /* ==========================================================================
+   FAIXA SUPERIOR & NAVBAR NATIVA (COM DROPDOWNS)
+   ========================================================================== */
+.top-bar {
+  height: 5px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1002;
+  background-color: #e6205d;
+}
+
+.bar-carmin {
+  width: 100%;
+  height: 100%;
+  background-color: #2b035c;
+}
+
+.navbar {
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 8%;
+  border-bottom: 1px solid #eaeaea;
+  position: fixed;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  z-index: 1001;
+  box-shadow: 0 2px 10px rgba(43, 3, 92, 0.03);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+/* LOGO NAVBAR */
+.brand-logo {
+  width: 62px;
+  height: auto;
+}
+
+.brand-text h1 {
+  font-size: 20px;
+  color: #e6205d;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.brand-text span {
+  font-size: 11px;
+  color: #7c7b7b;
+  font-style: italic;
+}
+
+/* Menu Principal e Submenus (Dropdown) */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #4a4a4a;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 0;
+}
+
+.nav-link .arrow {
+  font-size: 9px;
+  transition: transform 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #e6205d;
+}
+
+/* Estilo do Dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  list-style: none;
+  min-width: 220px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 1010;
+}
+
+.nav-item:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-item:hover .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 20px;
+  color: #4a4a4a;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-menu li a:hover {
+  background: #fdf6f7;
+  color: #e4205c;
+}
+
+.nav-actions-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-inscricao,
+.btn-denuncia {
+  background-color: #2b035c;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease;
+}
+
+.btn-inscricao:hover,
+.btn-denuncia:hover {
+  background-color: #e6205d;
+}
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcf8f8;
+            color: #2c2c2c;
+            overflow-x: hidden;
+        }
+
+        /* Gradient & Typography Effects */
+        .text-gradient {
+            background: linear-gradient(135deg, #2b035c 0%, #e6205d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-pattern {
+            background-image: radial-gradient(#e6205d 0.75px, transparent 0.75px);
+            background-size: 24px 24px;
+            opacity: 0.07;
+        }
+
+        .tab-btn-active {
+            color: #e6205d !important;
+            border-bottom-color: #e6205d !important;
+            background-color: #ffffff !important;
+            box-shadow: 0 -4px 12px rgba(230, 32, 93, 0.08);
+        }
+
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fcf8f8;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e6205d55;
+            border-radius: 99px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e6205d;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
+        }
+
+        .accordion-content.open {
+            max-height: 1000px;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        /* Pulse aura for emergency elements */
+        @keyframes pulseAura {
+            0% { box-shadow: 0 0 0 0 rgba(230, 32, 93, 0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(230, 32, 93, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(230, 32, 93, 0); }
+        }
+
+        .pulse-emergency {
+            animation: pulseAura 2s infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-brand-carmine selection:text-white">
+
+       <!-- Faixa colorida superior -->
+    <div class="top-bar">
+        <div class="bar-carmin"></div>
+    </div>
+
+    <!-- NAVBAR NATIVA -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">
+            <img src="/imagens/logosite.png" alt="Logo Apesar de Você" class="brand-logo">
+            <div class="brand-text">
+                <h1>Apesar de VOCÊ</h1>
+                <span>Amanhã será um novo dia.</span>
+            </div>
+        </a>
+
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link active">INÍCIO</a></li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">SOBRE NÓS <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="apesardevoce.html">SOBRE O PROJETO</a></li>
+                    <li><a href="quem-somos.html">QUEM SOMOS</a></li>
+                    <li><a href="contato.html">CONTATO</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">SOBRE A VIOLÊNCIA <span class="arrow">▼</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="entenda-a-violencia.html">ENTENDA A VIOLÊNCIA</a></li>
+                    <li><a href="ciclo.html">CICLO DA VIOLÊNCIA</a></li>
+                    <li><a href="direitos.html">SEUS DIREITOS</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item"><a href="comunidade.html" class="nav-link">COMUNIDADE</a></li>
+            <li class="nav-item"><a href="noticias.html" class="nav-link">NOTÍCIAS</a></li>
+            <li class="nav-item"><a href="cadastro.html" class="nav-link">CADASTRE-SE</a></li>
+        </ul>
+
+        <div class="nav-actions-wrapper">
+            <a href="https://www.youtube.com" class="btn-inscricao">SAÍDA RAPIDA</a>
+
+                <div class="nav-actions-wrapper">
+            <a href="denuncie.html" class="btn-inscricao">DENUNCIE</a>
+            <button class="menu-toggle" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION INSTITUCIONAL -->
+    <header class="relative py-20 lg:py-28 bg-gradient-to-b from-brand-roseSoft via-brand-offWhite to-white border-b border-brand-border overflow-hidden">
+        <div class="absolute inset-0 bg-pattern pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-brand-carmine bg-brand-carmine/10 border border-brand-carmine/20">
+                <i class="fa-solid fa-shield-heart text-xs"></i>
+                <span>Plataforma Independente & Acolhedora</span>
+            </div>
+
+            <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-purple max-w-4xl mx-auto leading-tight">
+                Transformando o silêncio em <span class="text-gradient">informação, rede e segurança.</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-brand-dark/80 text-base sm:text-lg leading-relaxed font-normal">
+                Um ecossistema seguro voltado à proteção dos direitos das mulheres no Brasil. Entenda nossa metodologia de trabalho e a missão que nos move diariamente.
+            </p>
+
+            <!-- Banners de Ação Rápida -->
+            <div class="pt-4 flex flex-wrap justify-center gap-4 text-xs font-bold">
+                <a href="#mainTabs" onclick="switchTab('atuamos')" class="px-6 py-3.5 rounded-full bg-brand-purple text-white hover:bg-brand-purpleDark transition-all shadow-md hover:-translate-y-0.5">
+                    Ver Nossa Metodologia <i class="fa-solid fa-arrow-down ml-1.5"></i>
+                </a>
+                <a href="#mainTabs" onclick="switchTab('missao')" class="px-6 py-3.5 rounded-full bg-white text-brand-purple border border-brand-purple/20 hover:bg-brand-roseSoft transition-all shadow-sm">
+                    Conhecer Nosso Manifesto
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- SELETOR DE ABAS PRINCIPAL (SWAP ENTRE COMO ATUAMOS E NOSSA MISSÃO) -->
+    <div id="mainTabs" class="sticky top-29 z-30 bg-white border-b border-brand-border shadow-sm">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="flex justify-center text-center font-serif font-bold text-base sm:text-lg">
+                <button onclick="switchTab('atuamos')" id="tab-btn-atuamos" class="flex-1 py-5 border-b-4 border-transparent text-brand-graySub hover:text-brand-purple transition-all flex items-center justify-center gap-2 cursor-pointer tab-btn-active">
+                    <i class="fa-solid fa-gears text-sm"></i>
+                    <span>Como Atuamos</span>
+                </button>
+                <button onclick="switchTab('missao')" id="tab-btn-missao" class="flex-1 py-5 border-b-4 border-transparent text-brand-graySub hover:text-brand-purple transition-all flex items-center justify-center gap-2 cursor-pointer">
+                    <i class="fa-solid fa-compass text-sm"></i>
+                    <span>Nossa Missão & Manifesto</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTEÚDO DAS ABAS -->
+    <main class="flex-1">
+
+        <!-- ================================================================= -->
+        <!-- ABA 1: COMO ATUAMOS                                               -->
+        <!-- ================================================================= -->
+        <section id="content-atuamos" class="py-16 sm:py-24 space-y-24">
+            
+            <!-- 1. OS 4 PILARES FUNDAMENTAIS -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                <div class="text-center max-w-3xl mx-auto space-y-4">
+                    <span class="text-xs font-bold text-brand-carmine uppercase tracking-widest bg-brand-carmine/10 px-3.5 py-1 rounded-full">Nossos Pilares de Ação</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-brand-purple">Como atuamos na resolução de conflitos e proteção</h2>
+                    <p class="text-brand-graySub text-sm sm:text-base">Operamos em quatro frentes articuladas para garantir atendimento humanizado, precisão jurídica e sigilo absoluto.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Pilar 1 -->
+                    <div class="bg-white p-8 rounded-3xl border border-brand-border shadow-sm hover:shadow-card-hover hover:-translate-y-1.5 transition-all space-y-5 relative overflow-hidden group">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-carmine/10 text-brand-carmine flex items-center justify-center text-2xl font-bold group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-user-ninja"></i>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-brand-purple">1. Anonymity First</h3>
+                        <p class="text-brand-dark/80 text-xs sm:text-sm leading-relaxed">
+                            Ambiente digital sem rastreamento de IP ou dados sensíveis. Você pode interagir, solicitar orientação e publicar relatos de forma 100% anônima.
+                        </p>
+                        <div class="pt-2 text-xs font-bold text-brand-carmine flex items-center gap-1">
+                            <span>Proteção de Dados</span>
+                            <i class="fa-solid fa-shield text-[10px]"></i>
+                        </div>
+                    </div>
+
+                    <!-- Pilar 2 -->
+                    <div class="bg-white p-8 rounded-3xl border border-brand-border shadow-sm hover:shadow-card-hover hover:-translate-y-1.5 transition-all space-y-5 relative overflow-hidden group">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-purple/10 text-brand-purple flex items-center justify-center text-2xl font-bold group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-brand-purple">2. Jornalismo de Dados</h3>
+                        <p class="text-brand-dark/80 text-xs sm:text-sm leading-relaxed">
+                            Mapeamos indicadores de violência de gênero e estatísticas oficiais no Brasil para traduzir termos jurídicos em guias práticos e acessíveis.
+                        </p>
+                        <div class="pt-2 text-xs font-bold text-brand-purple flex items-center gap-1">
+                            <span>Informação Factual</span>
+                            <i class="fa-solid fa-chart-line text-[10px]"></i>
+                        </div>
+                    </div>
+
+                    <!-- Pilar 3 -->
+                    <div class="bg-white p-8 rounded-3xl border border-brand-border shadow-sm hover:shadow-card-hover hover:-translate-y-1.5 transition-all space-y-5 relative overflow-hidden group">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-carmine/10 text-brand-carmine flex items-center justify-center text-2xl font-bold group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-brand-purple">3. Suporte Jurídico</h3>
+                        <p class="text-brand-dark/80 text-xs sm:text-sm leading-relaxed">
+                            Orientação clara sobre Medidas Protetivas de Urgência, Lei Maria da Penha e encaminhamento direto à Defensoria Pública e CRAM.
+                        </p>
+                        <div class="pt-2 text-xs font-bold text-brand-carmine flex items-center gap-1">
+                            <span>Orientação Legal</span>
+                            <i class="fa-solid fa-gavel text-[10px]"></i>
+                        </div>
+                    </div>
+
+                    <!-- Pilar 4 -->
+                    <div class="bg-white p-8 rounded-3xl border border-brand-border shadow-sm hover:shadow-card-hover hover:-translate-y-1.5 transition-all space-y-5 relative overflow-hidden group">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-purple/10 text-brand-purple flex items-center justify-center text-2xl font-bold group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-people-roof"></i>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-brand-purple">4. Comunidade Viva</h3>
+                        <p class="text-brand-dark/80 text-xs sm:text-sm leading-relaxed">
+                            Rede de troca entre mulheres, voluntárias e especialistas para fortalecer a autonomia e afastar o isolamento provocado pela violência.
+                        </p>
+                        <div class="pt-2 text-xs font-bold text-brand-purple flex items-center gap-1">
+                            <span>Rede de Afeto</span>
+                            <i class="fa-solid fa-heart text-[10px]"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 2. JORNADA DE ACOLHIMENTO INTERATIVA (TIMELINE SIMULADA) -->
+            <div class="bg-brand-roseSoft/60 py-20 border-y border-brand-border">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                    
+                    <div class="text-center max-w-2xl mx-auto space-y-3">
+                        <span class="text-xs font-bold text-brand-carmine uppercase tracking-widest bg-white px-3 py-1 rounded-full border border-brand-border">Passo a Passo</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-brand-purple">A Jornada de Acolhimento</h2>
+                        <p class="text-brand-graySub text-sm">Clique em cada etapa para entender como acompanhamos a usuária do início ao fim.</p>
+                    </div>
+
+                    <!-- Seletor de Passos -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="journeySteps">
+                        <button onclick="setJourneyStep(1)" id="step-btn-1" class="p-5 rounded-2xl border border-brand-carmine bg-white shadow-sm text-left transition-all cursor-pointer">
+                            <span class="text-xs font-bold text-brand-carmine block mb-1">Passo 01</span>
+                            <strong class="font-serif text-brand-purple block text-sm sm:text-base">Dúvida & Diagnóstico</strong>
+                        </button>
+
+                        <button onclick="setJourneyStep(2)" id="step-btn-2" class="p-5 rounded-2xl border border-brand-border bg-white/60 text-left hover:bg-white transition-all cursor-pointer">
+                            <span class="text-xs font-bold text-brand-graySub block mb-1">Passo 02</span>
+                            <strong class="font-serif text-brand-purple block text-sm sm:text-base">Acolhimento Anônimo</strong>
+                        </button>
+
+                        <button onclick="setJourneyStep(3)" id="step-btn-3" class="p-5 rounded-2xl border border-brand-border bg-white/60 text-left hover:bg-white transition-all cursor-pointer">
+                            <span class="text-xs font-bold text-brand-graySub block mb-1">Passo 03</span>
+                            <strong class="font-serif text-brand-purple block text-sm sm:text-base">Direcionamento Legal</strong>
+                        </button>
+
+                        <button onclick="setJourneyStep(4)" id="step-btn-4" class="p-5 rounded-2xl border border-brand-border bg-white/60 text-left hover:bg-white transition-all cursor-pointer">
+                            <span class="text-xs font-bold text-brand-graySub block mb-1">Passo 04</span>
+                            <strong class="font-serif text-brand-purple block text-sm sm:text-base">Fortalecimento</strong>
+                        </button>
+                    </div>
+
+                    <!-- Card Detalhado da Etapa -->
+                    <div id="journeyStepContent" class="bg-white p-8 sm:p-12 rounded-3xl border border-brand-border shadow-sm grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                        <!-- Injetado dinamicamente no JS -->
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 3. CALCULADORA / SIMULADOR DE DIREITOS E CANAIS DE EMERGÊNCIA -->
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+                <div class="bg-gradient-to-br from-brand-purple to-brand-purpleDark text-white p-8 sm:p-12 rounded-3xl shadow-xl space-y-8 relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-brand-carmine/20 rounded-full blur-3xl"></div>
+                    
+                    <div class="space-y-3 relative z-10">
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-carmine bg-white/10 px-3 py-1 rounded-full">Guia Interativo</span>
+                        <h2 class="font-serif text-2xl sm:text-4xl font-bold">Simulador de Orientações & Canais Indicados</h2>
+                        <p class="text-white/80 text-xs sm:text-sm">Selecione o tipo de apoio que você necessita hoje para visualizar os canais adequados e seus direitos imediatos.</p>
+                    </div>
+
+                    <!-- Form de Seleção -->
+                    <div class="space-y-4 relative z-10 text-xs sm:text-sm">
+                        <label class="font-bold text-white block">Qual é a sua necessidade principal agora?</label>
+                        <select id="situationSelect" onchange="updateSituationResult()" class="w-full p-4 rounded-xl bg-white text-brand-dark font-bold focus:outline-none focus:ring-2 focus:ring-brand-carmine cursor-pointer">
+                            <option value="emergencia">Sinto que estou em perigo físico imediato ou sofri ameaça recente</option>
+                            <option value="psicologica">Estou sofrendo violência psicológica, controle financeiro ou humilhação</option>
+                            <option value="juridica">Preciso entender como pedir Medida Protetiva de Urgência</option>
+                            <option value="duvida">Quero apenas ler histórias e tirar dúvidas anônimas com outras mulheres</option>
+                        </select>
+                    </div>
+
+                    <!-- Resultado Dinâmico -->
+                    <div id="situationResult" class="bg-white/10 p-6 rounded-2xl border border-white/20 space-y-4 relative z-10">
+                        <!-- Atualizado via JS -->
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- ABA 2: NOSSA MISSÃO & MANIFESTO                                   -->
+        <!-- ================================================================= -->
+        <section id="content-missao" class="py-16 sm:py-24 space-y-24 hidden">
+            
+            <!-- 1. TRÍADE INSTITUCIONAL (MISSÃO, VISÃO E VALORES) -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                <div class="text-center max-w-3xl mx-auto space-y-3">
+                    <span class="text-xs font-bold text-brand-carmine uppercase tracking-widest bg-brand-carmine/10 px-3.5 py-1 rounded-full">Identidade Institucional</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-brand-purple">Propósito que guia nossas ações</h2>
+                    <p class="text-brand-graySub text-sm sm:text-base">Construímos soluções fundamentadas na ética, no acolhimento irrestrito e na justiça social.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Missão -->
+                    <div class="bg-white p-8 rounded-3xl border border-brand-border shadow-sm hover:shadow-card-hover transition-all space-y-5">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-carmine/10 text-brand-carmine flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-brand-purple">Nossa Missão</h3>
+                        <p class="text-brand-dark/80 text-xs sm:text-sm leading-relaxed">
+                            Acolher, informar e fortalecer mulheres em situação de vulnerabilidade ou violência de gênero, garantindo acesso simplificado a direitos, rede de apoio e ferramentas de proteção.
+                        </p>
+                    </div>
+
+                    <!-- Visão -->
+                    <div class="bg-white p-8 rounded-3xl border border-brand-border shadow-sm hover:shadow-card-hover transition-all space-y-5">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-purple/10 text-brand-purple flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-brand-purple">Nossa Visão</h3>
+                        <p class="text-brand-dark/80 text-xs sm:text-sm leading-relaxed">
+                            Ser a plataforma digital independente de referência no Brasil no combate à violência contra a mulher, promovendo a queda contínua dos índices por meio da informação qualificada.
+                        </p>
+                    </div>
+
+                    <!-- Valores -->
+                    <div class="bg-white p-8 rounded-3xl border border-brand-border shadow-sm hover:shadow-card-hover transition-all space-y-5">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-carmine/10 text-brand-carmine flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-brand-purple">Nossos Valores</h3>
+                        <p class="text-brand-dark/80 text-xs sm:text-sm leading-relaxed">
+                            Escuta não-julgadora, confidencialidade rigorosa, equidade de gênero, rigor técnico-jornalístico e respeito à diversidade de todas as mulheres brasileiras.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 2. MANIFESTO EDITORIAL DA MARCA -->
+            <div class="bg-brand-purple text-white py-20 relative overflow-hidden">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 relative z-10">
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-carmine bg-white/10 px-4 py-1.5 rounded-full">Manifesto Institucional</span>
+                    
+                    <h2 class="font-serif text-3xl sm:text-5xl font-extrabold leading-tight italic">
+                        "Enquanto houver uma mulher em silêncio, haverá voz e acolhimento nesta rede."
+                    </h2>
+
+                    <div class="space-y-4 text-white/80 text-sm sm:text-base leading-relaxed font-light max-w-2xl mx-auto">
+                        <p>
+                            Nascemos do inconformismo diante de dados estarrecedores de violência doméstica. Entendemos que o medo floresce no isolamento e na desinformação.
+                        </p>
+                        <p>
+                            Por isso, erguemos uma estrutura que une a precisão dos dados, a força das leis e o calor do apoio comunitário. Amanhã será um novo dia — e você não está sozinha.
+                        </p>
+                    </div>
+
+                    <div class="pt-4">
+                        <button onclick="openEmergencyModal()" class="px-8 py-4 rounded-full bg-brand-carmine hover:bg-brand-carmineDark text-white font-bold text-xs shadow-lg transition-all">
+                            Fazer Parte da Nossa Rede de Apoiadoras
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. NÚMEROS DE IMPACTO SOCIAL (CONTADOR DINÂMICO) -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                <div class="text-center max-w-2xl mx-auto space-y-3">
+                    <span class="text-xs font-bold text-brand-carmine uppercase tracking-widest bg-brand-carmine/10 px-3 py-1 rounded-full">Transparência & Escala</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-brand-purple">Nosso Impacto em Números</h2>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-brand-border space-y-2">
+                        <span class="font-serif font-extrabold text-3xl sm:text-5xl text-brand-carmine block" id="counter1">0</span>
+                        <span class="text-xs font-bold text-brand-purple uppercase tracking-wider block">Mulheres Impactadas</span>
+                    </div>
+
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-brand-border space-y-2">
+                        <span class="font-serif font-extrabold text-3xl sm:text-5xl text-brand-purple block" id="counter2">0</span>
+                        <span class="text-xs font-bold text-brand-purple uppercase tracking-wider block">Guias Jurídicos Lidos</span>
+                    </div>
+
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-brand-border space-y-2">
+                        <span class="font-serif font-extrabold text-3xl sm:text-5xl text-brand-carmine block" id="counter3">0</span>
+                        <span class="text-xs font-bold text-brand-purple uppercase tracking-wider block">Relatos Acolhidos</span>
+                    </div>
+
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-brand-border space-y-2">
+                        <span class="font-serif font-extrabold text-3xl sm:text-5xl text-brand-purple block" id="counter4">0</span>
+                        <span class="text-xs font-bold text-brand-purple uppercase tracking-wider block">Pontos de Apoio Maqueados</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- SEÇÃO FAQ (PERGUNTAS FREQUENTES COM BUSCA)                        -->
+        <!-- ================================================================= -->
+        <section class="py-20 bg-white border-t border-brand-border">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+                
+                <div class="text-center space-y-4">
+                    <span class="text-xs font-bold text-brand-carmine uppercase tracking-widest bg-brand-carmine/10 px-3.5 py-1 rounded-full">Esclarecimentos Rápidos</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-brand-purple">Dúvidas Frequentes sobre a Plataforma</h2>
+                    
+                    <!-- Busca no FAQ -->
+                    <div class="relative max-w-md mx-auto pt-2">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-6 text-brand-graySub text-xs"></i>
+                        <input type="text" id="faqSearch" onkeyup="filterFAQ()" placeholder="Pesquisar por dúvida (ex: anonimato, 180, denúncia)..." class="w-full bg-brand-roseSoft border border-brand-border pl-10 pr-4 py-3 rounded-full text-xs font-medium focus:outline-none focus:border-brand-carmine">
+                    </div>
+                </div>
+
+                <!-- Lista Accordion -->
+                <div class="space-y-4" id="faqAccordion">
+                    
+                    <div class="faq-item border border-brand-border rounded-2xl overflow-hidden bg-white transition-all">
+                        <button onclick="toggleFAQ(this)" class="w-full p-6 text-left flex justify-between items-center gap-4 cursor-pointer hover:bg-brand-roseSoft/40">
+                            <span class="font-serif font-bold text-brand-purple text-sm sm:text-base">A plataforma guarda algum dado que possa me identificar?</span>
+                            <i class="fa-solid fa-chevron-down text-brand-carmine text-xs transition-transform"></i>
+                        </button>
+                        <div class="accordion-content px-6 pb-6 text-xs sm:text-sm text-brand-dark/80 leading-relaxed">
+                            Não. Nossa plataforma não exige cadastro com CPF ou documentos reais para a leitura de conteúdo ou navegação na comunidade. Todos os registros locais de interações utilizam identificadores aleatórios salvos apenas no seu navegador.
+                        </div>
+                    </div>
+
+                    <div class="faq-item border border-brand-border rounded-2xl overflow-hidden bg-white transition-all">
+                        <button onclick="toggleFAQ(this)" class="w-full p-6 text-left flex justify-between items-center gap-4 cursor-pointer hover:bg-brand-roseSoft/40">
+                            <span class="font-serif font-bold text-brand-purple text-sm sm:text-base">Como funciona o botão de Saída Rápida?</span>
+                            <i class="fa-solid fa-chevron-down text-brand-carmine text-xs transition-transform"></i>
+                        </button>
+                        <div class="accordion-content px-6 pb-6 text-xs sm:text-sm text-brand-dark/80 leading-relaxed">
+                            O botão de "Saída Rápida" redireciona você imediatamente para um site neutro de alta relevância (como o Google ou YouTube) e substitui a aba atual para que ninguém veja o que você estava lendo caso se aproxime.
+                        </div>
+                    </div>
+
+                    <div class="faq-item border border-brand-border rounded-2xl overflow-hidden bg-white transition-all">
+                        <button onclick="toggleFAQ(this)" class="w-full p-6 text-left flex justify-between items-center gap-4 cursor-pointer hover:bg-brand-roseSoft/40">
+                            <span class="font-serif font-bold text-brand-purple text-sm sm:text-base">Apesar de VOCÊ realiza atendimento policial direto?</span>
+                            <i class="fa-solid fa-chevron-down text-brand-carmine text-xs transition-transform"></i>
+                        </button>
+                        <div class="accordion-content px-6 pb-6 text-xs sm:text-sm text-brand-dark/80 leading-relaxed">
+                            Nós somos uma plataforma informativa, comunitária e de acolhimento. Para emergências imediatas ou envio de viatura policial, você deve ligar diretamente para o **190 (Polícia Militar)** ou **180 (Central de Atendimento à Mulher)**.
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER INSTITUCIONAL COMPLETO -->
+    <footer id="contato" class="bg-brand-purple text-white pt-16 pb-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- Coluna 1 -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-carmine flex items-center justify-center text-white font-serif font-bold text-xl">A</div>
+                        <span class="font-serif font-bold text-2xl tracking-tight">Apesar de VOCÊ</span>
+                    </div>
+                    <p class="text-white/70 text-xs leading-relaxed">
+                        Iniciativa independente de acolhimento, inteligência de dados e defesa irrestrita dos direitos das mulheres no Brasil.
+                    </p>
+                </div>
+
+                <!-- Coluna 2 -->
+                <div class="space-y-4">
+                    <h4 class="font-serif font-bold text-sm text-brand-carmine uppercase tracking-wider">Navegação</h4>
+                    <ul class="space-y-2 text-xs text-white/80">
+                        <li><a href="#mainTabs" onclick="switchTab('atuamos')" class="hover:text-white transition-colors">Como Atuamos</a></li>
+                        <li><a href="#mainTabs" onclick="switchTab('missao')" class="hover:text-white transition-colors">Nossa Missão</a></li>
+                        <li><a href="comunidade.html" class="hover:text-white transition-colors">Comunidade Anônima</a></li>
+                        <li><a href="noticias.html" class="hover:text-white transition-colors">Informativo Substack</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3 -->
+                <div class="space-y-4">
+                    <h4 class="font-serif font-bold text-sm text-brand-carmine uppercase tracking-wider">Emergência Nacional</h4>
+                    <ul class="space-y-2 text-xs text-white/80">
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-brand-carmine"></i>
+                            <span>Central da Mulher: <strong>Ligue 180</strong></span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved text-brand-carmine"></i>
+                            <span>Emergência Policial: <strong>Ligue 190</strong></span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-brand-carmine"></i>
+                            <span>contato@apesardvoce.org</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 4 -->
+                <div class="space-y-4">
+                    <h4 class="font-serif font-bold text-sm text-brand-carmine uppercase tracking-wider">Acompanhe</h4>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-carmine transition-colors text-xs"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://apesardvoce.substack.com" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-carmine transition-colors text-xs"><i class="fa-solid fa-bookmark"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-white/60">
+                <p>&copy; 2026 Apesar de VOCÊ. Todos os direitos reservados.</p>
+                <p>Projetado com foco em privacidade, segurança e acolhimento humano.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- MODAL DE EMERGÊNCIA / APOIO RÁPIDO -->
+    <div id="emergencyModal" class="fixed inset-0 bg-brand-purple/80 z-50 hidden flex items-center justify-center p-4 backdrop-blur-md">
+        <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl p-6 sm:p-8 space-y-6 relative border border-brand-border">
+            <button onclick="closeEmergencyModal()" class="absolute top-5 right-5 text-brand-graySub hover:text-brand-carmine text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-brand-carmine/10 text-brand-carmine flex items-center justify-center text-xl font-bold">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div>
+                    <h3 class="font-serif font-bold text-xl text-brand-purple">Canais de Ajuda Urgente</h3>
+                    <p class="text-xs text-brand-graySub">Se você está em perigo agora, utilize os números abaixo:</p>
+                </div>
+            </div>
+
+            <div class="space-y-3 text-xs sm:text-sm">
+                <a href="tel:180" class="flex items-center justify-between p-4 rounded-2xl bg-brand-roseSoft border border-brand-carmine/20 font-bold text-brand-purple hover:bg-brand-carmine hover:text-white transition-all">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-headset text-lg text-brand-carmine"></i>
+                        <span>Central da Mulher (Orientação e Denúncia)</span>
+                    </div>
+                    <span class="bg-brand-carmine text-white px-3 py-1 rounded-full text-xs">180</span>
+                </a>
+
+                <a href="tel:190" class="flex items-center justify-between p-4 rounded-2xl bg-brand-roseSoft border border-brand-carmine/20 font-bold text-brand-purple hover:bg-brand-carmine hover:text-white transition-all">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-shield-cat text-lg text-brand-carmine"></i>
+                        <span>Polícia Militar (Risco Imediato)</span>
+                    </div>
+                    <span class="bg-brand-carmine text-white px-3 py-1 rounded-full text-xs">190</span>
+                </a>
+            </div>
+
+            <div class="pt-2 text-center">
+                <button onclick="quickExit()" class="w-full py-3 rounded-full bg-brand-carmine text-white font-extrabold text-xs shadow-md hover:bg-brand-carmineDark transition-all">
+                    Sair Imediatamente do Site
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE INTERATIVIDADE -->
+    <script>
+        // REDIRECIONAMENTO DE SEGURANÇA
+        function quickExit() {
+            window.location.replace("https://www.google.com");
+        }
+
+        // SWAP DE ABAS (COMO ATUAMOS VS NOSSA MISSÃO)
+        function switchTab(tab) {
+            const btnAtuamos = document.getElementById('tab-btn-atuamos');
+            const btnMissao = document.getElementById('tab-btn-missao');
+            const contentAtuamos = document.getElementById('content-atuamos');
+            const contentMissao = document.getElementById('content-missao');
+
+            if (tab === 'atuamos') {
+                btnAtuamos.classList.add('tab-btn-active');
+                btnMissao.classList.remove('tab-btn-active');
+                contentAtuamos.classList.remove('hidden');
+                contentMissao.classList.add('hidden');
+            } else {
+                btnMissao.classList.add('tab-btn-active');
+                btnAtuamos.classList.remove('tab-btn-active');
+                contentMissao.classList.remove('hidden');
+                contentAtuamos.classList.add('hidden');
+                animateCounters();
+            }
+        }
+
+        // ETAPAS DA JORNADA DE ACOLHIMENTO
+        const JOURNEY_STEPS = {
+            1: {
+                title: "Passo 01: Dúvida & Diagnóstico de Sinais",
+                desc: "A mulher acessa a plataforma em ambiente criptografado para entender o ciclo da violência e identificar sinais sutis de abuso psicológico, moral ou patrimonial.",
+                tag: "Orientação Inicial"
+            },
+            2: {
+                title: "Passo 02: Acolhimento Comunitário Anônimo",
+                desc: "Pode publicar desabafos e dúvidas na comunidade sem necessidade de identificação real, recebendo apoio de outras integrantes e voluntárias.",
+                tag: "Troca Segura"
+            },
+            3: {
+                title: "Passo 03: Direcionamento Jurídico & Protetivo",
+                desc: "Recebe diretrizes claras sobre como requerer a Medida Protetiva de Urgência, contatar a Defensoria Pública ou agendar atendimento no CRAM.",
+                tag: "Suporte Legal"
+            },
+            4: {
+                title: "Passo 04: Fortalecimento & Autonomia",
+                desc: "Acesso contínuo a guias de emancipação, apoio psicológico especializado e acompanhamento dos relatórios de direitos humanos.",
+                tag: "Recomeço Dignificativo"
+            }
+        };
+
+        function setJourneyStep(step) {
+            for (let i = 1; i <= 4; i++) {
+                const btn = document.getElementById(`step-btn-${i}`);
+                if (i === step) {
+                    btn.classList.add('border-brand-carmine', 'bg-white', 'shadow-sm');
+                    btn.classList.remove('border-brand-border', 'bg-white/60');
+                } else {
+                    btn.classList.remove('border-brand-carmine', 'bg-white', 'shadow-sm');
+                    btn.classList.add('border-brand-border', 'bg-white/60');
+                }
+            }
+
+            const data = JOURNEY_STEPS[step];
+            const container = document.getElementById('journeyStepContent');
+            container.innerHTML = `
+                <div class="md:col-span-8 space-y-4">
+                    <span class="text-xs font-bold text-brand-carmine bg-brand-carmine/10 px-3 py-1 rounded-full uppercase">${data.tag}</span>
+                    <h3 class="font-serif font-extrabold text-2xl text-brand-purple">${data.title}</h3>
+                    <p class="text-brand-dark/80 text-sm sm:text-base leading-relaxed">${data.desc}</p>
+                </div>
+                <div class="md:col-span-4 text-center">
+                    <div class="w-20 h-20 rounded-full bg-brand-purple text-white flex items-center justify-center text-3xl font-serif font-bold mx-auto shadow-md">
+                        0${step}
+                    </div>
+                </div>
+            `;
+        }
+
+        // SIMULADOR DE SITUAÇÕES
+        const SITUATION_DATA = {
+            emergencia: {
+                title: "Ligue Imediatamente para o 190 (Polícia Militar)",
+                desc: "Em situações de agressão imediata, ameça com armas ou invasão de domicílio, acione o 190. Você também pode buscar auxílio na Delegacia da Mulher (DDM) mais próxima.",
+                channels: ["Polícia Militar: 190", "Central da Mulher: 180", "Guardas Municipais (Patrulha Maria da Penha)"]
+            },
+            psicologica: {
+                title: "Violência Psicológica é Crime (Lei 14.188/21)",
+                desc: "Ameaças, humilhações e isolamento forçado configuram crime. Guarde prints de conversas, áudios e procure o CRAM (Centro de Referência de Atendimento à Mulher) da sua cidade.",
+                channels: ["Central da Mulher: 180", "CRAM da sua Região", "Comunidade Anônima"]
+            },
+            juridica: {
+                title: "Medida Protetiva de Urgência em até 48 horas",
+                desc: "A Medida Protetiva independe de processo criminal instaurado. Pode ser solicitada diretamente na Delegacia ou através da Defensoria Pública do Estado.",
+                channels: ["Defensoria Pública Estadual", "Delegacia de Polícia", "Ligue 180"]
+            },
+            duvida: {
+                title: "Acesse Nossa Comunidade e Informativos",
+                desc: "Explore nossas publicações jornalísticas e interaja no fórum anônimo para tirar dúvidas com leitoras e especialistas.",
+                channels: ["Fórum da Comunidade", "Substack Oficial", "Guias em PDF"]
+            }
+        };
+
+        function updateSituationResult() {
+            const val = document.getElementById('situationSelect').value;
+            const res = SITUATION_DATA[val];
+            const container = document.getElementById('situationResult');
+
+            container.innerHTML = `
+                <h3 class="font-serif font-bold text-lg text-brand-carmine">${res.title}</h3>
+                <p class="text-white/90 text-xs sm:text-sm leading-relaxed">${res.desc}</p>
+                <div class="pt-2">
+                    <strong class="text-xs uppercase text-white/70 block mb-2">Canais Indicados:</strong>
+                    <div class="flex flex-wrap gap-2">
+                        ${res.channels.map(c => `<span class="bg-white/20 text-white font-bold text-xs px-3 py-1 rounded-full border border-white/30">${c}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // ACCORDION DO FAQ
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+
+            content.classList.toggle('open');
+            icon.classList.toggle('rotate-180');
+        }
+
+        function filterFAQ() {
+            const q = document.getElementById('faqSearch').value.toLowerCase();
+            const items = document.querySelectorAll('.faq-item');
+
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(q) ? 'block' : 'none';
+            });
+        }
+
+        // CONTADOR DE IMPACTO DINÂMICO
+        let animated = false;
+        function animateCounters() {
+            if (animated) return;
+            animated = true;
+
+            const targets = [120000, 45000, 8900, 320];
+            const ids = ['counter1', 'counter2', 'counter3', 'counter4'];
+
+            ids.forEach((id, idx) => {
+                let curr = 0;
+                const target = targets[idx];
+                const inc = Math.ceil(target / 60);
+
+                const timer = setInterval(() => {
+                    curr += inc;
+                    if (curr >= target) {
+                        curr = target;
+                        clearInterval(timer);
+                    }
+                    document.getElementById(id).textContent = curr.toLocaleString('pt-BR') + '+';
+                }, 25);
+            });
+        }
+
+        // MODAIS E MENUS
+        function openEmergencyModal() {
+            document.getElementById('emergencyModal').classList.remove('hidden');
+        }
+
+        function closeEmergencyModal() {
+            document.getElementById('emergencyModal').classList.add('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // INICIALIZAÇÃO
+        document.addEventListener('DOMContentLoaded', () => {
+            setJourneyStep(1);
+            updateSituationResult();
+        });
+    </script>
+</body>
+</html>
